@@ -6,13 +6,13 @@ const Layout = (props) => {
   return (
     <div className="m-[auto] max-w-[500px]">
       <nav>
-        <ul className="flex flex-row">
-          <li className="m-1.5">
+        <ul className="flex flex-row mb-6 mt-6">
+          <li className="mr-6">
             <Link to="/" className="text-blue-700 underline">
               Home
             </Link>
           </li>
-          <li className="m-1.5">
+          <li className="mr-6">
             <Link to="/about" className="text-blue-700 underline">
               About
             </Link>
@@ -20,7 +20,7 @@ const Layout = (props) => {
         </ul>
       </nav>
       <main>
-        <h1>{pageTitle}</h1>
+        <h1 className="text-3xl font-bold">{pageTitle}</h1>
         {children}
       </main>
     </div>
