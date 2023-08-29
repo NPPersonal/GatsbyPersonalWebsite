@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
+import { Seo } from "../components/seo";
 
 const IndexPage = () => {
   return (
@@ -11,9 +12,4 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => (
-  <>
-    <title>About</title>
-    <meta name="description" content="Your description" />
-  </>
-);
+export const Head = () => <Seo title="About Me" />;
