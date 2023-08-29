@@ -7,9 +7,15 @@ const BlogPage = (props) => {
   const { data } = props;
   return (
     <Layout pageTitle="My blog posts">
-      <ul>
-        {data.allFile.nodes.map((node) => (
-          <li key={node.name}>{node.name}</li>
+      <ul className="mt-4">
+        {data.allMdx.nodes.map((node) => (
+          <article key={node.id} className="mb-4">
+            <h2 className="text-2xl font-bold">{node.frontmatter.title}</h2>
+            <p className="text-gray-700 italic font-bold">
+              Posted: {node.frontmatter.date}
+            </p>
+            <p className="py-3">{node.excerpt}</p>
+          </article>
         ))}
       </ul>
     </Layout>
@@ -17,10 +23,15 @@ const BlogPage = (props) => {
 };
 
 export const query = graphql`
-  query MyQuery {
-    allFile(filter: { sourceInstanceName: { eq: "blog" } }) {
+  query {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
       nodes {
-        name
+        frontmatter {
+          date(formatString: "MMMM-D-YYYY")
+          title
+        }
+        id
+        excerpt
       }
     }
   }
