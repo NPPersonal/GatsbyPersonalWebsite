@@ -28,11 +28,33 @@
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/github": "^9.0.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "semantic-release": "^21.1.1"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ]
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github"
+  ]
 }
