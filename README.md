@@ -47,3 +47,8 @@
 Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
 
 [<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+
+## Note
+
+- App start with root-layout.js and was configured in gatsby-browser.js
+- main-layout.js is the app's layout anything with UI must be in main-layout or under

@@ -1,8 +1,13 @@
 import * as React from "react";
-import RootLayout from "../layouts/root-laytout";
+import MainLayout from "../layouts/main-layout";
+import { Button } from "@mui/material";
 
 const IndexPage = () => {
-  return <RootLayout></RootLayout>;
+  return (
+    <MainLayout>
+      <Button variant="contained">Hello</Button>
+    </MainLayout>
+  );
 };
 
 export default IndexPage;
