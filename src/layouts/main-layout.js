@@ -2,48 +2,27 @@ import * as React from "react";
 import { Box, Toolbar } from "@mui/material";
 import NavBar from "../components/nav-bar/navbar";
 import NavMenuLink from "../components/nav-menu-link/nav-menu-link";
+import { useMenusData } from "../hooks/use-menus-data";
 
+/**
+ * Main layout that included AppBar at top
+ * @returns
+ */
 const MainLayout = ({ children }) => {
+  const menuData = useMenusData();
+
   return (
     <Box>
       <NavBar
-        menu={[
-          <NavMenuLink
-            key="blogs"
-            className="mx-4"
-            data={{
-              title: "Blogs",
-              link: "",
-            }}
-          />,
-          <NavMenuLink
-            key="works"
-            className="mx-4"
-            data={{
-              title: "Works",
-              subLinks: [
-                { title: "Web", link: "" },
-                { title: "Mobile", link: "" },
-                { title: "Machine Learning", link: "" },
-              ],
-            }}
-          />,
-          <NavMenuLink
-            key="about"
-            data={{
-              title: "About",
-              link: "",
-            }}
-          />,
-          <NavMenuLink
-            key="contact"
-            className="mx-4"
-            data={{
-              title: "Contact",
-              link: "",
-            }}
-          />,
-        ]}
+        menu={menuData.map((data, i) => {
+          return (
+            <NavMenuLink
+              key={`${data.title}-${i}`}
+              className="mx-4"
+              data={data}
+            />
+          );
+        })}
       />
       <Box component="main">
         <Toolbar />

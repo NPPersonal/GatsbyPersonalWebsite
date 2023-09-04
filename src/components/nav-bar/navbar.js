@@ -12,14 +12,23 @@ import {
 import { Brightness7Rounded, Brightness4Rounded } from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
 
-const NavBar = ({ title = "", avatarSize = 44, menu = [] }) => {
+/**
+ * App bar or navigation bar
+ *
+ * @param title **Optional** title of app bar
+ * @param logoSize **Optional** default `44px`
+ * @param menu **Optional** an array of React element to be displayed
+ *
+ * @returns
+ */
+const NavBar = ({ title = "", logoSize = 44, menu = [] }) => {
   const { mode, toggleColorMode } = React.useContext(MUIThemeContext);
 
   return (
     <AppBar>
       <Toolbar>
         <Box className="mr-4">
-          <Avatar alt="Logo" sx={{ width: avatarSize, height: avatarSize }}>
+          <Avatar alt="Logo" sx={{ width: logoSize, height: logoSize }}>
             <StaticImage
               src="../../images/logo.png"
               alt="Logo image"

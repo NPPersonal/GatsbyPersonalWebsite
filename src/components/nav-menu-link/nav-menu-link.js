@@ -3,8 +3,19 @@ import PropTypes from "prop-types";
 import { Box, Menu, MenuItem, Typography, useTheme } from "@mui/material";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
+/**
+ * Display a navigation link or a set of links in a menu
+ *
+ * @param data is an object about the link and links under it
+ * @param data.title is this link's name which will be display at top level
+ * @param data.link **Optional** is this link's internal website link address it use Gatsby's `Link`
+ * @param data.subLinks is an array of sub links in pop up menu when this link is clicked
+ * @param data.subLinks.title is sub link's name which will be display in menu
+ * @param data.subLinks.link **Optional** is sub link's internal website link address it use Gatsby's `Link`
+ * @param props any props will be passed to Material UI's `Box` component
+ * @returns
+ */
 const NavMenuLink = ({ data, ...rest }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
@@ -34,10 +45,12 @@ const NavMenuLink = ({ data, ...rest }) => {
         <span
           className={`${data.subLinks ? "block" : "hidden"} flex items-center`}
         >
-          {data.subLinks && open ? (
-            <KeyboardArrowDownIcon />
-          ) : (
-            <KeyboardArrowUpIcon />
+          {data.subLinks && (
+            <KeyboardArrowUpIcon
+              className={`transition-all ease-in-out ${
+                open ? "rotate-180" : "-rotate-"
+              } duration-500`}
+            />
           )}
         </span>
       </Typography>
