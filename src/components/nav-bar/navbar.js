@@ -1,5 +1,6 @@
 import * as React from "react";
 import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
+import PropTypes from "prop-types";
 import {
   Box,
   AppBar,
@@ -11,7 +12,7 @@ import {
 import { Brightness7Rounded, Brightness4Rounded } from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
 
-const NavBar = ({ title = "", avatarSize = 44 }) => {
+const NavBar = ({ title = "", avatarSize = 44, menu = [] }) => {
   const { mode, toggleColorMode } = React.useContext(MUIThemeContext);
 
   return (
@@ -27,9 +28,12 @@ const NavBar = ({ title = "", avatarSize = 44 }) => {
             />
           </Avatar>
         </Box>
-        <Typography className="flex grow text-4xl font-bold hidden sm:block">
-          {title}
-        </Typography>
+        {title && (
+          <Typography className="text-4xl font-bold hidden sm:block">
+            {title}
+          </Typography>
+        )}
+        {menu && <Box className="flex grow justify-center">{menu}</Box>}
         <Box className="ml-4">
           <IconButton onClick={() => toggleColorMode()}>
             {mode === "light" ? <Brightness7Rounded /> : <Brightness4Rounded />}
@@ -38,6 +42,12 @@ const NavBar = ({ title = "", avatarSize = 44 }) => {
       </Toolbar>
     </AppBar>
   );
+};
+
+NavBar.propTypes = {
+  title: PropTypes.string,
+  avatarSize: PropTypes.number,
+  menu: PropTypes.arrayOf(PropTypes.node),
 };
 
 export default NavBar;

@@ -4,11 +4,9 @@ import MUIThemeProvider from "./src/components/mui-theme/mui-theme-provider";
 import RootLayout from "./src/layouts/root-layout";
 
 export const wrapRootElement = ({ element }) => {
-  console.log("wrap root");
   return <MUIThemeProvider>{element}</MUIThemeProvider>;
 };
 
 export const wrapPageElement = ({ element, props }) => {
-  console.log("wrap page");
   return <RootLayout {...props}>{element}</RootLayout>;
 };
