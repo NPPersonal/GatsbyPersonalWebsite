@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Box, Menu, MenuItem, Typography } from "@mui/material";
+import { Box, Menu, MenuItem, Typography, useTheme } from "@mui/material";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -8,6 +8,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const NavMenuLink = ({ data, ...rest }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -24,7 +25,9 @@ const NavMenuLink = ({ data, ...rest }) => {
         onClick={handleClick}
       >
         {data.link ? (
-          <GatsbyStyledLink to={data.link}>{data.title}</GatsbyStyledLink>
+          <GatsbyStyledLink to={data.link} color={theme.palette.text.primary}>
+            {data.title}
+          </GatsbyStyledLink>
         ) : (
           data.title
         )}
@@ -50,9 +53,16 @@ const NavMenuLink = ({ data, ...rest }) => {
             return (
               <MenuItem key={`${item.title}-${i}`}>
                 <Typography>
-                  <GatsbyStyledLink to={item.link || ""} color="lightgray">
-                    {item.title}
-                  </GatsbyStyledLink>
+                  {item.link ? (
+                    <GatsbyStyledLink
+                      to={item.link || ""}
+                      color={theme.palette.text.primary}
+                    >
+                      {item.title}
+                    </GatsbyStyledLink>
+                  ) : (
+                    item.title
+                  )}
                 </Typography>
               </MenuItem>
             );
