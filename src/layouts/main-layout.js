@@ -11,12 +11,26 @@ import {
 import { Brightness7Rounded, Brightness4Rounded } from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
 
-const NavBar = ({ title = "Title", avatarSiz = 44 }) => {
+const NavBar = ({ title = "", avatarSiz = 44 }) => {
   const { mode, toggleColorMode } = React.useContext(MUIThemeContext);
 
   return (
     <AppBar>
       <Toolbar>
+        <Box>
+          <Avatar
+            className="mx-4"
+            alt="avatar"
+            sx={{ width: avatarSiz, height: avatarSiz }}
+          >
+            <StaticImage
+              src="../images/logo.png"
+              alt="Nelson profile"
+              placeholder="blurred"
+              layout="constrained"
+            />
+          </Avatar>
+        </Box>
         <Typography className="flex grow text-4xl font-bold hidden sm:block">
           {title}
         </Typography>
@@ -24,17 +38,6 @@ const NavBar = ({ title = "Title", avatarSiz = 44 }) => {
           <IconButton onClick={() => toggleColorMode()}>
             {mode === "light" ? <Brightness7Rounded /> : <Brightness4Rounded />}
           </IconButton>
-        </Box>
-        <Box>
-          <Avatar alt="avatar" sx={{ width: avatarSiz, height: avatarSiz }}>
-            <StaticImage
-              src="../images/profile-avatar-small-256x256.png"
-              alt="Nelson profile"
-              placeholder="blurred"
-              layout="constrained"
-              width={avatarSiz}
-            />
-          </Avatar>
         </Box>
       </Toolbar>
     </AppBar>
@@ -44,7 +47,7 @@ const NavBar = ({ title = "Title", avatarSiz = 44 }) => {
 const MainLayout = ({ children }) => {
   return (
     <Box>
-      <NavBar title="Website" />
+      <NavBar />
       <Box component="main">
         <Toolbar />
         {children}

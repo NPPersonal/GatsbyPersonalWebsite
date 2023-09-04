@@ -1,7 +1,7 @@
 import "./src/styles/global.css";
 import * as React from "react";
 import MUIThemeProvider from "./src/components/mui-theme/mui-theme-provider";
-import RootLayout from "./src/layouts/ROOT-layout";
+import RootLayout from "./src/layouts/root-layout";
 
 export const wrapRootElement = ({ element }) => {
   console.log("wrap root");
