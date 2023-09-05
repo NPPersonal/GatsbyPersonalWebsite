@@ -8,9 +8,14 @@ import {
   Typography,
   IconButton,
   Avatar,
+  Drawer,
 } from "@mui/material";
 import NavigationRoute from "../navigation-route/navigation-route";
-import { Brightness7Rounded, Brightness4Rounded } from "@mui/icons-material";
+import {
+  Brightness7Rounded,
+  Brightness4Rounded,
+  MenuRounded,
+} from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
 
 /**
@@ -20,7 +25,7 @@ import { StaticImage } from "gatsby-plugin-image";
  */
 const renderNavigationRoutes = (navigationRoutes) => {
   return (
-    <Box className="flex grow justify-center">
+    <Box className="hidden sm:flex justify-center">
       {navigationRoutes.map((data, i) => {
         return (
           <NavigationRoute
@@ -35,6 +40,19 @@ const renderNavigationRoutes = (navigationRoutes) => {
 };
 
 /**
+ * Render drawer's content
+ *
+ * @param handleDrawerClose the function that will be called when drawer need to be
+ * closed
+ *
+ * @returns React node
+ */
+const renderDrawerContent = (handleDrawerClose) => {
+  //TODO: drawer content
+  return <Box onClick={handleDrawerClose}>This is the drawer or menu</Box>;
+};
+
+/**
  * App bar or navigation bar
  *
  * @param title **Optional** title of app bar
@@ -45,33 +63,61 @@ const renderNavigationRoutes = (navigationRoutes) => {
  */
 const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
   const { mode, toggleColorMode } = React.useContext(MUIThemeContext);
+  const [open, setOpen] = React.useState(false);
+
+  const handleMenuClick = (_event) => {
+    setOpen(true);
+  };
+  const handleMenuClose = (_event) => {
+    setOpen(false);
+  };
 
   return (
-    <AppBar>
-      <Toolbar>
-        <Box className="mr-4">
-          <Avatar alt="Logo" sx={{ width: logoSize, height: logoSize }}>
-            <StaticImage
-              src="../../images/logo.png"
-              alt="Logo image"
-              placeholder="blurred"
-              layout="constrained"
-            />
-          </Avatar>
-        </Box>
-        {title && (
-          <Typography className="text-4xl font-bold hidden sm:block">
-            {title}
-          </Typography>
-        )}
-        {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
-        <Box className="ml-4">
-          <IconButton onClick={() => toggleColorMode()}>
-            {mode === "light" ? <Brightness7Rounded /> : <Brightness4Rounded />}
+    <Box>
+      <AppBar>
+        <Toolbar>
+          <IconButton
+            className="sm:hidden"
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleMenuClick}
+          >
+            <MenuRounded />
           </IconButton>
-        </Box>
-      </Toolbar>
-    </AppBar>
+          <Box className="hidden sm:block mr-4">
+            <Avatar alt="Logo" sx={{ width: logoSize, height: logoSize }}>
+              <StaticImage
+                src="../../images/logo.png"
+                alt="Logo image"
+                placeholder="blurred"
+                layout="constrained"
+              />
+            </Avatar>
+          </Box>
+          {title && (
+            <Typography className="text-4xl font-bold hidden sm:block">
+              {title}
+            </Typography>
+          )}
+          <Box className="grow">
+            {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
+          </Box>
+          <Box className="ml-4">
+            <IconButton onClick={() => toggleColorMode()}>
+              {mode === "light" ? (
+                <Brightness7Rounded />
+              ) : (
+                <Brightness4Rounded />
+              )}
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Drawer open={open} anchor="left" onClose={handleMenuClose}>
+        {renderDrawerContent(handleMenuClose)}
+      </Drawer>
+    </Box>
   );
 };
 
