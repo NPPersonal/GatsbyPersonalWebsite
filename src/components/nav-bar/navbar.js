@@ -9,19 +9,41 @@ import {
   IconButton,
   Avatar,
 } from "@mui/material";
+import NavigationRoute from "../navigation-route/navigation-route";
 import { Brightness7Rounded, Brightness4Rounded } from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
+
+/**
+ * Render navigation routes
+ * @param navigationRoutes an array of navigation routes data
+ * @returns React node
+ */
+const renderNavigationRoutes = (navigationRoutes) => {
+  return (
+    <Box className="flex grow justify-center">
+      {navigationRoutes.map((data, i) => {
+        return (
+          <NavigationRoute
+            key={`${data.title}-${i}`}
+            className="mx-4"
+            data={data}
+          />
+        );
+      })}
+    </Box>
+  );
+};
 
 /**
  * App bar or navigation bar
  *
  * @param title **Optional** title of app bar
  * @param logoSize **Optional** default `44px`
- * @param menu **Optional** an array of React element to be displayed
+ * @param navigationRoutes **Optional** an array of data of navigation route
  *
  * @returns
  */
-const NavBar = ({ title = "", logoSize = 44, menu = [] }) => {
+const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
   const { mode, toggleColorMode } = React.useContext(MUIThemeContext);
 
   return (
@@ -42,7 +64,7 @@ const NavBar = ({ title = "", logoSize = 44, menu = [] }) => {
             {title}
           </Typography>
         )}
-        {menu && <Box className="flex grow justify-center">{menu}</Box>}
+        {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
         <Box className="ml-4">
           <IconButton onClick={() => toggleColorMode()}>
             {mode === "light" ? <Brightness7Rounded /> : <Brightness4Rounded />}
@@ -56,7 +78,7 @@ const NavBar = ({ title = "", logoSize = 44, menu = [] }) => {
 NavBar.propTypes = {
   title: PropTypes.string,
   avatarSize: PropTypes.number,
-  menu: PropTypes.arrayOf(PropTypes.node),
+  navigationRoutes: PropTypes.arrayOf(NavigationRoute.propTypes.data),
 };
 
 export default NavBar;

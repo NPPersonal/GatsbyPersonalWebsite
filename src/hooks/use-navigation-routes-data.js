@@ -1,19 +1,19 @@
 import { graphql, useStaticQuery } from "gatsby";
 
 /**
- * React hook to pull navigation menu data from content
- * @returns
+ * React hook to pull navigation routes data from content
+ * @returns an array of navigation routes
  */
-export const useMenusData = () => {
+export const useNavigationRoutesData = () => {
   const { allMenusJson } = useStaticQuery(graphql`
     query {
       allMenusJson(sort: { order: ASC }) {
         nodes {
           title
-          link
-          subLinks {
+          route
+          subRoutes {
             title
-            link
+            route
           }
         }
       }

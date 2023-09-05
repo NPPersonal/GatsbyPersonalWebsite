@@ -1,9 +1,9 @@
 {
   "order": 1,
   "title": "Works",
-  "subLinks": [
-    { "title": "Web", "link": "" },
-    { "title": "Mobile", "link": "" },
-    { "title": "Machine Learning", "link": "" }
+  "subRoutes": [
+    { "title": "Web", "route": "" },
+    { "title": "Mobile", "route": "" },
+    { "title": "Machine Learning", "route": "" }
   ]
 }
