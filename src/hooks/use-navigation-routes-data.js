@@ -5,9 +5,9 @@ import { graphql, useStaticQuery } from "gatsby";
  * @returns an array of navigation routes
  */
 export const useNavigationRoutesData = () => {
-  const { allMenusJson } = useStaticQuery(graphql`
+  const { allRoutesJson } = useStaticQuery(graphql`
     query {
-      allMenusJson(sort: { order: ASC }) {
+      allRoutesJson(sort: { order: ASC }) {
         nodes {
           title
           route
@@ -20,5 +20,5 @@ export const useNavigationRoutesData = () => {
     }
   `);
 
-  return allMenusJson.nodes;
+  return allRoutesJson.nodes;
 };
