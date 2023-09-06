@@ -1,18 +1,16 @@
 import * as React from "react";
 import { Box, Toolbar } from "@mui/material";
 import NavBar from "../components/nav-bar/navbar";
-import { useNavigationRoutesData } from "../hooks/use-navigation-routes-data";
+import navigationRouteData from "../../static/navigation-routes/navigation-routes.json";
 
 /**
  * Main layout that included AppBar at top
  * @returns
  */
 const MainLayout = ({ children }) => {
-  const navRouteData = useNavigationRoutesData();
-
   return (
     <Box>
-      <NavBar navigationRoutes={navRouteData} />
+      <NavBar navigationRoutes={navigationRouteData} />
       <Box component="main">
         <Toolbar />
         {children}

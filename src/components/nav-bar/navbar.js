@@ -3,6 +3,7 @@ import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
 import PropTypes from "prop-types";
 import {
   Box,
+  Container,
   AppBar,
   Toolbar,
   Typography,
@@ -17,6 +18,7 @@ import {
   MenuRounded,
 } from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
+import NavigationTreeView from "../navigation-tree-view/navigation-tree-view";
 
 /**
  * Render navigation routes
@@ -49,7 +51,11 @@ const renderNavigationRoutes = (navigationRoutes) => {
  */
 const renderDrawerContent = (handleDrawerClose) => {
   //TODO: drawer content
-  return <Box onClick={handleDrawerClose}>This is the drawer or menu</Box>;
+  return (
+    <Container>
+      <NavigationTreeView />
+    </Container>
+  );
 };
 
 /**

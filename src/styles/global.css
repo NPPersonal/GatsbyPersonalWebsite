@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/**
+Style for react-accessible-treeview
+https://dgreene1.github.io/react-accessible-treeview/
+*/
+@layer components {
+  .tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tree .tree-node,
+  .tree .tree-node-group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tree .tree-node {
+    cursor: pointer;
+  }
+}

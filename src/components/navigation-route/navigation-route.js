@@ -8,11 +8,11 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
  * Display a navigation route or a set of sub routes in a menu
  *
  * @param data is an object about the route and sub routes under it
- * @param data.title is this route's name which will be display at top level
- * @param data.route **Optional** is this route's internal website route address it use Gatsby's `Link`
- * @param data.subRoutes is an array of sub routes in pop up menu when this route is clicked
- * @param data.subRoutes.title is sub route's name which will be display in menu
- * @param data.subRoutes.route **Optional** is sub route's internal website route address it use Gatsby's `Link`
+ * @param data.name is this route's name which will be display at top level
+ * @param data.metadata **Optional** is this route's internal website route address it use Gatsby's `Link`
+ * @param data.children is an array of sub routes in pop up menu when this route is clicked
+ * @param data.children.name is sub route's name which will be display in menu
+ * @param data.children.metadata **Optional** is sub route's internal website route address it use Gatsby's `Link`
  * @param props any props will be passed to Material UI's `Box` component
  * @returns
  */
@@ -22,7 +22,7 @@ const NavigationRoute = ({ data, ...rest }) => {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    setOpen(data.subRoutes && true);
+    setOpen(data.children && true);
   };
   const handleClose = (_event) => {
     setOpen(false);
@@ -32,48 +32,45 @@ const NavigationRoute = ({ data, ...rest }) => {
     <Box {...rest}>
       <Box className="flex items-center" onClick={handleClick}>
         <Typography className="text-2xl cursor-pointer">
-          {data.route ? (
-            <GatsbyStyledLink to={data.route}>{data.title}</GatsbyStyledLink>
+          {data.children ? (
+            data.name
           ) : (
-            data.title
+            <GatsbyStyledLink to={data.metadata.route}>
+              {data.name}
+            </GatsbyStyledLink>
           )}
         </Typography>
-        <span
-          className={`${data.subRoutes ? "block" : "hidden"} flex items-center`}
-        >
-          {data.subRoutes && (
-            <KeyboardArrowUpIcon
-              className={`transition-all ease-in-out ${
-                open ? "rotate-180" : "-rotate-"
-              } duration-500`}
-            />
-          )}
-        </span>
+        {data.children && (
+          <KeyboardArrowUpIcon
+            className={`transition-all ease-in-out ${
+              open ? "rotate-180" : "-rotate-"
+            } duration-500`}
+          />
+        )}
       </Box>
-      {data.subRoutes && !data.route && (
+      {data.children && (
         <Menu
-          id={`${data.title}-menu`}
+          id={`${data.name}-menu`}
           open={open}
           anchorEl={anchorEl}
           onClose={handleClose}
           onClick={handleClose}
         >
-          {data.subRoutes &&
-            data.subRoutes.map((item, i) => {
-              return (
-                <MenuItem key={`${item.title}-${i}`}>
-                  <Typography>
-                    {item.route ? (
-                      <GatsbyStyledLink to={item.route || ""}>
-                        {item.title}
-                      </GatsbyStyledLink>
-                    ) : (
-                      item.title
-                    )}
-                  </Typography>
-                </MenuItem>
-              );
-            })}
+          {data.children.map((item, i) => {
+            return (
+              <MenuItem key={`${item.name}-${i}`}>
+                <Typography>
+                  {item.metadata.route ? (
+                    <GatsbyStyledLink to={item.route || ""}>
+                      {item.name}
+                    </GatsbyStyledLink>
+                  ) : (
+                    item.name
+                  )}
+                </Typography>
+              </MenuItem>
+            );
+          })}
         </Menu>
       )}
     </Box>
@@ -82,14 +79,9 @@ const NavigationRoute = ({ data, ...rest }) => {
 
 NavigationRoute.propTypes = {
   data: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    route: PropTypes.string,
-    subRoutes: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        route: PropTypes.string,
-      })
-    ),
+    name: PropTypes.string.isRequired,
+    metadata: PropTypes.object,
+    children: PropTypes.arrayOf(PropTypes.object),
   }),
 };
 

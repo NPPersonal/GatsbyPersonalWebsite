@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Blogs",
+    "metadata": { "route": "" }
+  },
+  {
+    "name": "Works",
+    "children": [
+      { "name": "Web", "metadata": { "route": "" } },
+      { "name": "Mobile", "metadata": { "route": "" } },
+      { "name": "Machine Learning", "metadata": { "route": "" } }
+    ]
+  },
+  {
+    "name": "About",
+    "metadata": { "route": "" }
+  },
+  {
+    "name": "Contact",
+    "metadata": { "route": "" }
+  }
+]

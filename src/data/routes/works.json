@@ -1,9 +1,0 @@
-{
-  "order": 1,
-  "title": "Works",
-  "subRoutes": [
-    { "title": "Web", "route": "" },
-    { "title": "Mobile", "route": "" },
-    { "title": "Machine Learning", "route": "" }
-  ]
-}

@@ -32,7 +32,11 @@ const GatsbyStyledLink = ({ to, children, ...rest }) => {
   }
 
   return (
-    <Link to={to} activeStyle={{ textDecoration: "none" }} {...rest}>
+    <Link
+      to={to}
+      activeStyle={{ color: "inherit", textDecoration: "none" }}
+      {...rest}
+    >
       {children}
     </Link>
   );
