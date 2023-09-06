@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import { Link as MUILink } from "@mui/material";
 import * as React from "react";
+import PropTypes from "prop-types";
 
 /**
  * A styled [Gatsby Link](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/)
@@ -23,6 +24,7 @@ const GatsbyStyledLink = ({ to, children, ...rest }) => {
         underline="none"
         target="_blank"
         rel="noopener noreferrer"
+        {...rest}
       >
         {children}
       </MUILink>
@@ -34,6 +36,10 @@ const GatsbyStyledLink = ({ to, children, ...rest }) => {
       {children}
     </Link>
   );
+};
+
+GatsbyStyledLink.propTypes = {
+  to: PropTypes.string.isRequired,
 };
 
 export default GatsbyStyledLink;
