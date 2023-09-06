@@ -49,11 +49,14 @@ const renderNavigationRoutes = (navigationRoutes) => {
  *
  * @returns React node
  */
-const renderDrawerContent = (handleDrawerClose) => {
-  //TODO: drawer content
+const renderDrawerContent = (routes, closeDrawer) => {
+  const handleItemClick = (element) => {
+    console.log(element);
+    closeDrawer();
+  };
   return (
-    <Container>
-      <NavigationTreeView />
+    <Container className="mx-4">
+      <NavigationTreeView routes={routes} onTreeItemClicked={handleItemClick} />
     </Container>
   );
 };
@@ -121,7 +124,7 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
         </Toolbar>
       </AppBar>
       <Drawer open={open} anchor="left" onClose={handleMenuClose}>
-        {renderDrawerContent(handleMenuClose)}
+        {renderDrawerContent(navigationRoutes, handleMenuClose)}
       </Drawer>
     </Box>
   );
