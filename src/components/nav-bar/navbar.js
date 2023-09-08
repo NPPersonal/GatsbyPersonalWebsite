@@ -3,13 +3,11 @@ import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
 import PropTypes from "prop-types";
 import {
   Box,
-  Container,
   AppBar,
   Toolbar,
   Typography,
   IconButton,
   Avatar,
-  Drawer,
 } from "@mui/material";
 import NavigationRoute from "../navigation-route/navigation-route";
 import {
@@ -18,7 +16,7 @@ import {
   MenuRounded,
 } from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
-import NavigationTreeView from "../navigation-tree-view/navigation-tree-view";
+import NavBarDrawer from "./navbar-drawer";
 
 /**
  * Render navigation routes
@@ -42,26 +40,6 @@ const renderNavigationRoutes = (navigationRoutes) => {
 };
 
 /**
- * Render drawer's content
- *
- * @param handleDrawerClose the function that will be called when drawer need to be
- * closed
- *
- * @returns React node
- */
-const renderDrawerContent = (routes, closeDrawer) => {
-  const handleItemClick = (element) => {
-    console.log(element);
-    closeDrawer();
-  };
-  return (
-    <Container className="mx-4">
-      <NavigationTreeView routes={routes} onTreeItemClicked={handleItemClick} />
-    </Container>
-  );
-};
-
-/**
  * App bar or navigation bar
  *
  * @param title **Optional** title of app bar
@@ -77,7 +55,7 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
   const handleMenuClick = (_event) => {
     setOpen(true);
   };
-  const handleMenuClose = (_event) => {
+  const handleRouteClick = (_element) => {
     setOpen(false);
   };
 
@@ -123,9 +101,13 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
           </Box>
         </Toolbar>
       </AppBar>
-      <Drawer open={open} anchor="left" onClose={handleMenuClose}>
-        {renderDrawerContent(navigationRoutes, handleMenuClose)}
-      </Drawer>
+      <NavBarDrawer
+        open={open}
+        anchor="left"
+        routes={navigationRoutes}
+        logoSize={logoSize}
+        onRouteClick={handleRouteClick}
+      />
     </Box>
   );
 };

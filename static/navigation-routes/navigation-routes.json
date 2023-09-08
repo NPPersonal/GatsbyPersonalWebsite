@@ -8,7 +8,11 @@
     "children": [
       { "name": "Web", "metadata": { "route": "" } },
       { "name": "Mobile", "metadata": { "route": "" } },
-      { "name": "Machine Learning", "metadata": { "route": "" } }
+      { "name": "Machine Learning", "metadata": { "route": "" } },
+      {
+        "name": "GitHub",
+        "metadata": { "route": "https://github.com/tomneo2004" }
+      }
     ]
   },
   {
@@ -17,6 +21,13 @@
   },
   {
     "name": "Contact",
-    "metadata": { "route": "" }
+    "children": [
+      {
+        "name": "LinkedIn",
+        "metadata": {
+          "route": "https://www.linkedin.com/in/ming-chung-hung-38125a117/"
+        }
+      }
+    ]
   }
 ]

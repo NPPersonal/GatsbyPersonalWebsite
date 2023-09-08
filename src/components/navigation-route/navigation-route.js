@@ -61,7 +61,7 @@ const NavigationRoute = ({ data, ...rest }) => {
               <MenuItem key={`${item.name}-${i}`}>
                 <Typography>
                   {item.metadata.route ? (
-                    <GatsbyStyledLink to={item.route || ""}>
+                    <GatsbyStyledLink to={item.metadata.route || ""}>
                       {item.name}
                     </GatsbyStyledLink>
                   ) : (
