@@ -55,6 +55,9 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
   const handleMenuClick = (_event) => {
     setOpen(true);
   };
+  const handleMenuClose = (_event) => {
+    setOpen(false);
+  };
   const handleRouteClick = (_element) => {
     setOpen(false);
   };
@@ -107,6 +110,7 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
         routes={navigationRoutes}
         logoSize={logoSize}
         onRouteClick={handleRouteClick}
+        onClose={handleMenuClose}
       />
     </Box>
   );
