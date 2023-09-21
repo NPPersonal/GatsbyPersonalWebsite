@@ -1,7 +1,7 @@
 [
   {
     "name": "Blogs",
-    "metadata": { "route": "" }
+    "metadata": { "route": "/blogs" }
   },
   {
     "name": "Works",
