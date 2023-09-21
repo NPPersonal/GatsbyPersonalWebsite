@@ -15,8 +15,11 @@ import {
   Avatar,
   Typography,
   Tooltip,
+  Button,
 } from "@mui/material";
 import ArticleIcon from "@mui/icons-material/Article";
+
+const blogLink = "https://medium.com/software-dev-explore";
 
 const Blog = () => {
   const { feed, items, fetching, error, getRSSFeed } = useMediumRSS();
@@ -24,6 +27,10 @@ const Blog = () => {
   const datetimeToDate = (datetime) => {
     const newDateTime = new Date(datetime);
     return newDateTime.toDateString();
+  };
+
+  const openLink = (link) => {
+    window.open(link, "_blank");
   };
 
   React.useEffect(() => {
@@ -45,9 +52,11 @@ const Blog = () => {
   return (
     <MainLayout>
       <Container>
-        <Typography className="my-4" variant="h3" align="center">
-          {feed["description"]}
-        </Typography>
+        {feed && (
+          <Typography className="my-4" variant="h3" align="center">
+            {feed["description"]}
+          </Typography>
+        )}
         <Grid container>
           {items.map((item, i) => {
             return (
@@ -57,7 +66,10 @@ const Blog = () => {
                 xs={12}
                 md={6}
               >
-                <Card className="w-[100%]" raised>
+                <Card
+                  className="w-[100%] hover:scale-105 transition duration-150 ease-in-out"
+                  raised
+                >
                   <CardHeader
                     title={item["title"]}
                     subheader={datetimeToDate(item["pubDate"])}
@@ -78,7 +90,7 @@ const Blog = () => {
                   </Box>
                   <CardActions>
                     <Tooltip title="See on Medium" arrow>
-                      <IconButton onClick={() => window.open(item["link"])}>
+                      <IconButton onClick={() => openLink(item["link"])}>
                         <ArticleIcon />
                       </IconButton>
                     </Tooltip>
@@ -88,6 +100,11 @@ const Blog = () => {
             );
           })}
         </Grid>
+        <Box className="py-4 flex justify-center">
+          <Button variant="contained" onClick={() => openLink(blogLink)}>
+            More ➡
+          </Button>
+        </Box>
       </Container>
     </MainLayout>
   );

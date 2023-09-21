@@ -33,6 +33,7 @@ const GatsbyStyledLink = ({ to, children, ...rest }) => {
 
   return (
     <Link
+      className="text-inherit no-underline"
       to={to}
       activeStyle={{ color: "inherit", textDecoration: "none" }}
       {...rest}

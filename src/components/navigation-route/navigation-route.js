@@ -4,12 +4,6 @@ import { Box, Menu, MenuItem, Typography } from "@mui/material";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-const borderColor = "border-red-500";
-const borderWidthTopLeft = "border-l-1 border-t-1 border-b-0 border-r-0";
-const borderWidthBottomRight = "border-l-0 border-t-0 border-b-1 border-r-1";
-const wExpand = "4";
-const hExpand = "4";
-
 /**
  * Display a navigation route or a set of sub routes in a menu
  *
@@ -36,36 +30,26 @@ const NavigationRoute = ({ data, ...rest }) => {
 
   return (
     <Box {...rest}>
-      <Box className="group relative">
-        <Box
-          className={`absolute w-0 h-0 rounded-sm border-solid border-transparent ${borderWidthTopLeft} 
-          transition-all duration-700 ease-in-out
-          group-hover:w-${wExpand} group-hover:h-${hExpand} group-hover:${borderColor}`}
-        />
-        <Box className="m-2 flex items-center" onClick={handleClick}>
-          <Typography className="text-2xl cursor-pointer">
-            {data.children ? (
-              data.name
-            ) : (
-              <GatsbyStyledLink to={data.metadata.route}>
-                {data.name}
-              </GatsbyStyledLink>
-            )}
-          </Typography>
-          {data.children && (
-            <KeyboardArrowUpIcon
-              className={`transition-all ease-in-out ${
-                open ? "rotate-180" : "-rotate-"
-              } duration-500`}
-            />
+      <Box
+        className="m-2 flex items-center hover:text-red-500 hover:scale-125 transition duration-150 ease-in-out"
+        onClick={handleClick}
+      >
+        <Typography className="text-2xl cursor-pointer">
+          {data.children ? (
+            data.name
+          ) : (
+            <GatsbyStyledLink to={data.metadata.route}>
+              {data.name}
+            </GatsbyStyledLink>
           )}
-        </Box>
-        <Box
-          className={`absolute bottom-0 right-0 w-0 h-0 
-          rounded-sm border-solid border-transparent ${borderWidthBottomRight} 
-          transition-all duration-700 ease-in-out
-          group-hover:w-${wExpand} group-hover:h-${hExpand} group-hover:${borderColor}`}
-        />
+        </Typography>
+        {data.children && (
+          <KeyboardArrowUpIcon
+            className={`transition-all ease-in-out ${
+              open ? "rotate-180" : "-rotate-"
+            } duration-500`}
+          />
+        )}
       </Box>
       {data.children && (
         <Menu

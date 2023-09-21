@@ -29,7 +29,7 @@ const NavBarDrawer = ({ routes, onRouteClick, logoSize = 44, ...rest }) => {
   };
 
   const openLink = (link) => {
-    window.open(link);
+    window.open(link, "_blank");
   };
   return (
     <Drawer {...rest}>
