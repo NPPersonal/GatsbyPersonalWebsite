@@ -6,9 +6,12 @@
   {
     "name": "Works",
     "children": [
-      { "name": "Web", "metadata": { "route": "" } },
-      { "name": "Mobile", "metadata": { "route": "" } },
-      { "name": "Machine Learning", "metadata": { "route": "" } },
+      { "name": "Web", "metadata": { "route": "/works/web/" } },
+      { "name": "Mobile", "metadata": { "route": "/works/mobile/" } },
+      {
+        "name": "Machine Learning",
+        "metadata": { "route": "/works/machine-learning/" }
+      },
       {
         "name": "GitHub",
         "metadata": { "route": "https://github.com/tomneo2004" }
