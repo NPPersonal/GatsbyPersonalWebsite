@@ -10,7 +10,10 @@ const Web = ({ data }) => {
       <Typography className="my-4" variant="h3" align="center">
         Web
       </Typography>
-      <Masonry columns={{ xs: 1, sm: 3 }} spacing={4}>
+      <Masonry
+        columns={{ xs: 1, sm: 2, md: 3 }}
+        spacing={{ xs: 1, sm: 1, md: 4 }}
+      >
         {data.allMdx.nodes.map((item) => (
           <Card
             key={item.id}
