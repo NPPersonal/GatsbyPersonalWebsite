@@ -10,14 +10,10 @@ import {
   CardMedia,
   Chip,
   Box,
-  CardActions,
-  IconButton,
   Avatar,
   Typography,
-  Tooltip,
   Button,
 } from "@mui/material";
-import ArticleIcon from "@mui/icons-material/Article";
 
 const blogLink = "https://medium.com/software-dev-explore";
 
@@ -67,8 +63,9 @@ const Blog = () => {
                 md={6}
               >
                 <Card
-                  className="w-[100%] hover:scale-105 transition duration-150 ease-in-out"
+                  className="cursor-pointer w-[100%] hover:scale-105 transition duration-150 ease-in-out"
                   raised
+                  onClick={() => openLink(item["link"])}
                 >
                   <CardHeader
                     title={item["title"]}
@@ -88,13 +85,6 @@ const Blog = () => {
                       );
                     })}
                   </Box>
-                  <CardActions>
-                    <Tooltip title="See on Medium" arrow>
-                      <IconButton onClick={() => openLink(item["link"])}>
-                        <ArticleIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </CardActions>
                 </Card>
               </Grid>
             );
