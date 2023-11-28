@@ -1,7 +1,9 @@
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
-module.exports = {
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const config = {
   siteMetadata: {
     title: `NPWebsite`,
     siteUrl: `https://www.yourdomain.tld`,
@@ -11,6 +13,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -25,5 +28,14 @@ module.exports = {
         icon: "src/images/icon.png", // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `works`,
+        path: `${__dirname}/src/pages/works`,
+      },
+    },
   ],
 };
+
+export default config;

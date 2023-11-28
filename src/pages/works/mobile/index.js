@@ -1,12 +1,35 @@
 import * as React from "react";
-import MainLayout from "../../../layouts/main-layout";
+import { graphql } from "gatsby";
+import WorksLayout from "../../../layouts/works-layout";
+import { Masonry } from "@mui/lab";
+import { Box, Card, CardMedia, Typography } from "@mui/material";
 
 const Mobile = () => {
   return (
-    <MainLayout>
-      <div>Mobile page</div>
-    </MainLayout>
+    <WorksLayout>
+      <Typography className="my-4" variant="h3" align="center">
+        Mobile
+      </Typography>
+    </WorksLayout>
   );
 };
+
+export const query = graphql`
+  query {
+    allMdx(filter: { frontmatter: { category: { eq: "mobile" } } }) {
+      nodes {
+        frontmatter {
+          author
+          name
+          slug
+          title
+          imageUrl
+        }
+        id
+        excerpt(pruneLength: 140)
+      }
+    }
+  }
+`;
 
 export default Mobile;

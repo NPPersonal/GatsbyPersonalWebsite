@@ -1,12 +1,35 @@
 import * as React from "react";
-import MainLayout from "../../../layouts/main-layout";
+import { graphql } from "gatsby";
+import { Masonry } from "@mui/lab";
+import { Box, Card, CardMedia, Typography } from "@mui/material";
+import WorksLayout from "../../../layouts/works-layout";
 
-const ML = () => {
+const ML = ({ data }) => {
   return (
-    <MainLayout>
-      <div>Machine Learning page</div>;
-    </MainLayout>
+    <WorksLayout>
+      <Typography className="my-4" variant="h3" align="center">
+        Machine Learning
+      </Typography>
+    </WorksLayout>
   );
 };
+
+export const query = graphql`
+  query {
+    allMdx(filter: { frontmatter: { category: { eq: "machine-learning" } } }) {
+      nodes {
+        frontmatter {
+          author
+          name
+          slug
+          title
+          imageUrl
+        }
+        id
+        excerpt(pruneLength: 140)
+      }
+    }
+  }
+`;
 
 export default ML;

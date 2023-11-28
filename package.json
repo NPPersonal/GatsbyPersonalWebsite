@@ -17,6 +17,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.14.18",
     "@mui/lab": "^5.0.0-alpha.153",
     "@mui/material": "^5.14.18",
@@ -25,15 +26,17 @@
     "gatsby": "^5.12.1",
     "gatsby-plugin-image": "^3.12.0",
     "gatsby-plugin-manifest": "^5.12.0",
+    "gatsby-plugin-mdx": "^5.12.3",
     "gatsby-plugin-postcss": "^6.12.0",
     "gatsby-plugin-sharp": "^5.12.0",
-    "gatsby-source-filesystem": "^5.12.0",
+    "gatsby-source-filesystem": "^5.12.1",
     "gatsby-transformer-sharp": "^5.12.0",
     "postcss": "^8.4.28",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-accessible-treeview": "^2.8.0",
     "react-dom": "^18.2.0",
+    "react-lazy-load-image-component": "^1.6.0",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
