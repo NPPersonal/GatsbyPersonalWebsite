@@ -23,10 +23,10 @@ export const query = graphql`
           name
           slug
           title
-          imageUrl
+          preview
+          description
         }
         id
-        excerpt(pruneLength: 140)
       }
     }
   }

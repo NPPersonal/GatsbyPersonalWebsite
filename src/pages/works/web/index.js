@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import WorksLayout from "../../../layouts/works-layout";
 import { Masonry } from "@mui/lab";
 import { Box, Card, CardMedia, Typography } from "@mui/material";
@@ -19,18 +19,21 @@ const Web = ({ data }) => {
             key={item.id}
             className="group relative cursor-pointer hover:scale-105 transition duration-150 ease-in-out"
             raised
+            onClick={() => navigate(`/works/${item.frontmatter.slug}`)}
           >
             <CardMedia
               className="group-hover:blur-sm"
               component="img"
-              image={`${item.frontmatter.imageUrl}`}
+              image={`${item.frontmatter.preview}`}
               alt={`${item.frontmatter.name}`}
             />
             <Box className="absolute invisible group-hover:visible top-0 left-0 right-0 bottom-0 px-4 py-4 text-white backdrop-blur-sm bg-black/50">
-              <Typography variant="h4" align="center">
+              <Typography className="mb-4" variant="h4" align="center">
                 {item.frontmatter.name}
               </Typography>
-              <Typography variant="inherit">{item.excerpt}</Typography>
+              <Typography variant="body">
+                {item.frontmatter.description}
+              </Typography>
             </Box>
           </Card>
         ))}
@@ -48,10 +51,10 @@ export const query = graphql`
           name
           slug
           title
-          imageUrl
+          preview
+          description
         }
         id
-        excerpt(pruneLength: 140)
       }
     }
   }
