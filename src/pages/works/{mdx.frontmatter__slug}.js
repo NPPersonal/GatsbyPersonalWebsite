@@ -16,16 +16,12 @@ const WorkTemplate = ({ data, children }) => {
         <Typography className="mb-4" variant="h2">
           {data.mdx.frontmatter.name}
         </Typography>
-        <img
-          src={`${data.mdx.frontmatter.preview}`}
-          alt={`${data.mdx.frontmatter.name}`}
-        />
       </Box>
       <Box className="mb-8 flex justify-center items-center">
         <Carousel
           className="w-[30%]"
           animation="slide"
-          interval={6000}
+          interval={5000}
           navButtonsAlwaysInvisible
         >
           {data.mdx.frontmatter.images.map((url, i) => (

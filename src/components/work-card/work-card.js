@@ -1,11 +1,12 @@
 import * as React from "react";
 import { Box, Card, CardMedia, Typography } from "@mui/material";
 
-const WorkCard = ({ preivew_img_url, name, description }) => {
+const WorkCard = ({ onClick = null, preivew_img_url, name, description }) => {
   return (
     <Card
       className="group relative cursor-pointer hover:scale-105 transition duration-150 ease-in-out"
       raised
+      onClick={onClick}
     >
       <CardMedia
         className="group-hover:blur-sm"
