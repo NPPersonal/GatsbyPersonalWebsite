@@ -2,40 +2,33 @@ import * as React from "react";
 import { graphql, navigate } from "gatsby";
 import WorksLayout from "../../../layouts/works-layout";
 import { Masonry } from "@mui/lab";
-import { Box, Card, CardMedia, Typography } from "@mui/material";
+import WorkCard from "../../../components/work-card/work-card";
+import { Typography } from "@mui/material";
 
 const Web = ({ data }) => {
+  if (data.allMdx.nodes.lenght === 0) {
+    return (
+      <WorksLayout title="Web App">
+        <Typography className="my-4" variant="h4" align="center">
+          There is no web app at moment
+        </Typography>
+      </WorksLayout>
+    );
+  }
   return (
-    <WorksLayout>
-      <Typography className="my-4" variant="h3" align="center">
-        Web
-      </Typography>
+    <WorksLayout title="Web App">
       <Masonry
         columns={{ xs: 1, sm: 2, md: 3 }}
         spacing={{ xs: 1, sm: 1, md: 4 }}
       >
         {data.allMdx.nodes.map((item) => (
-          <Card
+          <WorkCard
             key={item.id}
-            className="group relative cursor-pointer hover:scale-105 transition duration-150 ease-in-out"
-            raised
+            preivew_img_url={item.frontmatter.preview}
+            name={item.frontmatter.name}
+            description={item.frontmatter.description}
             onClick={() => navigate(`/works/${item.frontmatter.slug}`)}
-          >
-            <CardMedia
-              className="group-hover:blur-sm"
-              component="img"
-              image={`${item.frontmatter.preview}`}
-              alt={`${item.frontmatter.name}`}
-            />
-            <Box className="absolute invisible group-hover:visible top-0 left-0 right-0 bottom-0 px-4 py-4 text-white backdrop-blur-sm bg-black/50">
-              <Typography className="mb-4" variant="h4" align="center">
-                {item.frontmatter.name}
-              </Typography>
-              <Typography variant="body">
-                {item.frontmatter.description}
-              </Typography>
-            </Box>
-          </Card>
+          />
         ))}
       </Masonry>
     </WorksLayout>

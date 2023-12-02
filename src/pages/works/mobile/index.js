@@ -4,14 +4,17 @@ import WorksLayout from "../../../layouts/works-layout";
 import { Masonry } from "@mui/lab";
 import { Box, Card, CardMedia, Typography } from "@mui/material";
 
-const Mobile = () => {
-  return (
-    <WorksLayout>
-      <Typography className="my-4" variant="h3" align="center">
-        Mobile
-      </Typography>
-    </WorksLayout>
-  );
+const Mobile = ({ data }) => {
+  if (data.allMdx.nodes.length === 0) {
+    return (
+      <WorksLayout title="Web App">
+        <Typography className="my-4" variant="h4" align="center">
+          There is no mobile app at moment
+        </Typography>
+      </WorksLayout>
+    );
+  }
+  return <WorksLayout title="Mobile App"></WorksLayout>;
 };
 
 export const query = graphql`
