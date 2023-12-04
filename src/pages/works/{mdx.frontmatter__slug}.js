@@ -1,7 +1,7 @@
 import * as React from "react";
 import WorksLayout from "../../layouts/works-layout";
 import { graphql, navigate } from "gatsby";
-import { Button, Box, Paper, Container, Typography, Card } from "@mui/material";
+import { Button, Box, Typography } from "@mui/material";
 import { MDXProvider } from "@mdx-js/react";
 import Carousel from "react-material-ui-carousel";
 
@@ -17,23 +17,18 @@ const WorkTemplate = ({ data, children }) => {
           {data.mdx.frontmatter.name}
         </Typography>
       </Box>
-      <Box className="mb-8 flex justify-center items-center">
-        <Carousel
-          className="w-[30%]"
-          animation="slide"
-          interval={5000}
-          navButtonsAlwaysInvisible
-        >
-          {data.mdx.frontmatter.images.map((url, i) => (
-            <Box
-              className="flex justify-center items-center"
-              key={`${url}-${i}`}
-            >
-              <img src={url} alt={url} />
-            </Box>
-          ))}
-        </Carousel>
-      </Box>
+      <Carousel
+        className="mb-8"
+        animation="slide"
+        interval={5000}
+        navButtonsAlwaysInvisible
+      >
+        {data.mdx.frontmatter.images.map((url, i) => (
+          <Box className="flex justify-center items-center" key={`${url}-${i}`}>
+            <img src={url} alt={url} />
+          </Box>
+        ))}
+      </Carousel>
       <MDXProvider>{children}</MDXProvider>
     </WorksLayout>
   );
