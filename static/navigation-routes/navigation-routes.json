@@ -30,6 +30,10 @@
         "metadata": {
           "route": "https://www.linkedin.com/in/ming-chung-hung-38125a117/"
         }
+      },
+      {
+        "name": "Message me",
+        "metadata": { "route": "/contact/message-me/" }
       }
     ]
   }
