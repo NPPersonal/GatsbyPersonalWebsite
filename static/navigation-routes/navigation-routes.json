@@ -20,7 +20,7 @@
   },
   {
     "name": "About",
-    "metadata": { "route": "" }
+    "metadata": { "route": "/about/" }
   },
   {
     "name": "Contact",
