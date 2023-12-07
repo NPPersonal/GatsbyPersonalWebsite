@@ -48,19 +48,43 @@ const MessageMe = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
+      email: "",
+      message: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
   });
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+      if (response.ok === false) {
+        throw Error("Unable to send message");
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <CommonLayout>
       <Typography className="my-8" variant="h3" align="center">
         Message Me
       </Typography>
       <Box className={formWrapperClx}>
-        <form onSubmit={formik.handleSubmit}>
+        <form
+          data-netlify="true"
+          name="contact"
+          method="post"
+          onSubmit={handleFormSubmit}
+        >
+          <input type="hidden" name="form-name" value="contact" />
           <TextField
             className="mb-4"
             fullWidth
