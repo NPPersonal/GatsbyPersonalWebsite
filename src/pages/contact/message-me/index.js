@@ -62,9 +62,6 @@ const MessageMe = () => {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: urlEncoded,
         });
-        if (response.ok === false) {
-          throw Error("Unable to send message");
-        }
         console.log(response);
       } catch (error) {
         console.log(error);
@@ -103,6 +100,7 @@ const MessageMe = () => {
           method="post"
           onSubmit={formik.handleSubmit}
         >
+          <input type="hidden" name="form-name" value="contact" />
           <TextField
             className="mb-4"
             fullWidth
