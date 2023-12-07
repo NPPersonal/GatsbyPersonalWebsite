@@ -1,9 +1,12 @@
 import * as React from "react";
 import CommonLayout from "../../../layouts/common-layout";
 import {
+  Alert,
+  AlertTitle,
   Box,
   Button,
   Divider,
+  Snackbar,
   SvgIcon,
   TextField,
   Typography,
@@ -25,6 +28,9 @@ const validationSchema = yup.object({
 
 const MessageMe = () => {
   const theme = useTheme();
+  const [error, setError] = React.useState(null);
+  const [submitSuccess, setSubmitSuccess] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
   const divierSX = {
     "&::before, &::after": {
       borderTop: `thick solid ${
@@ -53,10 +59,14 @@ const MessageMe = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
+      // according to netlify
+      // https://docs.netlify.com/forms/setup/#submit-javascript-rendered-forms-with-ajax
       values = { "form-name": "contact", ...values };
       const urlEncoded = new URLSearchParams(values).toString();
-      console.log(urlEncoded);
       try {
+        setSending(true);
+        setError(null);
+        setSubmitSuccess(false);
         const response = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -65,34 +75,41 @@ const MessageMe = () => {
         if (response.ok === false) {
           throw Error("Unable to send message");
         }
-        console.log(response);
+        formik.resetForm();
+        setSending(false);
+        setSubmitSuccess(true);
       } catch (error) {
-        console.log(error);
+        setSending(false);
+        setError(error.message);
       }
     },
   });
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    console.log(new URLSearchParams(formData).toString());
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
-      if (response.ok === false) {
-        throw Error("Unable to send message");
-      }
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <CommonLayout>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        open={submitSuccess}
+        autoHideDuration={6000}
+        onClose={() => setSubmitSuccess(false)}
+      >
+        <Alert severity="success">
+          <AlertTitle>Success</AlertTitle>
+          <strong>The message had been sent</strong>
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        open={error ? true : false}
+        autoHideDuration={6000}
+        onClose={() => setError(null)}
+      >
+        <Alert severity="error">
+          <AlertTitle>Fail</AlertTitle>
+          <strong>Something went wrong</strong>
+          <div>{error}</div>
+        </Alert>
+      </Snackbar>
       <Typography className="my-8" variant="h3" align="center">
         Message Me
       </Typography>
@@ -144,7 +161,7 @@ const MessageMe = () => {
             helperText={formik.touched.message && formik.errors.message}
           />
           <Box className="flex justify-center">
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" disabled={sending}>
               Send
             </Button>
           </Box>
