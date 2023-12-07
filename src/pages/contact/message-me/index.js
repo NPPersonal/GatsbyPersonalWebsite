@@ -52,11 +52,30 @@ const MessageMe = () => {
       message: "",
     },
     validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      values = { "form-name": "contact", ...values };
+      const urlEncoded = new URLSearchParams(values).toString();
+      console.log(urlEncoded);
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: urlEncoded,
+        });
+        if (response.ok === false) {
+          throw Error("Unable to send message");
+        }
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   });
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
+    console.log(new URLSearchParams(formData).toString());
     try {
       const response = await fetch("/", {
         method: "POST",
@@ -82,9 +101,8 @@ const MessageMe = () => {
           data-netlify="true"
           name="contact"
           method="post"
-          onSubmit={handleFormSubmit}
+          onSubmit={formik.handleSubmit}
         >
-          <input type="hidden" name="form-name" value="contact" />
           <TextField
             className="mb-4"
             fullWidth
