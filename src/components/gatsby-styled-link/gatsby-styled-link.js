@@ -18,16 +18,15 @@ import PropTypes from "prop-types";
 const GatsbyStyledLink = ({ to, children, ...rest }) => {
   if (to.startsWith("http") || to.startsWith("https")) {
     return (
-      <MUILink
+      <a
+        style={{ color: "inherit", textDecoration: "none" }}
         href={to}
-        color="inherit"
-        underline="none"
         target="_blank"
         rel="noopener noreferrer"
         {...rest}
       >
         {children}
-      </MUILink>
+      </a>
     );
   }
 
@@ -35,6 +34,7 @@ const GatsbyStyledLink = ({ to, children, ...rest }) => {
     <Link
       className="text-inherit no-underline"
       to={to}
+      style={{ color: "inherit", textDecoration: "none" }}
       activeStyle={{ color: "inherit", textDecoration: "none" }}
       {...rest}
     >

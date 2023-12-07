@@ -60,19 +60,21 @@ const NavigationRoute = ({ data, ...rest }) => {
           onClick={handleClose}
         >
           {data.children.map((item, i) => {
-            return (
-              <MenuItem key={`${item.name}-${i}`}>
-                <Typography>
-                  {item.metadata.route ? (
-                    <GatsbyStyledLink to={item.metadata.route || ""}>
-                      {item.name}
-                    </GatsbyStyledLink>
-                  ) : (
-                    item.name
-                  )}
-                </Typography>
-              </MenuItem>
-            );
+            if (item.metadata.route) {
+              return (
+                <GatsbyStyledLink to={item.metadata.route}>
+                  <MenuItem key={`${item.name}-${i}`}>
+                    <Typography>{item.name}</Typography>
+                  </MenuItem>
+                </GatsbyStyledLink>
+              );
+            } else {
+              return (
+                <MenuItem key={`${item.name}-${i}`}>
+                  <Typography>{item.name}</Typography>
+                </MenuItem>
+              );
+            }
           })}
         </Menu>
       )}

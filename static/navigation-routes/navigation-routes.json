@@ -32,7 +32,7 @@
         }
       },
       {
-        "name": "Message me",
+        "name": "Message Me",
         "metadata": { "route": "/contact/message-me/" }
       }
     ]
