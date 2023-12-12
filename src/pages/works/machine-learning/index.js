@@ -25,6 +25,7 @@ const ML = ({ data }) => {
           <WorkCard
             key={item.id}
             preivew_img_url={item.frontmatter.preview}
+            preview_img_id={item.frontmatter.preview_img_id}
             name={item.frontmatter.name}
             description={item.frontmatter.description}
             onClick={() => navigate(`/works/${item.frontmatter.slug}`)}
@@ -46,6 +47,7 @@ export const query = graphql`
           title
           preview
           description
+          preview_img_id
         }
         id
       }

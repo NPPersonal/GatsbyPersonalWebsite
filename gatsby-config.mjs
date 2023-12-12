@@ -1,5 +1,6 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import "dotenv/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -11,7 +12,6 @@ const config = {
   plugins: [
     `gatsby-plugin-netlify`,
     `gatsby-plugin-postcss`,
-    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
     `gatsby-plugin-mdx`,
@@ -36,6 +36,7 @@ const config = {
         path: `${__dirname}/src/pages/works`,
       },
     },
+    `gatsby-plugin-image`,
   ],
 };
 
