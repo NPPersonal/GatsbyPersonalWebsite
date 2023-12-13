@@ -19,6 +19,7 @@ const blogLink = "https://medium.com/software-dev-explore";
 
 const Blog = () => {
   const { feed, items, fetching, error, getRSSFeed } = useMediumRSS();
+  console.log(feed);
 
   const datetimeToDate = (datetime) => {
     const newDateTime = new Date(datetime);
@@ -59,6 +60,7 @@ const Blog = () => {
               <Grid
                 key={`${item["title"]}-${i}`}
                 className="p-4 flex justify-center content-center"
+                item
                 xs={12}
                 md={6}
               >

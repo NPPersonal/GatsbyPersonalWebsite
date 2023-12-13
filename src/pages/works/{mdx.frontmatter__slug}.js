@@ -4,6 +4,7 @@ import { graphql, navigate } from "gatsby";
 import { Button, Box, Typography } from "@mui/material";
 import { MDXProvider } from "@mdx-js/react";
 import Carousel from "react-material-ui-carousel";
+import CarouselCard from "../../components/carousel-card/carousel-card";
 
 const WorkTemplate = ({ data, children }) => {
   console.log(children);
@@ -22,13 +23,17 @@ const WorkTemplate = ({ data, children }) => {
         animation="slide"
         interval={5000}
         navButtonsAlwaysInvisible
+        autoPlay
       >
-        {data.mdx.frontmatter.images.map((url, i) => (
-          <Box className="flex justify-center items-center" key={`${url}-${i}`}>
-            <img src={url} alt={url} />
-          </Box>
+        {data.mdx.frontmatter.images_id.map((image_id, i) => (
+          <CarouselCard
+            key={`${image_id}-${i}`}
+            imageId={image_id}
+            imageHeight={400}
+          />
         ))}
       </Carousel>
+
       <MDXProvider>{children}</MDXProvider>
     </WorksLayout>
   );
@@ -45,6 +50,7 @@ export const query = graphql`
         category
         author
         images
+        images_id
       }
       id
     }

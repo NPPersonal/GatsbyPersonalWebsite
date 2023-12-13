@@ -10,12 +10,11 @@ import {
 
 const WorkCard = ({
   onClick = null,
-  preivew_img_url,
-  preview_img_id = "",
+  previewImageId = "",
   name,
   description,
 }) => {
-  const preview_img = new CloudinaryImage(preview_img_id, {
+  const preview_img = new CloudinaryImage(previewImageId, {
     cloudName: "dgquji7zg",
   })
     .format("auto")

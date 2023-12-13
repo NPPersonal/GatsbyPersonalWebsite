@@ -24,8 +24,7 @@ const ML = ({ data }) => {
         {data.allMdx.nodes.map((item) => (
           <WorkCard
             key={item.id}
-            preivew_img_url={item.frontmatter.preview}
-            preview_img_id={item.frontmatter.preview_img_id}
+            previewImageId={item.frontmatter.preview_img_id}
             name={item.frontmatter.name}
             description={item.frontmatter.description}
             onClick={() => navigate(`/works/${item.frontmatter.slug}`)}

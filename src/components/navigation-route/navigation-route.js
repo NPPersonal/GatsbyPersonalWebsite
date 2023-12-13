@@ -62,8 +62,11 @@ const NavigationRoute = ({ data, ...rest }) => {
           {data.children.map((item, i) => {
             if (item.metadata.route) {
               return (
-                <GatsbyStyledLink to={item.metadata.route}>
-                  <MenuItem key={`${item.name}-${i}`}>
+                <GatsbyStyledLink
+                  key={`${item.name}-${i}`}
+                  to={item.metadata.route}
+                >
+                  <MenuItem>
                     <Typography>{item.name}</Typography>
                   </MenuItem>
                 </GatsbyStyledLink>
