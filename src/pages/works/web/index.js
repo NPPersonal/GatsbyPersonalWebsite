@@ -1,9 +1,8 @@
 import * as React from "react";
-import { graphql, navigate } from "gatsby";
+import { graphql } from "gatsby";
 import WorksLayout from "../../../layouts/works-layout";
-import { Masonry } from "@mui/lab";
-import WorkCard from "../../../components/work-card/work-card";
 import { Typography } from "@mui/material";
+import WorkCollection from "../../../components/work-collection/work-collection";
 
 const Web = ({ data }) => {
   if (data.allMdx.nodes.lenght === 0) {
@@ -17,20 +16,7 @@ const Web = ({ data }) => {
   }
   return (
     <WorksLayout title="Web App">
-      <Masonry
-        columns={{ xs: 1, sm: 2, md: 3 }}
-        spacing={{ xs: 1, sm: 1, md: 4 }}
-      >
-        {data.allMdx.nodes.map((item) => (
-          <WorkCard
-            key={item.id}
-            previewImageId={item.frontmatter.preview_img_id}
-            name={item.frontmatter.name}
-            description={item.frontmatter.description}
-            onClick={() => navigate(`/works/${item.frontmatter.slug}`)}
-          />
-        ))}
-      </Masonry>
+      <WorkCollection mdxDataNodes={data.allMdx.nodes} />
     </WorksLayout>
   );
 };

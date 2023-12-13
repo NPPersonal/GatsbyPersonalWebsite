@@ -5,6 +5,7 @@ import { Button, Box, Typography } from "@mui/material";
 import { MDXProvider } from "@mdx-js/react";
 import Carousel from "react-material-ui-carousel";
 import CarouselCard from "../../components/carousel-card/carousel-card";
+import { getCloudinaryImage } from "../../libs/cloudinary";
 
 const WorkTemplate = ({ data, children }) => {
   console.log(children);
@@ -25,13 +26,18 @@ const WorkTemplate = ({ data, children }) => {
         navButtonsAlwaysInvisible
         autoPlay
       >
-        {data.mdx.frontmatter.images_id.map((image_id, i) => (
-          <CarouselCard
-            key={`${image_id}-${i}`}
-            imageId={image_id}
-            imageHeight={400}
-          />
-        ))}
+        {data.mdx.frontmatter.images_id.map((image_id, i) => {
+          const image = getCloudinaryImage(image_id)
+            .format("auto")
+            .quality("auto");
+          return (
+            <CarouselCard
+              key={`${image_id}-${i}`}
+              cloudinaryImage={image}
+              imageHeight={400}
+            />
+          );
+        })}
       </Carousel>
 
       <MDXProvider>{children}</MDXProvider>

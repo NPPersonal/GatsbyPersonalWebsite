@@ -42,7 +42,11 @@ const MessageMe = () => {
         </Divider>
       </Box>
       <Box className="flex justify-center">
-        <a href="mailto:tomneo2004@gmail.com" style={{ color: "inherit" }}>
+        <a
+          href="mailto:tomneo2004@gmail.com"
+          aria-label="Email me"
+          style={{ color: "inherit" }}
+        >
           <SvgIcon sx={{ fontSize: 50 }}>
             <EmailIcon />
           </SvgIcon>

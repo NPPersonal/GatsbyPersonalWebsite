@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Box, Card, Typography } from "@mui/material";
-import { CloudinaryImage } from "@cloudinary/url-gen";
 import {
   AdvancedImage,
   lazyload,
@@ -8,17 +7,7 @@ import {
   placeholder,
 } from "@cloudinary/react";
 
-const WorkCard = ({
-  onClick = null,
-  previewImageId = "",
-  name,
-  description,
-}) => {
-  const preview_img = new CloudinaryImage(previewImageId, {
-    cloudName: "dgquji7zg",
-  })
-    .format("auto")
-    .quality("auto");
+const WorkCard = ({ onClick = null, cloudinaryImage, name, description }) => {
   return (
     <Card
       className="group relative cursor-pointer hover:scale-105 transition duration-150 ease-in-out"
@@ -28,7 +17,7 @@ const WorkCard = ({
       <Box className="flex justify-center items-center">
         <AdvancedImage
           style={{ width: "-webkit-fill-available" }}
-          cldImg={preview_img}
+          cldImg={cloudinaryImage}
           plugins={[
             lazyload(),
             responsive({ steps: 100 }),

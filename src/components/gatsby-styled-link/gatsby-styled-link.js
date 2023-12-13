@@ -1,5 +1,4 @@
 import { Link } from "gatsby";
-import { Link as MUILink } from "@mui/material";
 import * as React from "react";
 import PropTypes from "prop-types";
 

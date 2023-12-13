@@ -1,9 +1,9 @@
 import * as React from "react";
-import { graphql, navigate } from "gatsby";
-import { Masonry } from "@mui/lab";
+import { graphql } from "gatsby";
 import { Typography } from "@mui/material";
 import WorksLayout from "../../../layouts/works-layout";
-import WorkCard from "../../../components/work-card/work-card";
+
+import WorkCollection from "../../../components/work-collection/work-collection";
 
 const ML = ({ data }) => {
   if (data.allMdx.nodes.length === 0) {
@@ -17,20 +17,7 @@ const ML = ({ data }) => {
   }
   return (
     <WorksLayout title="Machine Learning">
-      <Masonry
-        columns={{ xs: 1, sm: 2, md: 3 }}
-        spacing={{ xs: 1, sm: 1, md: 4 }}
-      >
-        {data.allMdx.nodes.map((item) => (
-          <WorkCard
-            key={item.id}
-            previewImageId={item.frontmatter.preview_img_id}
-            name={item.frontmatter.name}
-            description={item.frontmatter.description}
-            onClick={() => navigate(`/works/${item.frontmatter.slug}`)}
-          />
-        ))}
-      </Masonry>
+      <WorkCollection mdxDataNodes={data.allMdx.nodes} />
     </WorksLayout>
   );
 };

@@ -1,6 +1,5 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import "dotenv/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -10,6 +9,7 @@ const config = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-sharp`,
@@ -36,7 +36,6 @@ const config = {
         path: `${__dirname}/src/pages/works`,
       },
     },
-    `gatsby-plugin-image`,
   ],
 };
 
