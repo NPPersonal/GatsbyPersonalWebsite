@@ -8,28 +8,28 @@ const CreateMUITheme = (colorMode) =>
       palette: {
         mode: colorMode,
       },
-      // components: {
-      //   MuiPopover: {
-      //     defaultProps: {
-      //       container: rootElement,
-      //     },
-      //   },
-      //   MuiPopper: {
-      //     defaultProps: {
-      //       container: rootElement,
-      //     },
-      //   },
-      //   MuiDialog: {
-      //     defaultProps: {
-      //       container: rootElement,
-      //     },
-      //   },
-      //   MuiModal: {
-      //     defaultProps: {
-      //       container: rootElement,
-      //     },
-      //   },
-      // },
+      components: {
+        MuiPopover: {
+          defaultProps: {
+            container: document.getElementById("___gatsby"),
+          },
+        },
+        MuiPopper: {
+          defaultProps: {
+            container: document.getElementById("___gatsby"),
+          },
+        },
+        MuiDialog: {
+          defaultProps: {
+            container: document.getElementById("___gatsby"),
+          },
+        },
+        MuiModal: {
+          defaultProps: {
+            container: document.getElementById("___gatsby"),
+          },
+        },
+      },
     })
   );
 

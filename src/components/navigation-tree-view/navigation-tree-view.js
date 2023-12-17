@@ -1,6 +1,8 @@
 import * as React from "react";
 import TreeView, { flattenTree } from "react-accessible-treeview";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ShortcutIcon from "@mui/icons-material/Shortcut";
 import { Stack, Typography, Box } from "@mui/material";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import PropTypes from "prop-types";
@@ -29,6 +31,7 @@ const NavigationTreeView = ({ routes, onTreeItemClicked }) => {
   };
   return (
     <TreeView
+      className="[&>li]:my-2"
       data={data}
       aria-label="basic example tree"
       nodeRenderer={({
@@ -42,18 +45,14 @@ const NavigationTreeView = ({ routes, onTreeItemClicked }) => {
       }) => {
         return (
           <Stack
+            className="my-2"
             direction="row"
             {...getNodeProps()}
             style={{ paddingLeft: 20 * (level - 1) }}
           >
-            {isBranch && (
-              <PlayArrowIcon
-                className={`transition-all ease-in-out ${
-                  isExpanded ? "rotate-90" : "-rotate-0"
-                } duration-500`}
-                fontSize="small"
-              />
-            )}
+            {isBranch && isExpanded && <RemoveIcon fontSize="small" />}
+            {isBranch && !isExpanded && <AddIcon fontSize="small" />}
+            {!isBranch && <ShortcutIcon fontSize="small" />}
 
             {isBranch ? (
               <Typography variant="button" color="GrayText">

@@ -33,7 +33,7 @@ const NavBarDrawer = ({ routes, onRouteClick, logoSize = 44, ...rest }) => {
   };
   return (
     <Drawer {...rest}>
-      <Container className="h-[100%] flex flex-col">
+      <Container className="my-2 h-full flex flex-col justify-around">
         <Box className="m-2 flex justify-center content-center">
           <Avatar alt="Logo" sx={{ width: logoSize, height: logoSize }}>
             <StaticImage
@@ -44,14 +44,14 @@ const NavBarDrawer = ({ routes, onRouteClick, logoSize = 44, ...rest }) => {
             />
           </Avatar>
         </Box>
-        <Divider orientation="horizontal" flexItem />
-        <Box className="m-2 grow flex justify-center content-center">
+        <Divider className="my-2" orientation="horizontal" />
+        <Box className=" my-2 grow flex justify-center content-center">
           <NavigationTreeView
             routes={routes}
             onTreeItemClicked={handleRouteClick}
           />
         </Box>
-        <Divider orientation="horizontal" flexItem />
+        <Divider className="my-2" orientation="horizontal" flexItem />
         <Box className="m-2 flex justify-center content-center">
           <IconButton
             aria-label="Linkedin.com"
