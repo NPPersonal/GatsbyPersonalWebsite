@@ -67,7 +67,7 @@ const NavigationTreeView = ({ routes, onTreeItemClicked }) => {
                     className="group"
                   >
                     {element.name}
-                    <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-red-600"></span>
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-red-600"></span>
                   </Box>
                 </GatsbyStyledLink>
               </Typography>
