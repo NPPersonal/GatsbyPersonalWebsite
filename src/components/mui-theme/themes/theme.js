@@ -2,6 +2,12 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 // const rootElement = document.getElementById("___gatsby");
 
+const getElement = () => {
+  return typeof document !== "undefined"
+    ? document.getElementById("___gatsby")
+    : undefined;
+};
+
 const CreateMUITheme = (colorMode) =>
   responsiveFontSizes(
     createTheme({
@@ -11,22 +17,22 @@ const CreateMUITheme = (colorMode) =>
       components: {
         MuiPopover: {
           defaultProps: {
-            container: document.getElementById("___gatsby"),
+            container: getElement(),
           },
         },
         MuiPopper: {
           defaultProps: {
-            container: document.getElementById("___gatsby"),
+            container: getElement(),
           },
         },
         MuiDialog: {
           defaultProps: {
-            container: document.getElementById("___gatsby"),
+            container: getElement(),
           },
         },
         MuiModal: {
           defaultProps: {
-            container: document.getElementById("___gatsby"),
+            container: getElement(),
           },
         },
       },

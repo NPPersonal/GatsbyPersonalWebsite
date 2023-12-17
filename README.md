@@ -1,3 +1,17 @@
+## Note
+
+Some image asset is hosted on [Cloudinary](https://cloudinary.com/) therefore an
+environment variable required to be set in order to fetch image asset where **key** = GATSBY_CLOUDINARY_CLOUD_NAME and **valu** = dgquji7zg.
+
+- **For cloud server**:
+
+Set environment variable to key and value above.
+
+- **For local development**:
+
+Create two environment files **.env.development** and **.env.production**
+then set the key and value.
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
