@@ -18,8 +18,15 @@ import {
 const blogLink = "https://medium.com/software-dev-explore";
 
 const Blog = () => {
-  const { feed, items, fetching, error, getRSSFeed } = useMediumRSS();
-  console.log(feed);
+  const {
+    feed,
+    items,
+    fetching,
+    error,
+    getRSSFeed,
+    thumbnailFromContent,
+    htmlToText,
+  } = useMediumRSS();
 
   const datetimeToDate = (datetime) => {
     const newDateTime = new Date(datetime);
@@ -56,6 +63,11 @@ const Blog = () => {
         )}
         <Grid container>
           {items.map((item, i) => {
+            //extract thumnail from post content
+            const thumbnail = thumbnailFromContent(item.content);
+
+            //extract short text from content which is html string
+            const shortContent = htmlToText(item.content, 0, 400, " .....");
             return (
               <Grid
                 key={`${item["title"]}-${i}`}
@@ -76,8 +88,8 @@ const Blog = () => {
                   />
                   <CardMedia
                     component="img"
-                    image={item["thumbnail"]}
-                    height="190"
+                    image={thumbnail}
+                    height={300}
                     alt={`${item["title"]}-thumbnail`}
                   />
                   <Box className="flex flex-wrap content-between">
@@ -87,6 +99,9 @@ const Blog = () => {
                       );
                     })}
                   </Box>
+                  <Typography className="p-4" variant="body1">
+                    {shortContent}
+                  </Typography>
                 </Card>
               </Grid>
             );
