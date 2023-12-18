@@ -99,7 +99,11 @@ const Blog = () => {
                       );
                     })}
                   </Box>
-                  <Typography className="p-4" variant="body1">
+                  <Typography
+                    className="p-4 leading-[20px]"
+                    variant="body1"
+                    paragraph
+                  >
                     {shortContent}
                   </Typography>
                 </Card>
