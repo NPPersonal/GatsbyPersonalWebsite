@@ -12,7 +12,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "cbs": "gatsby clean && gatsby build && gatsby serve"
   },
   "dependencies": {
     "@cloudinary/react": "^1.11.2",
