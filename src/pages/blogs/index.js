@@ -14,6 +14,7 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import CommonLayout from "../../layouts/common-layout";
 
 const blogLink = "https://medium.com/software-dev-explore";
 
@@ -54,70 +55,68 @@ const Blog = () => {
   }
 
   return (
-    <MainLayout>
-      <Container>
-        {feed && (
-          <Typography className="my-4" variant="h3" align="center">
-            {feed["description"]}
-          </Typography>
-        )}
-        <Grid container>
-          {items.map((item, i) => {
-            //extract thumnail from post content
-            const thumbnail = thumbnailFromContent(item.content);
+    <CommonLayout>
+      {feed && (
+        <Typography className="my-4" variant="h3" align="center">
+          {feed["description"]}
+        </Typography>
+      )}
+      <Grid container>
+        {items.map((item, i) => {
+          //extract thumnail from post content
+          const thumbnail = thumbnailFromContent(item.content);
 
-            //extract short text from content which is html string
-            const shortContent = htmlToText(item.content, 0, 400, " .....");
-            return (
-              <Grid
-                key={`${item["title"]}-${i}`}
-                className="p-4 flex justify-center content-center"
-                item
-                xs={12}
-                md={6}
+          //extract short text from content which is html string
+          const shortContent = htmlToText(item.content, 0, 400, " .....");
+          return (
+            <Grid
+              key={`${item["title"]}-${i}`}
+              className="p-4 flex justify-center content-center"
+              item
+              xs={12}
+              md={6}
+            >
+              <Card
+                className="cursor-pointer w-[100%] hover:scale-105 transition duration-150 ease-in-out"
+                raised
+                onClick={() => openLink(item["link"])}
               >
-                <Card
-                  className="cursor-pointer w-[100%] hover:scale-105 transition duration-150 ease-in-out"
-                  raised
-                  onClick={() => openLink(item["link"])}
+                <CardHeader
+                  title={item["title"]}
+                  subheader={datetimeToDate(item["pubDate"])}
+                  avatar={<Avatar src={feed["image"]} />}
+                />
+                <CardMedia
+                  component="img"
+                  image={thumbnail}
+                  height={300}
+                  alt={`${item["title"]}-thumbnail`}
+                />
+                <Box className="flex flex-wrap content-between">
+                  {item["categories"].map((cat, i) => {
+                    return (
+                      <Chip className="m-2" key={`${cat}-${i}`} label={cat} />
+                    );
+                  })}
+                </Box>
+                <Typography
+                  className="p-4 leading-[20px]"
+                  variant="body1"
+                  paragraph
                 >
-                  <CardHeader
-                    title={item["title"]}
-                    subheader={datetimeToDate(item["pubDate"])}
-                    avatar={<Avatar src={feed["image"]} />}
-                  />
-                  <CardMedia
-                    component="img"
-                    image={thumbnail}
-                    height={300}
-                    alt={`${item["title"]}-thumbnail`}
-                  />
-                  <Box className="flex flex-wrap content-between">
-                    {item["categories"].map((cat, i) => {
-                      return (
-                        <Chip className="m-2" key={`${cat}-${i}`} label={cat} />
-                      );
-                    })}
-                  </Box>
-                  <Typography
-                    className="p-4 leading-[20px]"
-                    variant="body1"
-                    paragraph
-                  >
-                    {shortContent}
-                  </Typography>
-                </Card>
-              </Grid>
-            );
-          })}
-        </Grid>
-        <Box className="py-4 flex justify-center">
-          <Button variant="contained" onClick={() => openLink(blogLink)}>
-            More ➡
-          </Button>
-        </Box>
-      </Container>
-    </MainLayout>
+                  {shortContent}
+                </Typography>
+              </Card>
+            </Grid>
+          );
+        })}
+      </Grid>
+      <Box className="py-4 flex justify-center">
+        <Button variant="contained" onClick={() => openLink(blogLink)}>
+          More ➡
+        </Button>
+      </Box>
+    </CommonLayout>
   );
 };
 
