@@ -10,10 +10,11 @@ import { useTheme } from "@emotion/react";
  */
 const MainLayout = ({ children }) => {
   const theme = useTheme();
+  const bg = theme.palette ? theme.palette.background.gradient : "#fff";
   return (
     <Box
       sx={{
-        background: theme.palette.background.gradient,
+        background: bg,
         minHeight: "100%",
       }}
     >
