@@ -1,17 +1,15 @@
 import * as React from "react";
-import MainLayout from "./main-layout";
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import CommonLayout from "./common-layout";
 
 const WorksLayout = ({ title, children }) => {
   return (
-    <MainLayout>
-      <Container>
-        <Typography className="my-4" variant="h3" align="center">
-          {title}
-        </Typography>
-        {children}
-      </Container>
-    </MainLayout>
+    <CommonLayout>
+      <Typography className="my-4" variant="h3" align="center">
+        {title}
+      </Typography>
+      {children}
+    </CommonLayout>
   );
 };
 

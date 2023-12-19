@@ -19,10 +19,10 @@ const MainLayout = ({ children }) => {
       }}
     >
       <NavBar navigationRoutes={navigationRouteData} />
-      <Box component="main">
+      <div>
         <Toolbar />
         {children}
-      </Box>
+      </div>
     </Box>
   );
 };

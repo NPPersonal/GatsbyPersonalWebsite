@@ -1,12 +1,12 @@
 import * as React from "react";
-import MainLayout from "../layouts/main-layout";
 import { Button } from "@mui/material";
+import CommonLayout from "../layouts/common-layout";
 
 const IndexPage = () => {
   return (
-    <MainLayout>
+    <CommonLayout>
       <Button variant="contained">Hello</Button>
-    </MainLayout>
+    </CommonLayout>
   );
 };
 

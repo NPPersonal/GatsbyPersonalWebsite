@@ -8,7 +8,6 @@ import CarouselCard from "../../components/carousel-card/carousel-card";
 import { getCloudinaryImage } from "../../libs/cloudinary";
 
 const WorkTemplate = ({ data, children }) => {
-  console.log(children);
   return (
     <WorksLayout>
       <Button className="my-4" variant="contained" onClick={() => navigate(-1)}>
@@ -19,27 +18,27 @@ const WorkTemplate = ({ data, children }) => {
           {data.mdx.frontmatter.name}
         </Typography>
       </Box>
-      <Carousel
-        className="mb-8"
-        animation="slide"
-        interval={5000}
-        navButtonsAlwaysInvisible
-        autoPlay
-      >
-        {data.mdx.frontmatter.images_id.map((image_id, i) => {
-          const image = getCloudinaryImage(image_id)
-            .format("auto")
-            .quality("auto");
-          return (
-            <CarouselCard
-              key={`${image_id}-${i}`}
-              cloudinaryImage={image}
-              imageHeight={400}
-            />
-          );
-        })}
-      </Carousel>
-
+      <div className="mb-8">
+        <Carousel
+          animation="slide"
+          interval={5000}
+          navButtonsAlwaysInvisible
+          autoPlay
+        >
+          {data.mdx.frontmatter.images_id.map((image_id, i) => {
+            const image = getCloudinaryImage(image_id)
+              .format("auto")
+              .quality("auto");
+            return (
+              <CarouselCard
+                key={`${image_id}-${i}`}
+                cloudinaryImage={image}
+                imageHeight={400}
+              />
+            );
+          })}
+        </Carousel>
+      </div>
       <MDXProvider>{children}</MDXProvider>
     </WorksLayout>
   );
