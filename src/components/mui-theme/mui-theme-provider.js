@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { generateMUITheme } from "./themes/theme-generator";
 
-const defaultMode = "light";
+export const defaultMode = "light";
+export const defaultTheme = generateMUITheme(defaultMode);
 
 /**
  * The context of Material UI theme
  */
 export const MUIThemeContext = React.createContext({
   mode: defaultMode,
-  theme: generateMUITheme(defaultMode),
+  theme: defaultTheme,
   setColorMode: (mode) => {},
   toggleColorMode: () => {},
 });

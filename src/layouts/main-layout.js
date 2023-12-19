@@ -3,6 +3,7 @@ import { Box, Toolbar } from "@mui/material";
 import NavBar from "../components/nav-bar/navbar";
 import navigationRouteData from "../../static/navigation-routes/navigation-routes.json";
 import { useTheme } from "@emotion/react";
+import { defaultTheme } from "../components/mui-theme/mui-theme-provider";
 
 /**
  * Main layout that included AppBar at top
@@ -10,7 +11,9 @@ import { useTheme } from "@emotion/react";
  */
 const MainLayout = ({ children }) => {
   const theme = useTheme();
-  const bg = theme.palette ? theme.palette.background.gradient : "#fff";
+  const bg = theme.palette
+    ? theme.palette.background.gradient
+    : defaultTheme.palette.background.gradient;
   return (
     <Box
       sx={{
