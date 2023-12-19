@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-import CreateMUITheme from "./themes/theme";
+import { generateMUITheme } from "./themes/theme-generator";
 
 const defaultMode = "light";
 
@@ -9,7 +8,7 @@ const defaultMode = "light";
  */
 export const MUIThemeContext = React.createContext({
   mode: defaultMode,
-  theme: CreateMUITheme(defaultMode),
+  theme: generateMUITheme(defaultMode),
   setColorMode: (mode) => {},
   toggleColorMode: () => {},
 });
@@ -22,7 +21,7 @@ export const MUIThemeContext = React.createContext({
  */
 const MUIThemeProvider = ({ children }) => {
   const [mode, setMode] = useState(defaultMode);
-  const currnetTheme = CreateMUITheme(mode);
+  const currnetTheme = generateMUITheme(mode);
   const setColorMode = (colorMode) => setMode(colorMode);
   const toggleColorMode = () => {
     mode === "light" ? setMode("dark") : setMode("light");
