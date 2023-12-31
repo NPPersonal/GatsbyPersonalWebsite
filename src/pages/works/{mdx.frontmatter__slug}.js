@@ -6,6 +6,23 @@ import { MDXProvider } from "@mdx-js/react";
 import Carousel from "react-material-ui-carousel";
 import CarouselCard from "../../components/carousel-card/carousel-card";
 import { getCloudinaryImage } from "../../libs/cloudinary";
+import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
+
+const mdxComponents = {
+  h2: (props) => (
+    <Typography className="font-bold" variant="h2" align="center" {...props} />
+  ),
+  h4: (props) => <Typography variant="h4" align="center" {...props} />,
+  em: (props) => <Typography className="font-bold" {...props} />,
+  a: (props) => (
+    <GatsbyStyledLink
+      className="inline font-medium hover:font-extrabold italic"
+      to={props.href}
+      style={{ color: "inherit", textDecoration: "underline" }}
+      {...props}
+    />
+  ),
+};
 
 const WorkTemplate = ({ data, children }) => {
   return (
@@ -39,7 +56,7 @@ const WorkTemplate = ({ data, children }) => {
           })}
         </Carousel>
       </div>
-      <MDXProvider>{children}</MDXProvider>
+      <MDXProvider components={mdxComponents}>{children}</MDXProvider>
     </WorksLayout>
   );
 };
