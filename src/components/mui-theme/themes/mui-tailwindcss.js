@@ -9,29 +9,27 @@ const getElement = () => {
  *
  *  https://mui.com/material-ui/guides/interoperability/#tailwind-css
  */
-const MUITailwindCSSPortalSetup = {
-  components: {
-    MuiPopover: {
-      defaultProps: {
-        container: getElement(),
-      },
+const MUITailwindCSSPortalConfig = {
+  MuiPopover: {
+    defaultProps: {
+      container: getElement(),
     },
-    MuiPopper: {
-      defaultProps: {
-        container: getElement(),
-      },
+  },
+  MuiPopper: {
+    defaultProps: {
+      container: getElement(),
     },
-    MuiDialog: {
-      defaultProps: {
-        container: getElement(),
-      },
+  },
+  MuiDialog: {
+    defaultProps: {
+      container: getElement(),
     },
-    MuiModal: {
-      defaultProps: {
-        container: getElement(),
-      },
+  },
+  MuiModal: {
+    defaultProps: {
+      container: getElement(),
     },
   },
 };
 
-export { MUITailwindCSSPortalSetup };
+export { MUITailwindCSSPortalConfig };

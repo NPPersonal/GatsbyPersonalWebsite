@@ -55,7 +55,7 @@ const NavigationTreeView = ({ routes, onTreeItemClicked }) => {
             {!isBranch && <ShortcutIcon fontSize="small" />}
 
             {isBranch ? (
-              <Typography variant="button" color="GrayText">
+              <Typography variant="button" color="primary.dark">
                 {element.name}
               </Typography>
             ) : (

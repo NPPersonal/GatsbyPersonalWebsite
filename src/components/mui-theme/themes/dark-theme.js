@@ -1,5 +1,14 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import { MUITailwindCSSPortalSetup } from "./mui-tailwindcss";
+import { MUITailwindCSSPortalConfig } from "./mui-tailwindcss";
+
+const theme = createTheme({});
+
+const colorProps = {
+  main: "#667e80",
+  light: "#9cafb0",
+  dark: "#394647",
+  contrastText: theme.palette.getContrastText("#394647"),
+};
 
 const createDarkTheme = () =>
   responsiveFontSizes(
@@ -19,12 +28,27 @@ const createDarkTheme = () =>
       },
       palette: {
         mode: "dark",
+        primary: {
+          ...colorProps,
+        },
         background: {
           gradient:
-            "linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(58,58,58,1) 15%, rgba(108,108,108,1) 50%, rgba(59,59,59,1) 85%, rgba(18,18,18,1) 100%);",
+            "linear-gradient(90deg, rgba(77,90,91,1) 0%, rgba(69,82,83,1) 15%, rgba(57,70,71,1) 50%, rgba(69,82,83,1) 85%, rgba(77,90,91,1) 100%);",
         },
       },
-      ...MUITailwindCSSPortalSetup, //MUI + TailwindCSS setup
+      components: {
+        MuiList: {
+          defaultProps: {
+            sx: { backgroundColor: colorProps.main },
+          },
+        },
+        MuiPaper: {
+          defaultProps: {
+            sx: { backgroundColor: colorProps.main },
+          },
+        },
+        ...MUITailwindCSSPortalConfig, //MUI + TailwindCSS setup
+      },
     })
   );
 

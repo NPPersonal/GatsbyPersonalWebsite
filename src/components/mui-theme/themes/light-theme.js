@@ -1,5 +1,14 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import { MUITailwindCSSPortalSetup } from "./mui-tailwindcss";
+import { MUITailwindCSSPortalConfig } from "./mui-tailwindcss";
+
+const theme = createTheme({});
+
+const colorProps = {
+  main: "#96B6C5",
+  light: "#adc6d2",
+  dark: "#6b98ad",
+  contrastText: theme.palette.getContrastText("#adc6d2"),
+};
 
 const createLightTheme = () =>
   responsiveFontSizes(
@@ -19,12 +28,27 @@ const createLightTheme = () =>
       },
       palette: {
         mode: "light",
+        primary: {
+          ...colorProps,
+        },
         background: {
           gradient:
-            "linear-gradient(90deg, rgba(190,190,190,1) 0%, rgba(212,212,212,1) 15%, rgba(238,238,238,1) 50%, rgba(212,212,212,1) 85%, rgba(190,190,190,1) 100%);",
+            "linear-gradient(90deg, rgba(163,188,200,1) 0%, rgba(167,192,204,1) 15%, rgba(173,198,210,1) 50%, rgba(167,192,204,1) 85%, rgba(163,188,200,1) 100%);",
         },
       },
-      ...MUITailwindCSSPortalSetup, //MUI + TailwindCSS setup
+      components: {
+        MuiList: {
+          defaultProps: {
+            sx: { backgroundColor: colorProps.main },
+          },
+        },
+        MuiPaper: {
+          defaultProps: {
+            sx: { backgroundColor: colorProps.main },
+          },
+        },
+        ...MUITailwindCSSPortalConfig, //MUI + TailwindCSS setup
+      },
     })
   );
 

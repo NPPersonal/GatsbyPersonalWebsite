@@ -64,7 +64,7 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
 
   return (
     <Box>
-      <AppBar>
+      <AppBar enableColorOnDark>
         <Toolbar>
           <IconButton
             className="sm:hidden"

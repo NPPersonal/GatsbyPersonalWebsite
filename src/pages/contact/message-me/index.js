@@ -16,24 +16,13 @@ const MessageMe = () => {
       }`,
     },
   };
-  const bgColor =
-    theme.palette.mode === "light" ? "bg-slate-100" : "bg-black/30";
-  const shadowColor =
-    theme.palette.mode === "light" ? "shadow-slate-200" : "shadow-black/30";
-  const formWrapperClx = clsx(
-    "p-8",
-    "shadow-xl",
-    "rounded-lg",
-    bgColor,
-    shadowColor
-  );
 
   return (
     <CommonLayout>
       <Typography className="my-8" variant="h3" align="center">
         Message Me
       </Typography>
-      <Box className={formWrapperClx}>
+      <Box className="p-8 shadow-xl rounded-lg">
         <NetlifyForm />
       </Box>
       <Box className="my-8">
