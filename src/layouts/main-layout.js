@@ -3,17 +3,27 @@ import { Box, Toolbar } from "@mui/material";
 import NavBar from "../components/nav-bar/navbar";
 import navigationRouteData from "../../static/navigation-routes/navigation-routes.json";
 import { useTheme } from "@emotion/react";
-import { defaultTheme } from "../components/mui-theme/mui-theme-provider";
+import {
+  MUIThemeContext,
+  defaultTheme,
+} from "../components/mui-theme/mui-theme-provider";
 
 /**
- * Main layout that included AppBar at top
+ * Main layout the top most layout
+ *
+ * This layout included
+ * - AppBar at top
+ * - Background management
+ *
+ * **PS: Do not use this layout to wrap any page**
+ *
+ * This layout can only be used in `wrapPageElement`
+ * in gatsby-browser.js
  * @returns
  */
 const MainLayout = ({ children }) => {
-  const theme = useTheme();
-  const bg = theme.palette
-    ? theme.palette.background.gradient
-    : defaultTheme.palette.background.gradient;
+  const { theme } = React.useContext(MUIThemeContext);
+  const bg = theme.palette.background.gradient;
   return (
     <Box
       sx={{
@@ -22,10 +32,10 @@ const MainLayout = ({ children }) => {
       }}
     >
       <NavBar navigationRoutes={navigationRouteData} />
-      <div>
+      <Box component="main">
         <Toolbar />
         {children}
-      </div>
+      </Box>
     </Box>
   );
 };

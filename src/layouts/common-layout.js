@@ -1,13 +1,14 @@
 import * as React from "react";
-import MainLayout from "./main-layout";
 import { Container } from "@mui/material";
 
+/**
+ * Common layout that use MainLayout
+ * and wrap child with container which
+ * include a gap on left and right
+ * @returns
+ */
 const CommonLayout = ({ children }) => {
-  return (
-    <MainLayout>
-      <Container>{children}</Container>
-    </MainLayout>
-  );
+  return <Container>{children}</Container>;
 };
 
 export default CommonLayout;

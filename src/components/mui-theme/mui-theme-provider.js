@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import { generateMUITheme } from "./themes/theme-generator";
+import {
+  CssBaseline,
+  StyledEngineProvider,
+  ThemeProvider,
+} from "@mui/material";
 
 export const defaultMode = "light";
 export const defaultTheme = generateMUITheme(defaultMode);
@@ -37,7 +42,12 @@ const MUIThemeProvider = ({ children }) => {
         toggleColorMode,
       }}
     >
-      {children}
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={currnetTheme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </StyledEngineProvider>
     </MUIThemeContext.Provider>
   );
 };
