@@ -4,6 +4,19 @@ import { MUITailwindCSSPortalSetup } from "./mui-tailwindcss";
 const createLightTheme = () =>
   responsiveFontSizes(
     createTheme({
+      typography: {
+        fontFamily: [
+          "Lato",
+          "Open Sans",
+          "Roboto",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ].join(","),
+        fontWeightBold: 700,
+        fontWeightLight: 300,
+        fontWeightRegular: 400,
+      },
       palette: {
         mode: "light",
         background: {
