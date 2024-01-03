@@ -26,15 +26,21 @@ const MainLayout = ({ children }) => {
   const bg = theme.palette.background.gradient;
   return (
     <Box
+      className="flex flex-col justify-stretch"
       sx={{
         background: bg,
         minHeight: "100%",
       }}
     >
       <NavBar navigationRoutes={navigationRouteData} />
-      <Box component="main">
-        <Toolbar />
-        {children}
+      <Toolbar />
+      <Box className="my-4 grow-[1]">{children}</Box>
+      <Box
+        className="shadow-[0_0_10px_2px_rgba(0,0,0,0.5)]"
+        sx={{ backgroundColor: theme.palette.background.footer }}
+        component="footer"
+      >
+        This is footer
       </Box>
     </Box>
   );

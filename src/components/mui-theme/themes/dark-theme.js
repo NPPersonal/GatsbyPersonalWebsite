@@ -32,6 +32,7 @@ const createDarkTheme = () =>
           ...colorProps,
         },
         background: {
+          footer: colorProps.main,
           gradient:
             "linear-gradient(90deg, rgba(77,90,91,1) 0%, rgba(69,82,83,1) 15%, rgba(57,70,71,1) 50%, rgba(69,82,83,1) 85%, rgba(77,90,91,1) 100%);",
         },

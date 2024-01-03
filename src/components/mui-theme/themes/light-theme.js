@@ -32,6 +32,7 @@ const createLightTheme = () =>
           ...colorProps,
         },
         background: {
+          footer: colorProps.main,
           gradient:
             "linear-gradient(90deg, rgba(163,188,200,1) 0%, rgba(167,192,204,1) 15%, rgba(173,198,210,1) 50%, rgba(167,192,204,1) 85%, rgba(163,188,200,1) 100%);",
         },
