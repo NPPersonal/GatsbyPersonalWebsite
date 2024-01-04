@@ -14,9 +14,11 @@ import {
   Brightness7Rounded,
   Brightness4Rounded,
   MenuRounded,
+  HomeRounded,
 } from "@mui/icons-material";
 import { StaticImage } from "gatsby-plugin-image";
 import NavBarDrawer from "./navbar-drawer";
+import { navigate } from "gatsby";
 
 /**
  * Render navigation routes
@@ -61,6 +63,9 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
   const handleRouteClick = (_element) => {
     setOpen(false);
   };
+  const handleHomeClick = (_event) => {
+    navigate("/");
+  };
 
   return (
     <Box>
@@ -73,7 +78,7 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
             edge="start"
             onClick={handleMenuClick}
           >
-            <MenuRounded />
+            <MenuRounded fontSize="large" />
           </IconButton>
           <Box className="hidden sm:block mr-4">
             <Avatar alt="Logo" sx={{ width: logoSize, height: logoSize }}>
@@ -84,6 +89,11 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
                 layout="constrained"
               />
             </Avatar>
+          </Box>
+          <Box>
+            <IconButton aria-label="Home" onClick={handleHomeClick}>
+              <HomeRounded fontSize="large" />
+            </IconButton>
           </Box>
           {title && (
             <Typography className="text-4xl font-bold hidden sm:block">
@@ -99,9 +109,9 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
               onClick={() => toggleColorMode()}
             >
               {mode === "light" ? (
-                <Brightness7Rounded />
+                <Brightness7Rounded fontSize="large" />
               ) : (
-                <Brightness4Rounded />
+                <Brightness4Rounded fontSize="large" />
               )}
             </IconButton>
           </Box>
