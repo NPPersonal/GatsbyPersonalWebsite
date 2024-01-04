@@ -3,6 +3,7 @@ import { Box, Toolbar } from "@mui/material";
 import NavBar from "../components/nav-bar/navbar";
 import navigationRouteData from "../../static/navigation-routes/navigation-routes.json";
 import { MUIThemeContext } from "../components/mui-theme/mui-theme-provider";
+import Footer from "../components/footer/footer";
 
 /**
  * Main layout the top most layout
@@ -31,13 +32,9 @@ const MainLayout = ({ children }) => {
       <NavBar navigationRoutes={navigationRouteData} />
       <Toolbar />
       <Box className="my-4 grow-[1]">{children}</Box>
-      <Box
-        className="shadow-[0_0_10px_2px_rgba(0,0,0,0.5)]"
-        sx={{ backgroundColor: theme.palette.background.footer }}
-        component="footer"
-      >
+      <Footer sx={{ backgroundColor: theme.palette.background.footer }}>
         This is footer
-      </Box>
+      </Footer>
     </Box>
   );
 };
