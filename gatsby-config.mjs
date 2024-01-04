@@ -5,8 +5,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const config = {
   siteMetadata: {
-    title: `NPWebsite`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Nelson Punch Web`,
+    description: `I'm MING-CHUN HUNG(Nelson) and this is my personal website`,
+    siteUrl: `https://nelson-punch.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-image`,

@@ -1,6 +1,7 @@
 import * as React from "react";
 import CommonLayout from "../../layouts/common-layout";
 import { Typography } from "@mui/material";
+import Seo from "../../components/seo/seo";
 
 const About = () => {
   return (
@@ -13,3 +14,5 @@ const About = () => {
 };
 
 export default About;
+
+export const Head = () => <Seo title="About" description="About me" />;

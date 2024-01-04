@@ -2,8 +2,8 @@ import * as React from "react";
 import CommonLayout from "../../../layouts/common-layout";
 import { Box, Divider, SvgIcon, Typography, useTheme } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
-import { clsx } from "clsx";
 import NetlifyForm from "../../../components/netlify-form/netlify-form";
+import Seo from "../../../components/seo/seo";
 
 const MessageMe = () => {
   const theme = useTheme();
@@ -46,3 +46,5 @@ const MessageMe = () => {
 };
 
 export default MessageMe;
+
+export const Head = () => <Seo title="Contact" description="Contact me" />;

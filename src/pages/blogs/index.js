@@ -14,6 +14,7 @@ import {
   Button,
 } from "@mui/material";
 import CommonLayout from "../../layouts/common-layout";
+import Seo from "../../components/seo/seo";
 
 const blogLink = "https://medium.com/software-dev-explore";
 
@@ -120,3 +121,7 @@ const Blog = () => {
 };
 
 export default Blog;
+
+export const Head = () => (
+  <Seo title="Blog" description="My blogs from Medium" />
+);

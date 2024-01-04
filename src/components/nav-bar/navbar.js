@@ -94,7 +94,10 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
             {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
           </Box>
           <Box className="ml-4">
-            <IconButton onClick={() => toggleColorMode()}>
+            <IconButton
+              aria-label="color mode"
+              onClick={() => toggleColorMode()}
+            >
               {mode === "light" ? (
                 <Brightness7Rounded />
               ) : (

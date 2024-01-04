@@ -2,8 +2,8 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Typography } from "@mui/material";
 import WorksLayout from "../../../layouts/works-layout";
-
 import WorkCollection from "../../../components/work-collection/work-collection";
+import Seo from "../../../components/seo/seo";
 
 const ML = ({ data }) => {
   if (data.allMdx.nodes.length === 0) {
@@ -42,3 +42,7 @@ export const query = graphql`
 `;
 
 export default ML;
+
+export const Head = () => (
+  <Seo title="Machine Learning" description="Experience in ML" />
+);

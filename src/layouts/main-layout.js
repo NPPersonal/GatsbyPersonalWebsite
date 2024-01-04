@@ -2,11 +2,7 @@ import * as React from "react";
 import { Box, Toolbar } from "@mui/material";
 import NavBar from "../components/nav-bar/navbar";
 import navigationRouteData from "../../static/navigation-routes/navigation-routes.json";
-import { useTheme } from "@emotion/react";
-import {
-  MUIThemeContext,
-  defaultTheme,
-} from "../components/mui-theme/mui-theme-provider";
+import { MUIThemeContext } from "../components/mui-theme/mui-theme-provider";
 
 /**
  * Main layout the top most layout

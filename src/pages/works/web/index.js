@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import WorksLayout from "../../../layouts/works-layout";
 import { Typography } from "@mui/material";
 import WorkCollection from "../../../components/work-collection/work-collection";
+import Seo from "../../../components/seo/seo";
 
 const Web = ({ data }) => {
   if (data.allMdx.nodes.lenght === 0) {
@@ -41,3 +42,7 @@ export const query = graphql`
 `;
 
 export default Web;
+
+export const Head = () => (
+  <Seo title="Web app" description="Experience in web app" />
+);

@@ -7,6 +7,7 @@ import Carousel from "react-material-ui-carousel";
 import CarouselCard from "../../components/carousel-card/carousel-card";
 import { getCloudinaryImage } from "../../libs/cloudinary";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
+import Seo from "../../components/seo/seo";
 
 const mdxComponents = {
   h2: (props) => (
@@ -80,3 +81,10 @@ export const query = graphql`
 `;
 
 export default WorkTemplate;
+
+export const Head = ({ data }) => (
+  <Seo
+    title={data.mdx.frontmatter.name}
+    description={data.mdx.frontmatter.title}
+  />
+);
