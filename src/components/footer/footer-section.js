@@ -10,18 +10,19 @@ const FooterSection = ({
 }) => {
   return (
     <Box className="flex flex-col justify-center p-4">
-      <Typography className="mb-4" sx={{ fontWeight: sectionTitleFontWeight }}>
+      <Typography
+        className="mb-4"
+        sx={{ fontWeight: sectionTitleFontWeight, width: "fit-content" }}
+      >
         {sectionTitle}
       </Typography>
       <Box className="flex flex-col">
         {sectionLinks.map((link, i) => (
-          <React.Fragment>
-            <Typography sx={{ fontWeight: linkFontWeight }}>
-              <GatsbyStyledLink
-                key={`${link.title}-${i}`}
-                to={link.link}
-                style={{ width: "fit-content" }}
-              >
+          <React.Fragment key={`${link.title}-${i}`}>
+            <Typography
+              sx={{ fontWeight: linkFontWeight, width: "fit-content" }}
+            >
+              <GatsbyStyledLink to={link.link} style={{ width: "fit-content" }}>
                 <span className="no-underline hover:underline underline-offset-4 decoration-2">
                   {link.title}
                 </span>

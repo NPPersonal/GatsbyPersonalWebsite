@@ -1,14 +1,7 @@
 import * as React from "react";
 import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
 import PropTypes from "prop-types";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Avatar,
-} from "@mui/material";
+import { Box, AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import NavigationRoute from "../navigation-route/navigation-route";
 import {
   Brightness7Rounded,
@@ -16,7 +9,6 @@ import {
   MenuRounded,
   HomeRounded,
 } from "@mui/icons-material";
-import { StaticImage } from "gatsby-plugin-image";
 import NavBarDrawer from "./navbar-drawer";
 import { navigate } from "gatsby";
 
@@ -79,16 +71,6 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
           >
             <MenuRounded fontSize="large" />
           </IconButton>
-          <Box className="hidden sm:block mr-4">
-            <Avatar alt="Logo" sx={{ width: logoSize, height: logoSize }}>
-              <StaticImage
-                src="../../images/logo.png"
-                alt="Logo image"
-                placeholder="blurred"
-                layout="constrained"
-              />
-            </Avatar>
-          </Box>
           <Box>
             <IconButton aria-label="Home" onClick={handleHomeClick}>
               <HomeRounded fontSize="large" />
