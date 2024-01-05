@@ -73,7 +73,6 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
         <Toolbar>
           <IconButton
             className="sm:hidden"
-            color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleMenuClick}
