@@ -2,16 +2,10 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import NavigationRoute from "../navigation-route/navigation-route";
-import {
-  Box,
-  Container,
-  IconButton,
-  Avatar,
-  Divider,
-  Drawer,
-} from "@mui/material";
+import { Box, Container, Avatar, Divider, Drawer } from "@mui/material";
 import NavigationTreeView from "../navigation-tree-view/navigation-tree-view";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SocialLinks from "../social-links/social-links";
+import SocialLinkData from "../../../static/social-links/social-links.json";
 
 /**
  * Display a drawer
@@ -28,9 +22,9 @@ const NavBarDrawer = ({ routes, onRouteClick, logoSize = 44, ...rest }) => {
     onRouteClick(element);
   };
 
-  const openLink = (link) => {
-    window.open(link, "_blank");
-  };
+  // const openLink = (link) => {
+  //   window.open(link, "_blank");
+  // };
   return (
     <Drawer {...rest}>
       <Container className="my-2 h-full flex flex-col justify-around">
@@ -52,16 +46,7 @@ const NavBarDrawer = ({ routes, onRouteClick, logoSize = 44, ...rest }) => {
           />
         </Box>
         <Divider className="my-2" orientation="horizontal" flexItem />
-        <Box className="m-2 flex justify-center content-center">
-          <IconButton
-            aria-label="Linkedin.com"
-            onClick={() =>
-              openLink("https://www.linkedin.com/in/ming-chung-hung-38125a117/")
-            }
-          >
-            <LinkedInIcon />
-          </IconButton>
-        </Box>
+        <SocialLinks socialLinks={SocialLinkData} />
       </Container>
     </Drawer>
   );
