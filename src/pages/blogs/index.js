@@ -43,14 +43,14 @@ const Blog = () => {
   }, []);
 
   if (error) {
-    return <MainLayout>Oooops something went wrong {error}</MainLayout>;
+    return <CommonLayout>Oooops something went wrong {error}</CommonLayout>;
   }
 
   if (fetching) {
     return (
-      <MainLayout>
+      <CommonLayout>
         <CircularProgress />
-      </MainLayout>
+      </CommonLayout>
     );
   }
 
