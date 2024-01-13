@@ -1,5 +1,4 @@
 import * as React from "react";
-import MainLayout from "../../layouts/main-layout";
 import { useMediumRSS } from "../../hooks/use-medium-rss";
 import {
   CircularProgress,

@@ -26,6 +26,7 @@ import { StaticImage } from "gatsby-plugin-image";
 const MainLayout = ({ children }) => {
   const { theme } = React.useContext(MUIThemeContext);
   const bg = theme.palette.background.gradient;
+
   return (
     <Box
       className="flex flex-col justify-stretch"
@@ -37,7 +38,10 @@ const MainLayout = ({ children }) => {
       <NavBar navigationRoutes={navigationRouteData} />
       <Toolbar />
       <Box className="my-4 grow-[1]">{children}</Box>
-      <Footer sx={{ backgroundColor: theme.palette.background.footer }}>
+      <Footer
+        className="relative"
+        sx={{ backgroundColor: theme.palette.background.footer }}
+      >
         <Container>
           <Box className="flex flex-row flex-wrap justify-stretch ">
             <Box className="flex justify-center items-center p-4 grow-[1]">
