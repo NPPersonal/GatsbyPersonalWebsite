@@ -34,13 +34,54 @@ images_id:
 
 ---
 
-<br />
-
 **This is a human brain tumor detector app that can identify 3 types of tumor.
 Given a medical MRI image, app will analyse the image and return an analysed result.
-The result indicate whether there is a tumor detected or not with probability.<br/><br/>
-The purpose of the app is to take advantage of machine learning to assist
+The result indicate whether there is a tumor detected or not with probability.**
+
+**The purpose of the app is to take advantage of machine learning to assist
 medical professional or patient in brain tumor detection**
+
+<br />
+
+## Motivation & Purpose
+
+---
+
+**This tumor detector app was builded during study of computer vision in deep learning**
+
+**It usually take a period of time to waiting to see the result of MRI of brain from doctor.
+This waiting could take days to a week.**
+
+**The tumor detector app can shorten the waiting and be used as personal assistance.**
+
+## Detail
+
+---
+
+The tumor detector app include a deep learning model that was trained on a set of MRI
+human brain images. And the app can detect 3 type of brain cancers
+[Glioma](https://en.wikipedia.org/wiki/Glioma),
+[Meningioma](https://en.wikipedia.org/wiki/Meningioma),
+[Pituitary](https://en.wikipedia.org/wiki/Pituitary_gland)
+In addition it also report the probability of have any of these cancer in percentage.
+
+The set of MRI images was used to train the deep learning model are in angle of
+**top**, **left**, **right**, **front**, **back** of human head. Therefore the MRI image
+that will be analysed can be in angle of those 5.
+
+Detector will analyse MRI image and produce report that indicate a cancer was detected or
+normal. Furthermore it give you a probability about the result.
+
+<br />
+
+## Note
+
+---
+
+**The detecotr is purpose for assistance and nothing is 100% certain
+thus don't use this detector as a personal doctor.**
+
+**Seeking for professional doctor is recommend.**
 
 <br />
 
@@ -48,6 +89,6 @@ medical professional or patient in brain tumor detection**
 
 ---
 
-<br />
-
 #### [Click here](https://braintumordetectorapp.streamlit.app/)
+
+<br />
