@@ -31,6 +31,9 @@ const createDarkTheme = () =>
         primary: {
           ...colorProps,
         },
+        loading: {
+          main: colorProps.light,
+        },
         background: {
           footer: colorProps.main,
           gradient:

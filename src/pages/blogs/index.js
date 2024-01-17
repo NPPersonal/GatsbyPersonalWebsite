@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useMediumRSS } from "../../hooks/use-medium-rss";
+import ReactLoading from "react-loading";
 import {
   CircularProgress,
   Grid,
@@ -14,6 +15,7 @@ import {
 } from "@mui/material";
 import CommonLayout from "../../layouts/common-layout";
 import Seo from "../../components/seo/seo";
+import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 
 const blogLink = "https://medium.com/software-dev-explore";
 
@@ -27,6 +29,9 @@ const Blog = () => {
     thumbnailFromContent,
     htmlToText,
   } = useMediumRSS();
+
+  const { theme } = React.useContext(MUIThemeContext);
+  const loadingColor = theme.palette.loading.main;
 
   const datetimeToDate = (datetime) => {
     const newDateTime = new Date(datetime);
@@ -48,7 +53,9 @@ const Blog = () => {
   if (fetching) {
     return (
       <CommonLayout>
-        <CircularProgress />
+        <Box className="flex justify-center">
+          <ReactLoading type="balls" color={loadingColor} />
+        </Box>
       </CommonLayout>
     );
   }
@@ -57,7 +64,7 @@ const Blog = () => {
     <CommonLayout>
       {feed && (
         <Typography className="my-4" variant="h3" align="center">
-          {feed["description"]}
+          Blogs
         </Typography>
       )}
       <Grid container>
