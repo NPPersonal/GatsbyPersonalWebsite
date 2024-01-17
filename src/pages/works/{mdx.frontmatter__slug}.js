@@ -1,13 +1,14 @@
 import * as React from "react";
 import WorksLayout from "../../layouts/works-layout";
 import { graphql, navigate } from "gatsby";
-import { Button, Box, Typography } from "@mui/material";
+import { Button, Box, Typography, IconButton } from "@mui/material";
 import { MDXProvider } from "@mdx-js/react";
 import Carousel from "react-material-ui-carousel";
 import CarouselCard from "../../components/carousel-card/carousel-card";
 import { getCloudinaryImage } from "../../libs/cloudinary";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 import Seo from "../../components/seo/seo";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const mdxComponents = {
   h2: (props) => (
@@ -28,9 +29,13 @@ const mdxComponents = {
 const WorkTemplate = ({ data, children }) => {
   return (
     <WorksLayout>
-      <Button className="my-4" variant="contained" onClick={() => navigate(-1)}>
-        ⬅ Back
-      </Button>
+      <IconButton
+        className="my-4"
+        aria-label="back"
+        onClick={() => navigate(-1)}
+      >
+        <ArrowBackIcon fontSize="large" />
+      </IconButton>
       <Box className="mb-8 flex flex-col justify-center items-center">
         <Typography className="mb-4" variant="h2">
           {data.mdx.frontmatter.name}
