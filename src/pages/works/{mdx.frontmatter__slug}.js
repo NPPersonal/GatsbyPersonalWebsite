@@ -1,7 +1,7 @@
 import * as React from "react";
 import WorksLayout from "../../layouts/works-layout";
 import { graphql, navigate } from "gatsby";
-import { Button, Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 import { MDXProvider } from "@mdx-js/react";
 import Carousel from "react-material-ui-carousel";
 import CarouselCard from "../../components/carousel-card/carousel-card";

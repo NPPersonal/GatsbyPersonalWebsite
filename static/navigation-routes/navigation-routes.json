@@ -36,5 +36,16 @@
         "metadata": { "route": "/contact/message-me/" }
       }
     ]
+  },
+  {
+    "name": "Other",
+    "children": [
+      {
+        "name": "Financial Stocks",
+        "metadata": {
+          "route": "/finance_stocks/"
+        }
+      }
+    ]
   }
 ]
