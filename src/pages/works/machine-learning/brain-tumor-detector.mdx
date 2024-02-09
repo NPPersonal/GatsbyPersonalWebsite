@@ -49,19 +49,32 @@ This waiting could take days to a week.**
 
 ---
 
-The tumor detector app include a deep learning model that was trained on a set of MRI
+**The tumor detector app include a deep learning model that was trained on a set of MRI
 human brain images. And the app can detect 3 type of brain cancers
 [Glioma](https://en.wikipedia.org/wiki/Glioma),
 [Meningioma](https://en.wikipedia.org/wiki/Meningioma),
 [Pituitary](https://en.wikipedia.org/wiki/Pituitary_gland)
-In addition it also report the probability of have any of these cancer in percentage.
+In addition it also report the probability of have any of these cancer in percentage.**
 
-The set of MRI images was used to train the deep learning model are in angle of
-**top**, **left**, **right**, **front**, **back** of human head. Therefore the MRI image
-that will be analysed can be in angle of those 5.
+**The set of MRI images was used to train the deep learning model are in different angles of human head.
+Therefore new MRI image can be in any angles as below:**
 
-Detector will analyse MRI image and produce report that indicate a cancer was detected or
-normal. Furthermore it give you a probability about the result.
+- _top_
+- _left_
+- _right_
+- _front_
+- _back_
+
+**Detector will analyse MRI image and produce report that indicate a cancer was detected or
+normal. Furthermore it give you a probability about the result.**
+
+**The model was trained with
+dataset from [Kaggle](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset).**
+
+**Frameworks were used to build this app:**
+
+- **[Tensorflow](https://www.tensorflow.org/)** : deep learning framework for the model
+- **[Streamlit](https://streamlit.io/)** : frontend app
 
 <br />
 

@@ -47,13 +47,17 @@ style image. This speed up the whole process.**
 
 ---
 
-The model was trained with
-dataset from [Kaggle](https://www.kaggle.com/datasets/suyashdamle/cyclegan?select=vangogh2photo).
+**The model was trained with
+dataset from [Kaggle](https://www.kaggle.com/datasets/suyashdamle/cyclegan?select=vangogh2photo).**
 
-The model use [CycleGAN](https://www.tensorflow.org/tutorials/generative/cyclegan) to achieve
-style transfer for real photo.
+**The model use [CycleGAN](https://www.tensorflow.org/tutorials/generative/cyclegan) to achieve
+style transfer for real photo.**
 
-Frameworks were used to build this app:
+**The model's size had been reduced by using
+[DepthwiseConv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/DepthwiseConv2D)
+instead of [Conv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D).**
+
+**Frameworks were used to build this app:**
 
 - **[Tensorflow](https://www.tensorflow.org/)** : deep learning framework for the model
 - **[Streamlit](https://streamlit.io/)** : frontend app
