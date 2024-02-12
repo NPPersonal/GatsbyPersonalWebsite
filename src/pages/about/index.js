@@ -54,6 +54,9 @@ const About = () => {
         <Typography className="text-xl" variant="caption">
           Taichung, Taiwan
         </Typography>
+        <Typography className="text-xl" variant="caption">
+          Chinese, English
+        </Typography>
       </Box>
       <MDXProvider components={mdxComponents}>
         <AboutMe />
