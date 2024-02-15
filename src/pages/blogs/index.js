@@ -74,7 +74,8 @@ const Blog = () => {
         <Typography className="my-4" variant="h3" align="center">
           <SpinText
             text="Blogs"
-            duration={350}
+            duration={250}
+            sequential
             randLetterColor={letterSpinColor}
           />
         </Typography>

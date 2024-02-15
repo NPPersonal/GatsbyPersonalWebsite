@@ -24,6 +24,7 @@ const ML = ({ data }) => {
             <SpinText
               text="Machine Learning"
               duration={100}
+              sequential
               randLetterColor={letterSpinColor}
             />
           </Typography>
@@ -41,6 +42,7 @@ const ML = ({ data }) => {
           <SpinText
             text="Machine Learning"
             duration={100}
+            sequential
             randLetterColor={letterSpinColor}
           />
         </Typography>

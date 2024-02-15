@@ -24,6 +24,7 @@ const Web = ({ data }) => {
             <SpinText
               text="Web App"
               duration={100}
+              sequential
               randLetterColor={letterSpinColor}
             />
           </Typography>
@@ -41,6 +42,7 @@ const Web = ({ data }) => {
           <SpinText
             text="Web App"
             duration={150}
+            sequential
             randLetterColor={letterSpinColor}
           />
         </Typography>

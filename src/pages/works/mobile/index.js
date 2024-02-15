@@ -24,6 +24,7 @@ const Mobile = ({ data }) => {
             <SpinText
               text="Mobile App"
               duration={100}
+              sequential
               randLetterColor={letterSpinColor}
             />
           </Typography>
@@ -41,6 +42,7 @@ const Mobile = ({ data }) => {
           <SpinText
             text="Mobile App"
             duration={150}
+            sequential
             randLetterColor={letterSpinColor}
           />
         </Typography>

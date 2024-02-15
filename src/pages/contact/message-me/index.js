@@ -34,6 +34,7 @@ const MessageMe = () => {
           <SpinText
             text="Message Me"
             duration={150}
+            sequential
             randLetterColor={letterSpinColor}
           />
         </Typography>

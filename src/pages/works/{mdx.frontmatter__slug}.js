@@ -1,5 +1,4 @@
 import * as React from "react";
-import WorksLayout from "../../layouts/works-layout";
 import { graphql, navigate } from "gatsby";
 import { Box, Typography, IconButton } from "@mui/material";
 import { MDXProvider } from "@mdx-js/react";
@@ -52,7 +51,8 @@ const WorkTemplate = ({ data, children }) => {
           <Typography className="my-4" variant="h3">
             <SpinText
               text={data.mdx.frontmatter.name}
-              duration={100}
+              duration={150}
+              sequential
               randLetterColor={letterSpinColor}
             />
           </Typography>

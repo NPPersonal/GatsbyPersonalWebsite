@@ -5,10 +5,12 @@ import * as React from "react";
  * final decided letter
  *
  * @param letter final decided letter to display
+ * @param letterColor color for final decided letter
+ * @param letterSize font size for final decided letter
  * @param randLetters string with a set of letters that will be
  * selected randomly to display while spin animation is running
- * @param letterColor color for final decided letter
  * @param randLetterColor color for spin letter
+ * @param randLetterSize font size for spin letter
  * @param randInterval how long does it take to display for a
  * random selected letter before next one
  * @param duration how long does it take for spin animation then
@@ -21,9 +23,11 @@ import * as React from "react";
  */
 const SpinLetter = ({
   letter,
-  randLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
   letterColor = "inherit",
+  letterSize = "inherit",
+  randLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
   randLetterColor = "inherit",
+  randLetterSize = "inherit",
   randInterval = 100,
   duration = 2000,
   randDurationRange = undefined,
@@ -31,16 +35,13 @@ const SpinLetter = ({
 }) => {
   const [char, setChar] = React.useState("");
   const [charColor, setCharColor] = React.useState(randLetterColor);
+  const [charScale, setCharScale] = React.useState(randLetterSize);
   const [started, setStarted] = React.useState(false);
   const intervalTimerRef = React.useRef(null);
   const finishTimerRef = React.useRef(null);
   const delayTimerRef = React.useRef(null);
 
   React.useEffect(() => {
-    if (letter === " ") {
-      return;
-    }
-
     if (delayTimerRef.current === null) {
       const timer = setTimeout(() => {
         setStarted(true);
@@ -61,6 +62,7 @@ const SpinLetter = ({
             clearInterval(intervalTimerRef.current);
           }
           setCharColor(letterColor);
+          setCharScale(letterSize);
           setChar(letter);
         }, totalDuration);
         finishTimerRef.current = timer;
@@ -88,11 +90,8 @@ const SpinLetter = ({
     };
   }, [started]);
 
-  if (letter === " ") {
-    return <div className="inline"> </div>;
-  }
   return (
-    <div className="inline" style={{ color: charColor }}>
+    <div className="inline" style={{ color: charColor, fontSize: charScale }}>
       {char}
     </div>
   );

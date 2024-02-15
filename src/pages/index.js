@@ -21,13 +21,15 @@ const IndexPage = () => {
         <Typography className="leading-loose" variant="h3" align="center">
           <SpinText
             text="HELLO"
-            duration={350}
+            duration={250}
+            sequential
             randLetterColor={letterSpinColor}
           />
           <SpinText
             text="WELCOME"
-            duration={300}
+            duration={200}
             delay={1600}
+            sequential
             randLetterColor={letterSpinColor}
           />
         </Typography>

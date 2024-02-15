@@ -47,6 +47,7 @@ const About = () => {
           <SpinText
             text="About Me"
             duration={200}
+            sequential
             randLetterColor={letterSpinColor}
           />
         </Typography>
