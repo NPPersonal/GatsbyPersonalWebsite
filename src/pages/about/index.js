@@ -12,6 +12,9 @@ import { getCloudinaryImage } from "../../libs/cloudinary";
 import AboutMe from "../../mdx/about-me/about-me.mdx";
 import { MDXProvider } from "@mdx-js/react";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
+import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
+import RenderInView from "../../components/render-in-view/render-in-view";
+import SpinText from "../../components/spin-text/spin-text";
 
 const mdxComponents = {
   h2: (props) => (
@@ -30,15 +33,28 @@ const mdxComponents = {
 };
 
 const About = () => {
+  const { theme } = React.useContext(MUIThemeContext);
+  const letterSpinColor = theme.palette.spinLetter.main;
+  const options = {
+    delay: 100,
+    triggerOnce: true,
+    trackVisibility: true,
+  };
   return (
     <CommonLayout>
-      <Typography className="my-4" variant="h4" align="center">
-        About Me
-      </Typography>
+      <RenderInView options={options}>
+        <Typography className="leading-loose" variant="h3" align="center">
+          <SpinText
+            text="About Me"
+            duration={200}
+            randLetterColor={letterSpinColor}
+          />
+        </Typography>
+      </RenderInView>
       <Box className="flex flex-col items-center my-4">
         <AdvancedImage
           className="rounded-lg drop-shadow-2xl"
-          style={{ width: 150 }}
+          style={{ width: 250 }}
           cldImg={getCloudinaryImage(
             "personal-web-image-assets/web-assets/profile"
           )}
@@ -48,15 +64,49 @@ const About = () => {
             placeholder({ mode: "blur" }),
           ]}
         />
-        <Typography className="text-xl" variant="caption">
-          Hung Ming-Chun
-        </Typography>
-        <Typography className="text-xl" variant="caption">
-          Taichung, Taiwan
-        </Typography>
-        <Typography className="text-xl" variant="caption">
-          Chinese, English
-        </Typography>
+        <Box className="my-4">
+          <RenderInView options={options}>
+            <Typography
+              className="text-xl font-bold"
+              variant="caption"
+              align="center"
+            >
+              <SpinText
+                text="Hung Ming-Chun"
+                duration={100}
+                randLetterColor={letterSpinColor}
+              />
+            </Typography>
+          </RenderInView>
+          <RenderInView options={options}>
+            <Typography
+              className="text-xl font-bold"
+              variant="caption"
+              align="center"
+            >
+              <SpinText
+                text="Taichung, Taiwan"
+                duration={100}
+                delay={2000}
+                randLetterColor={letterSpinColor}
+              />
+            </Typography>
+          </RenderInView>
+          <RenderInView options={options}>
+            <Typography
+              className="text-xl font-bold"
+              variant="caption"
+              align="center"
+            >
+              <SpinText
+                text="Chinese, English"
+                duration={100}
+                delay={4000}
+                randLetterColor={letterSpinColor}
+              />
+            </Typography>
+          </RenderInView>
+        </Box>
       </Box>
       <MDXProvider components={mdxComponents}>
         <AboutMe />
