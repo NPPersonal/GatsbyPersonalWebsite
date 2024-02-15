@@ -75,6 +75,7 @@ const About = () => {
               <SpinText
                 text="Hung Ming-Chun"
                 duration={100}
+                delay={2000}
                 randLetterColor={letterSpinColor}
               />
             </Typography>
@@ -88,7 +89,7 @@ const About = () => {
               <SpinText
                 text="Taichung, Taiwan"
                 duration={100}
-                delay={2000}
+                delay={4000}
                 randLetterColor={letterSpinColor}
               />
             </Typography>
@@ -102,7 +103,7 @@ const About = () => {
               <SpinText
                 text="Chinese, English"
                 duration={100}
-                delay={4000}
+                delay={6000}
                 randLetterColor={letterSpinColor}
               />
             </Typography>
