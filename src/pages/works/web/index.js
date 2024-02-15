@@ -1,24 +1,47 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import WorksLayout from "../../../layouts/works-layout";
 import { Typography } from "@mui/material";
 import WorkCollection from "../../../components/work-collection/work-collection";
 import Seo from "../../../components/seo/seo";
+import CommonLayout from "../../../layouts/common-layout";
+import RenderInView from "../../../components/render-in-view/render-in-view";
+import SpinText from "../../../components/spin-text/spin-text";
+import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provider";
 
 const Web = ({ data }) => {
+  const { theme } = React.useContext(MUIThemeContext);
+  const letterSpinColor = theme.palette.spinLetter.main;
   if (data.allMdx.nodes.lenght === 0) {
     return (
-      <WorksLayout title="Web App">
+      <CommonLayout>
+        <RenderInView>
+          <Typography className="leading-loose" variant="h3" align="center">
+            <SpinText
+              text="Web App"
+              duration={100}
+              randLetterColor={letterSpinColor}
+            />
+          </Typography>
+        </RenderInView>
         <Typography className="my-4" variant="h4" align="center">
           There is no web app at moment
         </Typography>
-      </WorksLayout>
+      </CommonLayout>
     );
   }
   return (
-    <WorksLayout title="Web App">
+    <CommonLayout>
+      <RenderInView>
+        <Typography className="leading-loose" variant="h3" align="center">
+          <SpinText
+            text="Web App"
+            duration={150}
+            randLetterColor={letterSpinColor}
+          />
+        </Typography>
+      </RenderInView>
       <WorkCollection mdxDataNodes={data.allMdx.nodes} />
-    </WorksLayout>
+    </CommonLayout>
   );
 };
 
