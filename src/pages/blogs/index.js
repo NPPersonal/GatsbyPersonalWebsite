@@ -15,8 +15,8 @@ import {
 import CommonLayout from "../../layouts/common-layout";
 import Seo from "../../components/seo/seo";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
-import { useInView } from "react-intersection-observer";
 import SpinText from "../../components/spin-text/spin-text";
+import RenderInView from "../../components/render-in-view/render-in-view";
 
 const blogLink = "https://medium.com/software-dev-explore";
 
@@ -34,11 +34,6 @@ const Blog = () => {
   const { theme } = React.useContext(MUIThemeContext);
   const loadingColor = theme.palette.loading.main;
   const letterSpinColor = theme.palette.spinLetter.main;
-  const titleInView = useInView({
-    delay: 1000,
-    triggerOnce: true,
-    trackVisibility: true,
-  });
 
   const datetimeToDate = (datetime) => {
     const newDateTime = new Date(datetime);
@@ -69,17 +64,21 @@ const Blog = () => {
 
   return (
     <CommonLayout>
-      <div ref={titleInView.ref}>
-        {titleInView ? (
-          <Typography className="my-4" variant="h3" align="center">
-            <SpinText
-              text="Blogs"
-              duration={350}
-              randLetterColor={letterSpinColor}
-            />
-          </Typography>
-        ) : null}
-      </div>
+      <RenderInView
+        options={{
+          delay: 1000,
+          triggerOnce: true,
+          trackVisibility: true,
+        }}
+      >
+        <Typography className="my-4" variant="h3" align="center">
+          <SpinText
+            text="Blogs"
+            duration={350}
+            randLetterColor={letterSpinColor}
+          />
+        </Typography>
+      </RenderInView>
       <Grid container>
         {items.map((item, i) => {
           //extract thumnail from post content
