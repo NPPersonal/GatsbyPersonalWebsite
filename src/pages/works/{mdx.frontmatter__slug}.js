@@ -9,6 +9,10 @@ import { getCloudinaryImage } from "../../libs/cloudinary";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 import Seo from "../../components/seo/seo";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CommonLayout from "../../layouts/common-layout";
+import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
+import RenderInView from "../../components/render-in-view/render-in-view";
+import SpinText from "../../components/spin-text/spin-text";
 
 const mdxComponents = {
   h2: (props) => (
@@ -27,8 +31,15 @@ const mdxComponents = {
 };
 
 const WorkTemplate = ({ data, children }) => {
+  const { theme } = React.useContext(MUIThemeContext);
+  const letterSpinColor = theme.palette.spinLetter.main;
+  const options = {
+    delay: 1000,
+    triggerOnce: true,
+    trackVisibility: true,
+  };
   return (
-    <WorksLayout>
+    <CommonLayout>
       <IconButton
         className="my-4"
         aria-label="back"
@@ -37,9 +48,15 @@ const WorkTemplate = ({ data, children }) => {
         <ArrowBackIcon fontSize="large" />
       </IconButton>
       <Box className="mb-8 flex flex-col justify-center items-center">
-        <Typography className="mb-4" variant="h2">
-          {data.mdx.frontmatter.name}
-        </Typography>
+        <RenderInView options={options}>
+          <Typography className="my-4" variant="h3">
+            <SpinText
+              text={data.mdx.frontmatter.name}
+              duration={100}
+              randLetterColor={letterSpinColor}
+            />
+          </Typography>
+        </RenderInView>
       </Box>
       <div className="mb-8">
         <Carousel
@@ -63,7 +80,7 @@ const WorkTemplate = ({ data, children }) => {
         </Carousel>
       </div>
       <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-    </WorksLayout>
+    </CommonLayout>
   );
 };
 
