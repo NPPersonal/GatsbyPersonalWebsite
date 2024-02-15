@@ -33,8 +33,8 @@ const config = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `works`,
-        path: `${__dirname}/src/pages/works`,
+        name: `mdx`,
+        path: `${__dirname}/src/mdx`,
       },
     },
     {

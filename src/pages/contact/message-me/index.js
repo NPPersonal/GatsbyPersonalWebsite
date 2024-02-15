@@ -1,12 +1,16 @@
 import * as React from "react";
 import CommonLayout from "../../../layouts/common-layout";
-import { Box, Divider, SvgIcon, Typography, useTheme } from "@mui/material";
+import { Box, Divider, SvgIcon, Typography } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import NetlifyForm from "../../../components/netlify-form/netlify-form";
 import Seo from "../../../components/seo/seo";
+import SpinText from "../../../components/spin-text/spin-text";
+import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provider";
+import RenderInView from "../../../components/render-in-view/render-in-view";
 
 const MessageMe = () => {
-  const theme = useTheme();
+  const { theme } = React.useContext(MUIThemeContext);
+  const letterSpinColor = theme.palette.spinLetter.main;
   const divierSX = {
     "&::before, &::after": {
       borderTop: `thick solid ${
@@ -19,9 +23,22 @@ const MessageMe = () => {
 
   return (
     <CommonLayout>
-      <Typography className="my-8" variant="h3" align="center">
-        Message Me
-      </Typography>
+      <RenderInView
+        options={{
+          delay: 100,
+          triggerOnce: true,
+          trackVisibility: true,
+        }}
+      >
+        <Typography className="my-4" variant="h3" align="center">
+          <SpinText
+            text="Message Me"
+            duration={150}
+            sequential
+            randLetterColor={letterSpinColor}
+          />
+        </Typography>
+      </RenderInView>
       <Box className="p-8 shadow-xl rounded-lg">
         <NetlifyForm />
       </Box>
