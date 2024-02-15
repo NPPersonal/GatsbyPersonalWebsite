@@ -11,10 +11,15 @@ import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provide
 const Web = ({ data }) => {
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
+  const options = {
+    delay: 1000,
+    triggerOnce: true,
+    trackVisibility: true,
+  };
   if (data.allMdx.nodes.lenght === 0) {
     return (
       <CommonLayout>
-        <RenderInView>
+        <RenderInView options={options}>
           <Typography className="leading-loose" variant="h3" align="center">
             <SpinText
               text="Web App"
@@ -31,7 +36,7 @@ const Web = ({ data }) => {
   }
   return (
     <CommonLayout>
-      <RenderInView>
+      <RenderInView options={options}>
         <Typography className="leading-loose" variant="h3" align="center">
           <SpinText
             text="Web App"

@@ -11,10 +11,15 @@ import RenderInView from "../../../components/render-in-view/render-in-view";
 const Mobile = ({ data }) => {
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
+  const options = {
+    delay: 1000,
+    triggerOnce: true,
+    trackVisibility: true,
+  };
   if (data.allMdx.nodes.length === 0) {
     return (
       <CommonLayout>
-        <RenderInView>
+        <RenderInView options={options}>
           <Typography className="leading-loose" variant="h3" align="center">
             <SpinText
               text="Mobile App"
@@ -31,7 +36,7 @@ const Mobile = ({ data }) => {
   }
   return (
     <CommonLayout>
-      <RenderInView>
+      <RenderInView options={options}>
         <Typography className="leading-loose" variant="h3" align="center">
           <SpinText
             text="Mobile App"

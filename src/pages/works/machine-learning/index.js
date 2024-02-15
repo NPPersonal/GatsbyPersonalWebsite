@@ -11,14 +11,19 @@ import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provide
 const ML = ({ data }) => {
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
+  const options = {
+    delay: 1000,
+    triggerOnce: true,
+    trackVisibility: true,
+  };
   if (data.allMdx.nodes.length === 0) {
     return (
       <CommonLayout>
-        <RenderInView>
+        <RenderInView options={options}>
           <Typography className="leading-loose" variant="h3" align="center">
             <SpinText
               text="Machine Learning"
-              duration={150}
+              duration={100}
               randLetterColor={letterSpinColor}
             />
           </Typography>
@@ -31,11 +36,11 @@ const ML = ({ data }) => {
   }
   return (
     <CommonLayout>
-      <RenderInView>
+      <RenderInView options={options}>
         <Typography className="leading-loose" variant="h3" align="center">
           <SpinText
             text="Machine Learning"
-            duration={150}
+            duration={100}
             randLetterColor={letterSpinColor}
           />
         </Typography>
