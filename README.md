@@ -3,7 +3,9 @@
 Some image asset is hosted on [Cloudinary](https://cloudinary.com/) therefore an
 environment variable required to be set in order to fetch image asset.
 Create 2 env file `.env.development` and `.env.production` then add following
-`GATSBY_CLOUDINARY_CLOUD_NAME=dgquji7zg`
+
+- `GATSBY_CLOUDINARY_CLOUD_NAME=dgquji7zg`
+
 where **GATSBY_CLOUDINARY_CLOUD_NAME** is key and **dgquji7zg** is value.
 
 - **For cloud server**:
