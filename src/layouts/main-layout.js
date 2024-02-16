@@ -24,10 +24,10 @@ import { ExSlide } from "../components/mui-extension/transition-extension";
  * in gatsby-browser.js
  * @returns
  */
-const MainLayout = ({ children }) => {
+const MainLayout = ({ location, children }) => {
   const { theme } = React.useContext(MUIThemeContext);
   const bg = theme.palette.background.gradient;
-
+  const isRoot = location.pathname === "/";
   return (
     <Box
       className="flex flex-col justify-stretch"
@@ -36,12 +36,12 @@ const MainLayout = ({ children }) => {
         minHeight: "100%",
       }}
     >
-      <ExSlide direction="down" in delay={6900} timeout={2000}>
+      <ExSlide direction="down" in delay={isRoot ? 6900 : 0} timeout={2000}>
         <NavBar navigationRoutes={navigationRouteData} />
         <Toolbar />
       </ExSlide>
       <Box className="my-4 grow-[1]">{children}</Box>
-      <ExSlide direction="up" in delay={6900} timeout={2000}>
+      <ExSlide direction="up" in delay={isRoot ? 6900 : 0} timeout={2000}>
         <Footer
           className="relative"
           sx={{ backgroundColor: theme.palette.background.footer }}

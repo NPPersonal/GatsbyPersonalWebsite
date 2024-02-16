@@ -36,7 +36,7 @@ const About = () => {
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const options = {
-    delay: 100,
+    delay: 1000,
     triggerOnce: true,
     trackVisibility: true,
   };
