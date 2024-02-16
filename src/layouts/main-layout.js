@@ -9,6 +9,7 @@ import FooterSection from "../components/footer/footer-section";
 import SocialLinks from "../components/social-links/social-links";
 import SocialLinkData from "../../static/social-links/social-links.json";
 import { StaticImage } from "gatsby-plugin-image";
+import { ExSlide } from "../components/mui-extension/transition-extension";
 
 /**
  * Main layout the top most layout
@@ -35,39 +36,43 @@ const MainLayout = ({ children }) => {
         minHeight: "100%",
       }}
     >
-      <NavBar navigationRoutes={navigationRouteData} />
-      <Toolbar />
+      <ExSlide direction="down" in delay={6900} timeout={2000}>
+        <NavBar navigationRoutes={navigationRouteData} />
+        <Toolbar />
+      </ExSlide>
       <Box className="my-4 grow-[1]">{children}</Box>
-      <Footer
-        className="relative"
-        sx={{ backgroundColor: theme.palette.background.footer }}
-      >
-        <Container>
-          <Box className="flex flex-row flex-wrap justify-stretch ">
-            <Box className="flex justify-center items-center p-4 grow-[1]">
-              <Avatar alt="Logo" sx={{ width: 100, height: 100 }}>
-                <StaticImage
-                  src="../images/logo.png"
-                  alt="Logo image"
-                  placeholder="blurred"
-                  layout="constrained"
-                />
-              </Avatar>
+      <ExSlide direction="up" in delay={6900} timeout={2000}>
+        <Footer
+          className="relative"
+          sx={{ backgroundColor: theme.palette.background.footer }}
+        >
+          <Container>
+            <Box className="flex flex-row flex-wrap justify-stretch ">
+              <Box className="flex justify-center items-center p-4 grow-[1]">
+                <Avatar alt="Logo" sx={{ width: 100, height: 100 }}>
+                  <StaticImage
+                    src="../images/logo.png"
+                    alt="Logo image"
+                    placeholder="blurred"
+                    layout="constrained"
+                  />
+                </Avatar>
+              </Box>
+              <Box className="grow-[1]">
+                {footerSectionData.map((section, i) => (
+                  <FooterSection
+                    key={`${section.sectionTitle}-${i}`}
+                    sectionTitle={section.sectionTitle}
+                    sectionLinks={section.sectionLinks}
+                  />
+                ))}
+              </Box>
             </Box>
-            <Box className="grow-[1]">
-              {footerSectionData.map((section, i) => (
-                <FooterSection
-                  key={`${section.sectionTitle}-${i}`}
-                  sectionTitle={section.sectionTitle}
-                  sectionLinks={section.sectionLinks}
-                />
-              ))}
-            </Box>
-          </Box>
-          <Divider />
-          <SocialLinks socialLinks={SocialLinkData} />
-        </Container>
-      </Footer>
+            <Divider />
+            <SocialLinks socialLinks={SocialLinkData} />
+          </Container>
+        </Footer>
+      </ExSlide>
     </Box>
   );
 };
