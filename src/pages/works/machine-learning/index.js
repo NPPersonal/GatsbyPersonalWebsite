@@ -1,12 +1,39 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import WorkCollection from "../../../components/work-collection/work-collection";
 import Seo from "../../../components/seo/seo";
 import CommonLayout from "../../../layouts/common-layout";
 import RenderInView from "../../../components/render-in-view/render-in-view";
 import SpinText from "../../../components/spin-text/spin-text";
 import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provider";
+import { StaticImage } from "gatsby-plugin-image";
+
+const Banner = ({ letterSpinColor, options }) => {
+  return (
+    <Box className="flex flex-col justify-center items-center">
+      <StaticImage
+        className="rounded-lg"
+        src="../../../../assets/machine-learning-dev.png"
+        alt="machine-learning-dev"
+        placeholder="blurred"
+        layout="constrained"
+        height={200}
+      />
+      <RenderInView options={options}>
+        <Typography className="leading-loose" variant="h3" align="center">
+          <SpinText
+            text="Machine Learning"
+            duration={100}
+            sequential
+            randLetterColor={letterSpinColor}
+            delay={500}
+          />
+        </Typography>
+      </RenderInView>
+    </Box>
+  );
+};
 
 const ML = ({ data }) => {
   const { theme } = React.useContext(MUIThemeContext);
@@ -19,16 +46,7 @@ const ML = ({ data }) => {
   if (data.allMdx.nodes.length === 0) {
     return (
       <CommonLayout>
-        <RenderInView options={options}>
-          <Typography className="leading-loose" variant="h3" align="center">
-            <SpinText
-              text="Machine Learning"
-              duration={100}
-              sequential
-              randLetterColor={letterSpinColor}
-            />
-          </Typography>
-        </RenderInView>
+        <Banner letterSpinColor={letterSpinColor} options={options} />
         <Typography className="my-4" variant="h4" align="center">
           There is no machine learning app at moment
         </Typography>
@@ -37,16 +55,7 @@ const ML = ({ data }) => {
   }
   return (
     <CommonLayout>
-      <RenderInView options={options}>
-        <Typography className="leading-loose" variant="h3" align="center">
-          <SpinText
-            text="Machine Learning"
-            duration={100}
-            sequential
-            randLetterColor={letterSpinColor}
-          />
-        </Typography>
-      </RenderInView>
+      <Banner letterSpinColor={letterSpinColor} options={options} />
       <WorkCollection mdxDataNodes={data.allMdx.nodes} />
     </CommonLayout>
   );
