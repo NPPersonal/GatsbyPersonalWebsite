@@ -8,14 +8,14 @@ Create 2 env file `.env.development` and `.env.production` then add following
 
 where **GATSBY_CLOUDINARY_CLOUD_NAME** is key and **dgquji7zg** is value.
 
-- **For cloud server**:
+### For cloud server
 
 Set environment variable to key and value above.
 
-- **For local development**:
+### For local development
 
-Create two environment files **.env.development** and **.env.production**
-then set the key and value.
+Create two environment files `.env.development` and `.env.production`
+then set the key and value above.
 
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
