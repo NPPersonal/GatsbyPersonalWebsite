@@ -8,23 +8,15 @@ import RenderInView from "../components/render-in-view/render-in-view";
 import { StaticImage } from "gatsby-plugin-image";
 import Landing from "../mdx/landing/landing.mdx";
 import { MDXProvider } from "@mdx-js/react";
-import GatsbyStyledLink from "../components/gatsby-styled-link/gatsby-styled-link";
 import {
   ExFade,
   ExSlide,
 } from "../components/mui-extension/transition-extension";
+import { defaultMDXComponents } from "../mdx/mdx-components";
 
 const mdxComponents = {
-  em: (props) => (
-    <Typography className="font-bold  leading-7" variant="body" {...props} />
-  ),
-  a: (props) => (
-    <GatsbyStyledLink
-      className="inline font-medium hover:font-extrabold italic"
-      to={props.href}
-      style={{ color: "inherit", textDecoration: "underline" }}
-      {...props}
-    />
+  p: (props) => (
+    <Typography className="font-bold text-lg" variant="body" {...props} />
   ),
 };
 
@@ -67,7 +59,9 @@ const Home = () => {
             />
           </Typography>
           <ExFade in delay={4000} timeout={2000}>
-            <MDXProvider components={mdxComponents}>
+            <MDXProvider
+              components={{ ...defaultMDXComponents, ...mdxComponents }}
+            >
               <Landing />
             </MDXProvider>
           </ExFade>

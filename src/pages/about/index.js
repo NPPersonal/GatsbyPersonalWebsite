@@ -11,26 +11,10 @@ import {
 import { getCloudinaryImage } from "../../libs/cloudinary";
 import AboutMe from "../../mdx/about-me/about-me.mdx";
 import { MDXProvider } from "@mdx-js/react";
-import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
 import SpinText from "../../components/spin-text/spin-text";
-
-const mdxComponents = {
-  h2: (props) => (
-    <Typography className="font-bold" variant="h2" align="center" {...props} />
-  ),
-  h4: (props) => <Typography variant="h4" align="center" {...props} />,
-  em: (props) => <Typography className="font-bold" {...props} />,
-  a: (props) => (
-    <GatsbyStyledLink
-      className="inline font-medium hover:font-extrabold italic"
-      to={props.href}
-      style={{ color: "inherit", textDecoration: "underline" }}
-      {...props}
-    />
-  ),
-};
+import { defaultMDXComponents } from "../../mdx/mdx-components";
 
 const About = () => {
   const { theme } = React.useContext(MUIThemeContext);
@@ -110,7 +94,7 @@ const About = () => {
           </RenderInView>
         </Box>
       </Box>
-      <MDXProvider components={mdxComponents}>
+      <MDXProvider components={defaultMDXComponents}>
         <AboutMe />
       </MDXProvider>
     </CommonLayout>
