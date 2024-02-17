@@ -37,9 +37,6 @@ const Home = (props) => {
   console.log(props);
   return (
     <CommonLayout>
-      <Box>
-        <Trans i18nKey="title">Hi</Trans>
-      </Box>
       <ul>
         {languages.map((lang) => {
           return (
@@ -70,16 +67,18 @@ const Home = (props) => {
             align="center"
           >
             <SpinText
-              text="HELLO"
+              text={t("hello")}
               duration={250}
               sequential
+              randLetters={t("randLetters")}
               randLetterColor={letterSpinColor}
             />
             <SpinText
-              text="WELCOME"
+              text={t("welcome")}
               duration={200}
               delay={1600}
               sequential
+              randLetters={t("randLetters")}
               randLetterColor={letterSpinColor}
             />
           </Typography>
@@ -125,7 +124,7 @@ const Home = (props) => {
 export const query = graphql`
   query ($language: String!) {
     locales: allLocale(
-      filter: { ns: { in: ["index"] }, language: { eq: $language } }
+      filter: { ns: { in: ["common", "index"] }, language: { eq: $language } }
     ) {
       edges {
         node {

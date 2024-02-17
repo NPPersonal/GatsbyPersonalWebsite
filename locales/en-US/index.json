@@ -1,1 +1,5 @@
-{ "title": "Hello" }
+{
+  "hello": "HELLO",
+  "welcome": "WELCOME",
+  "randLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+}
