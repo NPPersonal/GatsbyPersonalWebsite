@@ -13,6 +13,13 @@ import {
   ExSlide,
 } from "../components/mui-extension/transition-extension";
 import { defaultMDXComponents } from "../mdx/mdx-components";
+import {
+  Link,
+  useI18next,
+  Trans,
+  useTranslation,
+} from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
 
 const mdxComponents = {
   p: (props) => (
@@ -20,12 +27,30 @@ const mdxComponents = {
   ),
 };
 
-const Home = () => {
+const Home = (props) => {
+  const { t } = useTranslation();
+  const { languages, originalPath } = useI18next();
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const isWrap = useMediaQuery(theme.breakpoints.down("lg"));
+  console.log(t("title"));
+  console.log(props);
   return (
     <CommonLayout>
+      <Box>
+        <Trans i18nKey="title">Hi</Trans>
+      </Box>
+      <ul>
+        {languages.map((lang) => {
+          return (
+            <li key={lang}>
+              <Link to={originalPath} language={lang}>
+                {lang}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
       <Box
         className={`flex ${
           isWrap ? "flex-wrap" : "flex-nowrap"
@@ -96,6 +121,22 @@ const Home = () => {
     </CommonLayout>
   );
 };
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["index"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
 
 export default Home;
 

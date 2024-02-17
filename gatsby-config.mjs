@@ -1,5 +1,6 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { languages, defaultLanguage } from "./language.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -35,6 +36,30 @@ const config = {
       options: {
         name: `mdx`,
         path: `${__dirname}/src/mdx`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/locales`,
+        name: `locale`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-i18next",
+      options: {
+        languages,
+        defaultLanguage,
+        siteUrl: "http://localhost:8000",
+        i18nextOptions: {
+          // debug: true,
+          fallbackLng: defaultLanguage,
+          supportedLngs: languages,
+          defaultNS: "common",
+          interpolation: {
+            escapeValue: false, // not needed for react as it escapes by default
+          },
+        },
       },
     },
     {
