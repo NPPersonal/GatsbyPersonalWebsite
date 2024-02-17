@@ -20,10 +20,27 @@ import {
   useTranslation,
 } from "gatsby-plugin-react-i18next";
 import { graphql } from "gatsby";
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import GatsbyStyledLink from "../components/gatsby-styled-link/gatsby-styled-link";
 
 const mdxComponents = {
   p: (props) => (
     <Typography className="font-bold text-lg" variant="body" {...props} />
+  ),
+  a: (props) => (
+    <GatsbyStyledLink
+      to={props.href}
+      style={{ color: "inherit", textDecoration: "underline" }}
+      {...props}
+    >
+      <Typography
+        className="mx-1 inline font-bold text-lg bg-slate-400"
+        variant="body"
+      >
+        {props.children}
+      </Typography>
+    </GatsbyStyledLink>
   ),
 };
 
@@ -33,7 +50,6 @@ const Home = (props) => {
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const isWrap = useMediaQuery(theme.breakpoints.down("lg"));
-  console.log(t("title"));
   console.log(props);
   return (
     <CommonLayout>
@@ -83,11 +99,17 @@ const Home = (props) => {
             />
           </Typography>
           <ExFade in delay={4000} timeout={2000}>
-            <MDXProvider
+            {/* <MDXProvider
               components={{ ...defaultMDXComponents, ...mdxComponents }}
             >
               <Landing />
-            </MDXProvider>
+            </MDXProvider> */}
+            <Markdown
+              components={{ ...defaultMDXComponents, ...mdxComponents }}
+              rehypePlugins={[rehypeRaw]}
+            >
+              {props.data.mdx.body}
+            </Markdown>
           </ExFade>
         </RenderInView>
         <ExSlide direction="left" delay={4900} in timeout={2000}>
@@ -133,6 +155,23 @@ export const query = graphql`
           language
         }
       }
+    }
+    mdx(
+      fields: { locale: { eq: $language } }
+      frontmatter: { category: { eq: "landing" } }
+    ) {
+      frontmatter {
+        author
+        title
+        slug
+        preview_img_id
+        preview
+        name
+        images_id
+        description
+        category
+      }
+      body
     }
   }
 `;

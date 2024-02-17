@@ -4,11 +4,13 @@ import { languages, defaultLanguage } from "./language.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const siteUrl = process.env.URL || "http://localhost:8000";
+
 const config = {
   siteMetadata: {
     title: `Nelson Punch Web`,
     description: `I'm MING-CHUN HUNG(Nelson) and this is my personal website`,
-    siteUrl: `https://nelson-punch.netlify.app`,
+    siteUrl,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -50,7 +52,7 @@ const config = {
       options: {
         languages,
         defaultLanguage,
-        siteUrl: "http://localhost:8000",
+        siteUrl,
         i18nextOptions: {
           // debug: true,
           fallbackLng: defaultLanguage,

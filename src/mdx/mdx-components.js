@@ -11,11 +11,12 @@ const defaultMDXComponents = {
   em: (props) => <Typography className="font-bold" {...props} />,
   a: (props) => (
     <GatsbyStyledLink
-      className="inline font-medium hover:font-extrabold italic"
       to={props.href}
       style={{ color: "inherit", textDecoration: "underline" }}
       {...props}
-    />
+    >
+      <Typography className="inline">{props.children}</Typography>
+    </GatsbyStyledLink>
   ),
 };
 
