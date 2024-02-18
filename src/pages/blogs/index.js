@@ -17,10 +17,13 @@ import Seo from "../../components/seo/seo";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import SpinText from "../../components/spin-text/spin-text";
 import RenderInView from "../../components/render-in-view/render-in-view";
+import { graphql } from "gatsby";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const blogLink = "https://medium.com/software-dev-explore";
 
 const Blog = () => {
+  const { t } = useI18next();
   const {
     feed,
     items,
@@ -73,7 +76,7 @@ const Blog = () => {
       >
         <Typography className="my-4" variant="h3" align="center">
           <SpinText
-            text="Blogs"
+            text={t("blogs-title")}
             duration={250}
             sequential
             randLetterColor={letterSpinColor}
@@ -132,12 +135,28 @@ const Blog = () => {
       </Grid>
       <Box className="py-4 flex justify-center">
         <Button variant="contained" onClick={() => openLink(blogLink)}>
-          More ➡
+          {t("more")} ➡
         </Button>
       </Box>
     </CommonLayout>
   );
 };
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["common", "blogs"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
 
 export default Blog;
 

@@ -29,8 +29,11 @@ const LanguageSwitcher = () => {
 
   return (
     <Box>
-      <Box className="flex flex-row justify-center items-center">
-        <IconButton onClick={handleClick}>
+      <Box
+        className="flex flex-row justify-center items-center cursor-pointer"
+        onClick={handleClick}
+      >
+        <IconButton>
           <TranslateIcon />
         </IconButton>
         <Typography>{languageMapper[language]}</Typography>
