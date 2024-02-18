@@ -1,0 +1,118 @@
+---
+name: "Wine Explorer"
+title: "Wine Explorer App"
+author: "Ming-Chun Hung"
+slug: "wine-explorer"
+category: "machine-learning"
+description: "Explore wines by your description"
+preview_img_id: "personal-web-image-assets/machine-learning/wine-finder/lxbxt1xezxa4iz0vjkpm"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/wine-finder/eobqxnskj4tslcgt0k2y",
+    "personal-web-image-assets/machine-learning/wine-finder/zmvqp5hrfpbin5jlxonc",
+    "personal-web-image-assets/machine-learning/wine-finder/lxbxt1xezxa4iz0vjkpm",
+    "personal-web-image-assets/machine-learning/wine-finder/ulgmpauc3bmmmcnwmlr1",
+    "personal-web-image-assets/machine-learning/wine-finder/sgpu90immqi5hydukwxj",
+  ]
+---
+
+## Introduction
+
+---
+
+A wine explorer app. Help you to explore wines by your description or possible find
+the one you are looking for.
+
+<br />
+<br />
+
+You just have a taste of a wine and have no clues and no ideas about a wine.
+You eager to find out about the wine and looking for similar wines. This app
+might help you to explore more similar wines and possible find the wine your are
+lokking for. All you need is your description of your taste about the wine.
+
+<br />
+<br />
+
+This app learn from sommeliers on a large set of wines then analyse your
+description and try to find possible wines for you.
+
+<br />
+<br />
+
+## Motivation & Purpose
+
+---
+
+Looking for wines you like is like picking needle from ocean. Looking through
+bunch of reviews is a pain or sometime your have no clues where to start.
+
+<br />
+<br />
+
+Translating from description of wine or desire of your wine should be into
+a keywords for searching wines might be a solution regardless of taste of wine
+is vary from person to person.
+
+<br />
+<br />
+
+## More
+
+---
+
+The machine learning model was trained with dataset from [Kaggle](https://www.kaggle.com/datasets/zynicide/wine-reviews).
+
+<br />
+<br />
+
+Two models were produced old model and new model. The old model was trained with supervise learning while
+new model was trained with unsupervise learning. Both models find the similarity of description to predouce
+final result.
+
+<br />
+<br />
+
+Frameworks were used to build this app:
+
+- [Scikit-Learn](https://scikit-learn.org/) : **machine learning framework for model**
+- [Streamlit](https://streamlit.io/) : **backend with frontend app for new version**
+- [Nextjs](https://nextjs.org/) : **frontend app for old version**
+- [Docker](https://www.docker.com/) : **containerized backend for old version**
+
+<br />
+<br />
+
+## Note
+
+---
+
+The models find wines base on similarity of your description and
+there are many factors could effect the result. Therefore wines you
+found might not be 100% your are looking for.
+
+<br />
+<br />
+
+Old version only provide wine's title, country, score, price and description.
+Backend server often put to sleep if no interaction for period of time. Therefore
+website(frontend) will take a while to wait for server to wake up to be able to function.
+
+<br />
+<br />
+
+New version only provide wine's location information.
+
+<br />
+<br />
+
+## Website
+
+---
+
+#### [Old version](https://ask-me-wines.netlify.app/)
+
+#### [New version](https://wineidentifier.streamlit.app/)
+
+<br />
+<br />

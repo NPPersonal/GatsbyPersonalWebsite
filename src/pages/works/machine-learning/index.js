@@ -8,10 +8,11 @@ import RenderInView from "../../../components/render-in-view/render-in-view";
 import SpinText from "../../../components/spin-text/spin-text";
 import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provider";
 import { StaticImage } from "gatsby-plugin-image";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
-const Banner = ({ letterSpinColor, options }) => {
+const Banner = ({ letterSpinColor, options, t }) => {
   return (
-    <Box className="flex flex-col justify-center items-center">
+    <Box className="my-4 flex flex-col justify-center items-center">
       <StaticImage
         className="rounded-lg"
         src="../../../../assets/machine-learning-dev.png"
@@ -23,7 +24,7 @@ const Banner = ({ letterSpinColor, options }) => {
       <RenderInView options={options}>
         <Typography className="leading-loose" variant="h3" align="center">
           <SpinText
-            text="Machine Learning"
+            text={t("machine-learning-title")}
             duration={100}
             sequential
             randLetterColor={letterSpinColor}
@@ -36,6 +37,7 @@ const Banner = ({ letterSpinColor, options }) => {
 };
 
 const ML = ({ data }) => {
+  const { t } = useI18next();
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const options = {
@@ -46,24 +48,43 @@ const ML = ({ data }) => {
   if (data.allMdx.nodes.length === 0) {
     return (
       <CommonLayout>
-        <Banner letterSpinColor={letterSpinColor} options={options} />
+        <Banner letterSpinColor={letterSpinColor} options={options} t={t} />
         <Typography className="my-4" variant="h4" align="center">
-          There is no machine learning app at moment
+          {t("empty")}
         </Typography>
       </CommonLayout>
     );
   }
   return (
     <CommonLayout>
-      <Banner letterSpinColor={letterSpinColor} options={options} />
+      <Banner letterSpinColor={letterSpinColor} options={options} t={t} />
       <WorkCollection mdxDataNodes={data.allMdx.nodes} />
     </CommonLayout>
   );
 };
 
 export const query = graphql`
-  query {
-    allMdx(filter: { frontmatter: { category: { eq: "machine-learning" } } }) {
+  query ($language: String!) {
+    locales: allLocale(
+      filter: {
+        ns: { in: ["common", "machine-learning"] }
+        language: { eq: $language }
+      }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    allMdx(
+      filter: {
+        fields: { locale: { eq: $language } }
+        frontmatter: { category: { eq: "machine-learning" } }
+      }
+    ) {
       nodes {
         frontmatter {
           author
