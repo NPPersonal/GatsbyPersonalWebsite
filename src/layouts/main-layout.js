@@ -1,15 +1,6 @@
 import * as React from "react";
-import { Box, Container, Toolbar, Divider, Avatar } from "@mui/material";
-import NavBar from "../components/nav-bar/navbar";
-import navigationRouteData from "../../static/navigation-routes/navigation-routes.json";
-import footerSectionData from "../../static/footer-sections/footer-sections.json";
+import { Box } from "@mui/material";
 import { MUIThemeContext } from "../components/mui-theme/mui-theme-provider";
-import Footer from "../components/footer/footer";
-import FooterSection from "../components/footer/footer-section";
-import SocialLinks from "../components/social-links/social-links";
-import SocialLinkData from "../../static/social-links/social-links.json";
-import { StaticImage } from "gatsby-plugin-image";
-import { ExSlide } from "../components/mui-extension/transition-extension";
 
 /**
  * Main layout the top most layout
@@ -27,52 +18,15 @@ import { ExSlide } from "../components/mui-extension/transition-extension";
 const MainLayout = ({ location, children }) => {
   const { theme } = React.useContext(MUIThemeContext);
   const bg = theme.palette.background.gradient;
-  const isRoot = location.pathname === "/";
   return (
     <Box
-      className="flex flex-col justify-stretch"
+      // className="flex flex-col justify-stretch"
       sx={{
         background: bg,
         minHeight: "100%",
       }}
     >
-      <ExSlide direction="down" in delay={isRoot ? 6900 : 0} timeout={2000}>
-        <NavBar navigationRoutes={navigationRouteData} />
-        <Toolbar />
-      </ExSlide>
-      <Box className="my-4 grow-[1]">{children}</Box>
-      <ExSlide direction="up" in delay={isRoot ? 6900 : 0} timeout={2000}>
-        <Footer
-          className="relative"
-          sx={{ backgroundColor: theme.palette.background.footer }}
-        >
-          <Container>
-            <Box className="flex flex-row flex-wrap justify-stretch ">
-              <Box className="flex justify-center items-center p-4 grow-[1]">
-                <Avatar alt="Logo" sx={{ width: 100, height: 100 }}>
-                  <StaticImage
-                    src="../images/logo.png"
-                    alt="Logo image"
-                    placeholder="blurred"
-                    layout="constrained"
-                  />
-                </Avatar>
-              </Box>
-              <Box className="grow-[1]">
-                {footerSectionData.map((section, i) => (
-                  <FooterSection
-                    key={`${section.sectionTitle}-${i}`}
-                    sectionTitle={section.sectionTitle}
-                    sectionLinks={section.sectionLinks}
-                  />
-                ))}
-              </Box>
-            </Box>
-            <Divider />
-            <SocialLinks socialLinks={SocialLinkData} />
-          </Container>
-        </Footer>
-      </ExSlide>
+      <Box>{children}</Box>
     </Box>
   );
 };

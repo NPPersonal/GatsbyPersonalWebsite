@@ -11,6 +11,7 @@ import {
 } from "@mui/icons-material";
 import NavBarDrawer from "./navbar-drawer";
 import { navigate } from "gatsby";
+import LanguageSwitcher from "../language-switcher/language-switcher";
 
 /**
  * Render navigation routes
@@ -84,6 +85,7 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
           <Box className="grow">
             {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
           </Box>
+          <LanguageSwitcher />
           <Box className="ml-4">
             <IconButton
               aria-label="color mode"

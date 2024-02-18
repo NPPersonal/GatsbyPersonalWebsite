@@ -6,19 +6,12 @@ import SpinText from "../components/spin-text/spin-text";
 import { MUIThemeContext } from "../components/mui-theme/mui-theme-provider";
 import RenderInView from "../components/render-in-view/render-in-view";
 import { StaticImage } from "gatsby-plugin-image";
-import Landing from "../mdx/landing/landing.mdx";
-import { MDXProvider } from "@mdx-js/react";
 import {
   ExFade,
   ExSlide,
 } from "../components/mui-extension/transition-extension";
 import { defaultMDXComponents } from "../mdx/mdx-components";
-import {
-  Link,
-  useI18next,
-  Trans,
-  useTranslation,
-} from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { graphql } from "gatsby";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -46,24 +39,16 @@ const mdxComponents = {
 
 const Home = (props) => {
   const { t } = useTranslation();
-  const { languages, originalPath } = useI18next();
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const isWrap = useMediaQuery(theme.breakpoints.down("lg"));
-  console.log(props);
   return (
-    <CommonLayout>
-      <ul>
-        {languages.map((lang) => {
-          return (
-            <li key={lang}>
-              <Link to={originalPath} language={lang}>
-                {lang}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+    <CommonLayout
+      navbarTransition
+      navbarTransitionDelay={6900}
+      footerTransition
+      footerTransitionDelay={6900}
+    >
       <Box
         className={`flex ${
           isWrap ? "flex-wrap" : "flex-nowrap"
@@ -99,11 +84,6 @@ const Home = (props) => {
             />
           </Typography>
           <ExFade in delay={4000} timeout={2000}>
-            {/* <MDXProvider
-              components={{ ...defaultMDXComponents, ...mdxComponents }}
-            >
-              <Landing />
-            </MDXProvider> */}
             <Markdown
               components={{ ...defaultMDXComponents, ...mdxComponents }}
               rehypePlugins={[rehypeRaw]}
