@@ -1,0 +1,17 @@
+{
+  "message-me-title": "Message Me",
+  "or": "OR",
+  "form-success-message": "Message has been sent",
+  "form-error-message": "Sending message fail",
+  "form-name-label": "Your name",
+  "form-placeholder-name": "Fill your name",
+  "form-email-label": "Your E-mail",
+  "form-placeholder-email": "Fill your E-mail",
+  "form-message-label": "Your message",
+  "form-placeholder-message": "What do you want to tell me about?",
+  "form-name-required": "Your name is required",
+  "form-email-required": "Your email is required",
+  "form-email-invalid": "Invalid E-mail",
+  "form-message-required": "Your message is required",
+  "send": "Send"
+}

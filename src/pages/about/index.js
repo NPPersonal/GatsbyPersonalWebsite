@@ -9,14 +9,38 @@ import {
   placeholder,
 } from "@cloudinary/react";
 import { getCloudinaryImage } from "../../libs/cloudinary";
-import AboutMe from "../../mdx/about-me/about-me.mdx";
-import { MDXProvider } from "@mdx-js/react";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
 import SpinText from "../../components/spin-text/spin-text";
 import { defaultMDXComponents } from "../../mdx/mdx-components";
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
+import { graphql } from "gatsby";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
-const About = () => {
+const mdxComponents = {
+  p: (props) => (
+    <Typography className="font-bold text-lg" variant="body" {...props} />
+  ),
+  a: (props) => (
+    <GatsbyStyledLink
+      to={props.href}
+      style={{ color: "inherit", textDecoration: "underline" }}
+      {...props}
+    >
+      <Typography
+        className="mx-1 inline font-bold text-lg bg-slate-400"
+        variant="body"
+      >
+        {props.children}
+      </Typography>
+    </GatsbyStyledLink>
+  ),
+};
+
+const About = (props) => {
+  const { t } = useI18next();
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const options = {
@@ -29,7 +53,7 @@ const About = () => {
       <RenderInView options={options}>
         <Typography className="leading-loose" variant="h3" align="center">
           <SpinText
-            text="About Me"
+            text={t("about-me-title")}
             duration={200}
             sequential
             randLetterColor={letterSpinColor}
@@ -57,7 +81,7 @@ const About = () => {
               align="center"
             >
               <SpinText
-                text="Hung Ming-Chun"
+                text={t("full-name")}
                 duration={100}
                 delay={2000}
                 randLetterColor={letterSpinColor}
@@ -71,7 +95,7 @@ const About = () => {
               align="center"
             >
               <SpinText
-                text="Taichung, Taiwan"
+                text={t("location")}
                 duration={100}
                 delay={4000}
                 randLetterColor={letterSpinColor}
@@ -85,7 +109,7 @@ const About = () => {
               align="center"
             >
               <SpinText
-                text="Chinese, English"
+                text={t("speak-language")}
                 duration={100}
                 delay={6000}
                 randLetterColor={letterSpinColor}
@@ -94,12 +118,54 @@ const About = () => {
           </RenderInView>
         </Box>
       </Box>
-      <MDXProvider components={defaultMDXComponents}>
+      {/* <MDXProvider components={defaultMDXComponents}>
         <AboutMe />
-      </MDXProvider>
+      </MDXProvider> */}
+      <Markdown
+        components={{ ...defaultMDXComponents, ...mdxComponents }}
+        rehypePlugins={[rehypeRaw]}
+      >
+        {props.data.mdx.body}
+      </Markdown>
     </CommonLayout>
   );
 };
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(
+      filter: {
+        ns: { in: ["common", "about-me"] }
+        language: { eq: $language }
+      }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    mdx(
+      fields: { locale: { eq: $language } }
+      frontmatter: { category: { eq: "about-me" } }
+    ) {
+      frontmatter {
+        author
+        title
+        slug
+        preview_img_id
+        preview
+        name
+        images_id
+        description
+        category
+      }
+      body
+    }
+  }
+`;
 
 export default About;
 

@@ -26,7 +26,7 @@ const LanguageSwitcher = () => {
     setOpen((state) => !state);
     changeLanguage(languageCode);
   };
-  console.log(languages, language);
+
   return (
     <Box>
       <Box className="flex flex-row justify-center items-center">

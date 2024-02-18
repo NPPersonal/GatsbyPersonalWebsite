@@ -9,17 +9,22 @@ import {
   Snackbar,
   TextField,
 } from "@mui/material";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
-const validationSchema = yup.object({
-  name: yup.string("Enter your name").required("Name is required"),
-  email: yup
-    .string("Enter your e-mail")
-    .email("Enter a valid e-mail")
-    .required("E-mail is required"),
-  message: yup.string("Enter your message").required("Message is required"),
-});
+const validationSchema = (t) =>
+  yup.object({
+    name: yup.string("Enter your name").required(t("form-name-required")),
+    email: yup
+      .string("Enter your e-mail")
+      .email(t("form-email-invalid"))
+      .required(t("form-email-required")),
+    message: yup
+      .string("Enter your message")
+      .required(t("form-message-required")),
+  });
 
 const NetlifyForm = ({ feedbackDuration = 6000 }) => {
+  const { t } = useI18next();
   const [error, setError] = React.useState(null);
   const [submitSuccess, setSubmitSuccess] = React.useState(false);
   const [sending, setSending] = React.useState(false);
@@ -29,7 +34,7 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
       email: "",
       message: "",
     },
-    validationSchema: validationSchema,
+    validationSchema: validationSchema(t),
     onSubmit: async (values) => {
       // according to netlify
       // https://docs.netlify.com/forms/setup/#submit-javascript-rendered-forms-with-ajax
@@ -66,7 +71,7 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
       >
         <Alert severity="success">
           <AlertTitle>Success</AlertTitle>
-          <strong>The message had been sent</strong>
+          <strong>{t("form-success-message")}</strong>
         </Alert>
       </Snackbar>
       <Snackbar
@@ -77,7 +82,7 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
       >
         <Alert severity="error">
           <AlertTitle>Fail</AlertTitle>
-          <strong>Something went wrong</strong>
+          <strong>{t("form-error-message")}</strong>
           <div>{error}</div>
         </Alert>
       </Snackbar>
@@ -92,8 +97,8 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
           fullWidth
           id="name"
           name="name"
-          label="Name"
-          placeholder="Your name here"
+          label={t("form-name-label")}
+          placeholder={t("form-placeholder-name")}
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -105,8 +110,8 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
           fullWidth
           id="email"
           name="email"
-          label="E-mail"
-          placeholder="Your E-mail here"
+          label={t("form-email-label")}
+          placeholder={t("form-placeholder-email")}
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -119,8 +124,8 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
           multiline
           id="message"
           name="message"
-          label="Message"
-          placeholder="What do you want to tell me"
+          label={t("form-message-label")}
+          placeholder={t("form-placeholder-message")}
           value={formik.values.message}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -129,7 +134,7 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
         />
         <Box className="flex justify-center">
           <Button type="submit" variant="contained" disabled={sending}>
-            Send
+            {t("send")}
           </Button>
         </Box>
       </form>

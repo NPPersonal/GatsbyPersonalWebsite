@@ -7,8 +7,11 @@ import Seo from "../../../components/seo/seo";
 import SpinText from "../../../components/spin-text/spin-text";
 import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../../components/render-in-view/render-in-view";
+import { useI18next } from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
 
 const MessageMe = () => {
+  const { t } = useI18next();
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const divierSX = {
@@ -32,7 +35,7 @@ const MessageMe = () => {
       >
         <Typography className="my-4" variant="h3" align="center">
           <SpinText
-            text="Message Me"
+            text={t("message-me-title")}
             duration={150}
             sequential
             randLetterColor={letterSpinColor}
@@ -44,7 +47,7 @@ const MessageMe = () => {
       </Box>
       <Box className="my-8">
         <Divider sx={divierSX} variant="middle" textAlign="center">
-          OR
+          {t("or")}
         </Divider>
       </Box>
       <Box className="flex justify-center">
@@ -61,6 +64,25 @@ const MessageMe = () => {
     </CommonLayout>
   );
 };
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(
+      filter: {
+        ns: { in: ["common", "message-me"] }
+        language: { eq: $language }
+      }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
 
 export default MessageMe;
 

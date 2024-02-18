@@ -20,7 +20,6 @@ const MainLayout = ({ location, children }) => {
   const bg = theme.palette.background.gradient;
   return (
     <Box
-      // className="flex flex-col justify-stretch"
       sx={{
         background: bg,
         minHeight: "100%",
