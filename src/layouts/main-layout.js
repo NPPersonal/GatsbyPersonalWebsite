@@ -5,10 +5,6 @@ import { MUIThemeContext } from "../components/mui-theme/mui-theme-provider";
 /**
  * Main layout the top most layout
  *
- * This layout included
- * - AppBar at top
- * - Background management
- *
  * **PS: Do not use this layout to wrap any page**
  *
  * This layout can only be used in `wrapPageElement`

@@ -57,9 +57,14 @@ const getFooter = (theme) => {
 };
 
 /**
- * Common layout that use MainLayout
- * and wrap child with container which
- * include a gap on left and right
+ * Common layout
+ *
+ * This layout included
+ * - AppBar at top
+ * - Background particle effect
+ *
+ * Use this layout to wrap any page
+ *
  * @returns
  */
 const CommonLayout = ({
