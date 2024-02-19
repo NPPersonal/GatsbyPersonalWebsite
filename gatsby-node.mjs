@@ -32,7 +32,7 @@ export const createPages = async (props) => {
   const result = await graphql(`
     {
       # find all mdx files for creating page later
-      # make sure to add mdx directory path to gatsby-source-filesystem
+      # make sure to add src/mdx directory path to gatsby-source-filesystem
       mdx: allFile(filter: { sourceInstanceName: { eq: "mdx" } }) {
         nodes {
           childMdx {
@@ -48,18 +48,15 @@ export const createPages = async (props) => {
 
       # find template file and return relative path and source folder
       # for creating page from template later
-      # make sure to add src directory path to gatsby-source-filesystem
-      # template file name rule e.g: my-project.template.js
-      # template must locate under pages directory
+      # make sure to add src/tempaltes directory path to gatsby-source-filesystem
+      # subdirectories of templates will be the url path to page
+      # template files must be under src/templates
       template: allFile(
-        filter: {
-          extension: { in: ["js", "jsx"] }
-          name: { glob: "*.template" }
-        }
+        filter: { relativeDirectory: { glob: "templates/*" } }
       ) {
         nodes {
-          relativePath
           sourceInstanceName
+          relativePath
         }
       }
     }

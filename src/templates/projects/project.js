@@ -1,7 +1,6 @@
 import * as React from "react";
 import { graphql, navigate } from "gatsby";
 import { Box, Typography, IconButton } from "@mui/material";
-import { MDXProvider } from "@mdx-js/react";
 import Carousel from "react-material-ui-carousel";
 import CarouselCard from "../../components/carousel-card/carousel-card";
 import { getCloudinaryImage } from "../../libs/cloudinary";

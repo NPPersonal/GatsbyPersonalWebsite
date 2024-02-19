@@ -50,6 +50,13 @@ const config = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/src/templates`,
+        name: `templates`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/locales`,
         name: `locale`,
       },

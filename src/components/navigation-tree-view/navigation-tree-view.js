@@ -6,6 +6,7 @@ import ShortcutIcon from "@mui/icons-material/Shortcut";
 import { Stack, Typography, Box } from "@mui/material";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import PropTypes from "prop-types";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 /**
  * Display a tree view of routes
@@ -23,6 +24,7 @@ import PropTypes from "prop-types";
  * @returns
  */
 const NavigationTreeView = ({ routes, onTreeItemClicked }) => {
+  const { t } = useI18next();
   const data = flattenTree({ name: "tree", children: routes });
   const handleItemClick = (element) => {
     if (onTreeItemClicked) {
@@ -56,7 +58,7 @@ const NavigationTreeView = ({ routes, onTreeItemClicked }) => {
 
             {isBranch ? (
               <Typography variant="button" color="primary.dark">
-                {element.name}
+                {t(element.name)}
               </Typography>
             ) : (
               <Typography variant="button">
@@ -65,7 +67,7 @@ const NavigationTreeView = ({ routes, onTreeItemClicked }) => {
                     onClick={() => handleItemClick(element)}
                     className="group"
                   >
-                    {element.name}
+                    {t(element.name)}
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-red-600"></span>
                   </Box>
                 </GatsbyStyledLink>
