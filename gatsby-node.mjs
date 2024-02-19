@@ -28,11 +28,12 @@ export const createPages = async (props) => {
   const { graphql, actions, reporter } = props;
   const { createPage } = actions;
 
+  // read through comment to understand 2 graphql queries
   const result = await graphql(`
     {
       # find all mdx files for creating page later
       # make sure to add mdx directory path to gatsby-source-filesystem
-      allFile(filter: { sourceInstanceName: { eq: "mdx" } }) {
+      mdx: allFile(filter: { sourceInstanceName: { eq: "mdx" } }) {
         nodes {
           childMdx {
             fields {
@@ -44,10 +45,12 @@ export const createPages = async (props) => {
           }
         }
       }
+
       # find template file and return relative path and source folder
       # for creating page from template later
       # make sure to add src directory path to gatsby-source-filesystem
       # template file name rule e.g: my-project.template.js
+      # template must locate under pages directory
       template: allFile(
         filter: {
           extension: { in: ["js", "jsx"] }
@@ -79,14 +82,17 @@ export const createPages = async (props) => {
   });
 
   // create page for each mdx
-  result.data.allFile.nodes.forEach((node) => {
+  result.data.mdx.nodes.forEach((node) => {
     if (node.childMdx) {
       const { slug } = node.childMdx.frontmatter;
       const isDefault = node.childMdx.fields.locale === defaultLanguage;
 
-      // create page from each template
+      // create page from each templates
       templates.forEach((template) => {
+        //get directory name of template file
         const dir = path.basename(path.dirname(template));
+
+        // make sure path is in foward slash
         const pagePath = path.join(dir, slug).replace(/\\/g, "/");
         const pageData = {
           path: pagePath,
