@@ -3,10 +3,10 @@
     "sectionTitle": "Quick Links",
     "sectionLinks": [
       { "title": "Home", "link": "/" },
-      { "title": "Blog", "link": "/blogs" },
-      { "title": "Web App", "link": "/works/web" },
-      { "title": "Mobile App", "link": "/works/mobile" },
-      { "title": "Machine Learning", "link": "/works/machine-learning" },
+      { "title": "Blogs", "link": "/blogs" },
+      { "title": "Web", "link": "/projects/web" },
+      { "title": "Mobile", "link": "/projects/mobile" },
+      { "title": "Machine Learning", "link": "/projects/machine-learning" },
       { "title": "About", "link": "/about" },
       { "title": "Message Me", "link": "/contact/message-me" }
     ]

@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import * as React from "react";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const FooterSection = ({
   sectionTitle = "",
@@ -8,13 +9,14 @@ const FooterSection = ({
   sectionTitleFontWeight = 800,
   linkFontWeight = 600,
 }) => {
+  const { t } = useI18next();
   return (
     <Box className="flex flex-col justify-center p-4">
       <Typography
         className="mb-4"
         sx={{ fontWeight: sectionTitleFontWeight, width: "fit-content" }}
       >
-        {sectionTitle}
+        {t(sectionTitle)}
       </Typography>
       <Box className="flex flex-col">
         {sectionLinks.map((link, i) => (
@@ -24,7 +26,7 @@ const FooterSection = ({
             >
               <GatsbyStyledLink to={link.link} style={{ width: "fit-content" }}>
                 <span className="no-underline hover:underline underline-offset-4 decoration-2">
-                  {link.title}
+                  {t(link.title)}
                 </span>
               </GatsbyStyledLink>
             </Typography>
