@@ -45,6 +45,7 @@ const Web = ({ data }) => {
     triggerOnce: true,
     trackVisibility: true,
   };
+
   if (data.allMdx.nodes.lenght === 0) {
     return (
       <CommonLayout>

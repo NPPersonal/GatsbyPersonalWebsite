@@ -12,8 +12,32 @@ import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
 import SpinText from "../../components/spin-text/spin-text";
 import { defaultMDXComponents } from "../../mdx/mdx-components";
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 
-const WorkTemplate = ({ data, children }) => {
+const mdxComponents = {
+  p: (props) => (
+    <Typography className="font-bold text-lg" variant="body" {...props} />
+  ),
+  a: (props) => (
+    <GatsbyStyledLink
+      to={props.href}
+      style={{ color: "inherit", textDecoration: "underline" }}
+      {...props}
+    >
+      <Typography
+        className="mx-1 inline font-bold text-lg bg-slate-400"
+        variant="body"
+      >
+        {props.children}
+      </Typography>
+    </GatsbyStyledLink>
+  ),
+};
+
+const WorkTemplate = (props) => {
+  const { data } = props;
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const options = {
@@ -21,6 +45,7 @@ const WorkTemplate = ({ data, children }) => {
     triggerOnce: true,
     trackVisibility: true,
   };
+
   return (
     <CommonLayout>
       <IconButton
@@ -63,14 +88,34 @@ const WorkTemplate = ({ data, children }) => {
           })}
         </Carousel>
       </div>
-      <MDXProvider components={defaultMDXComponents}>{children}</MDXProvider>
+      {/* <MDXProvider components={defaultMDXComponents}>{children}</MDXProvider> */}
+      <Markdown
+        components={{ ...defaultMDXComponents, ...mdxComponents }}
+        rehypePlugins={[rehypeRaw]}
+      >
+        {props.data.mdx.body}
+      </Markdown>
     </CommonLayout>
   );
 };
 
 export const query = graphql`
-  query ($id: String) {
-    mdx(id: { eq: $id }) {
+  query ($slug: String!, $language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["common"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    mdx(
+      fields: { locale: { eq: $language } }
+      frontmatter: { slug: { eq: $slug } }
+    ) {
       frontmatter {
         title
         slug
@@ -80,6 +125,7 @@ export const query = graphql`
         images_id
       }
       id
+      body
     }
   }
 `;

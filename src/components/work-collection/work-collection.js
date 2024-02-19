@@ -18,7 +18,7 @@ const WorkCollection = ({ mdxDataNodes }) => {
         return (
           <GatsbyStyledLink
             key={item.id}
-            to={`/works/${item.frontmatter.slug}`}
+            to={`/projects/${item.frontmatter.slug}`}
           >
             <ExGrow in timeout={1000}>
               <WorkCard

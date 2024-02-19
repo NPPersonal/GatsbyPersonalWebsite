@@ -4,13 +4,13 @@
     "metadata": { "route": "/blogs" }
   },
   {
-    "name": "Works",
+    "name": "Projects",
     "children": [
-      { "name": "Web", "metadata": { "route": "/works/web/" } },
-      { "name": "Mobile", "metadata": { "route": "/works/mobile/" } },
+      { "name": "Web", "metadata": { "route": "/projects/web/" } },
+      { "name": "Mobile", "metadata": { "route": "/projects/mobile/" } },
       {
         "name": "Machine Learning",
-        "metadata": { "route": "/works/machine-learning/" }
+        "metadata": { "route": "/projects/machine-learning/" }
       },
       {
         "name": "GitHub",

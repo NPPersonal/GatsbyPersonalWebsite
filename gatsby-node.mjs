@@ -23,3 +23,84 @@ export const onCreateNode = ({ node, actions }) => {
     createNodeField({ node, name: "locale", value: lang });
   }
 };
+
+export const createPages = async (props) => {
+  const { graphql, actions, reporter } = props;
+  const { createPage } = actions;
+
+  const result = await graphql(`
+    {
+      # find all mdx files for creating page later
+      # make sure to add mdx directory path to gatsby-source-filesystem
+      allFile(filter: { sourceInstanceName: { eq: "mdx" } }) {
+        nodes {
+          childMdx {
+            fields {
+              locale
+            }
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+      # find template file and return relative path and source folder
+      # for creating page from template later
+      # make sure to add src directory path to gatsby-source-filesystem
+      # template file name rule e.g: my-project.template.js
+      template: allFile(
+        filter: {
+          extension: { in: ["js", "jsx"] }
+          name: { glob: "*.template" }
+        }
+      ) {
+        nodes {
+          relativePath
+          sourceInstanceName
+        }
+      }
+    }
+  `);
+
+  // if errors abort
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `Error while running GraphQL query on creating pages.`
+    );
+    return;
+  }
+
+  // collect all template paths
+  const templates = result.data.template.nodes.map((node) => {
+    const { relativePath, sourceInstanceName } = node;
+    const templateFilePath = path.join(sourceInstanceName, relativePath);
+    const template = path.resolve(templateFilePath);
+    return template;
+  });
+
+  // create page for each mdx
+  result.data.allFile.nodes.forEach((node) => {
+    if (node.childMdx) {
+      const { slug } = node.childMdx.frontmatter;
+      const isDefault = node.childMdx.fields.locale === defaultLanguage;
+
+      // create page from each template
+      templates.forEach((template) => {
+        const dir = path.basename(path.dirname(template));
+        const pagePath = path.join(dir, slug).replace(/\\/g, "/");
+        const pageData = {
+          path: pagePath,
+          component: template,
+          context: {
+            slug, //add slug from mdx to page context
+          },
+        };
+
+        // only create page if it is default language
+        if (isDefault) {
+          createPage(pageData);
+        }
+      });
+    }
+  });
+};
