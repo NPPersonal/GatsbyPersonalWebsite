@@ -17,6 +17,28 @@ Set environment variable to key and value above.
 Create two environment files `.env.development` and `.env.production`
 then set the key and value above.
 
+## Localization
+
+The web support 2 languages **English**, **Chinese-Traditional**
+
+### Library for localization
+
+[here](https://github.com/microapps/gatsby-plugin-react-i18next)
+
+### How to localization
+
+[here](https://locize.com/blog/gatsby-i18n/)
+
+### How to localization for template page
+
+[here](https://www.rolique.io/news/translation-of-static-pages-and-mdx-files-pages-in-a-gatsby-project)
+
+Localization for template page involve Gatsby's `createPage` API and a bit difficult to do.
+
+**Note**: all template page files must be outside of pages directory as Gatsby create page automatically.
+**Tempate page files are in side pages directory will lead to production build fail but not development build.**
+see [here](https://stackoverflow.com/questions/65551110/gatsby-develop-works-but-not-build-on-same-project).
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
