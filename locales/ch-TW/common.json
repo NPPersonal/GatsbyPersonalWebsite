@@ -1,1 +1,15 @@
-{ "empty": "目前無項目" }
+{
+  "form-email-invalid": "無效的E-mail",
+  "form-email-label": "E-mail",
+  "form-email-required": "E-mail必填",
+  "form-error-message": "訊息傳送失敗",
+  "form-message-label": "訊息",
+  "form-message-required": "訊息必填",
+  "form-name-label": "名字",
+  "form-name-required": "名字必填",
+  "form-placeholder-email": "填入你得 E-mail",
+  "form-placeholder-message": "想說些甚麼?",
+  "form-placeholder-name": "填入你的名字",
+  "form-success-message": "訊息傳送成功",
+  "send": "傳送"
+}

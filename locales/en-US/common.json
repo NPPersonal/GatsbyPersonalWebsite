@@ -1,1 +1,15 @@
-{ "empty": "There is no items here" }
+{
+  "form-email-invalid": "E-mail is invalid",
+  "form-email-label": "E-mail",
+  "form-email-required": "E-mail is required",
+  "form-error-message": "Sent message fail",
+  "form-message-label": "Message",
+  "form-message-required": "Message is required",
+  "form-name-label": "Name",
+  "form-name-required": "Name is required",
+  "form-placeholder-email": "Enter your E-mail",
+  "form-placeholder-message": "Enter your message",
+  "form-placeholder-name": "Enter your name",
+  "form-success-message": "Sent message successful",
+  "send": "Send"
+}

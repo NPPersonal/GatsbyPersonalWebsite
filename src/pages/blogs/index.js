@@ -1,3 +1,5 @@
+// i18next-extract-mark-ns-start blogs
+
 import * as React from "react";
 import { useMediumRSS } from "../../hooks/use-medium-rss";
 import ReactLoading from "react-loading";

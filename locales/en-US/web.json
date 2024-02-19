@@ -1,1 +1,4 @@
-{ "web-title": "Web App" }
+{
+  "empty": "No items",
+  "web-title": "Web App"
+}

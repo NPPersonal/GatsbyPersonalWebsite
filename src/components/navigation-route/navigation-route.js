@@ -1,8 +1,11 @@
+// i18next-extract-mark-ns-start navigation-route
+
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Box, Menu, MenuItem, Typography } from "@mui/material";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 /**
  * Display a navigation route or a set of sub routes in a menu
@@ -17,6 +20,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
  * @returns
  */
 const NavigationRoute = ({ data, ...rest }) => {
+  const { t } = useI18next();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
@@ -36,10 +40,10 @@ const NavigationRoute = ({ data, ...rest }) => {
       >
         <Typography className="text-2xl cursor-pointer">
           {data.children ? (
-            data.name
+            t(data.name)
           ) : (
             <GatsbyStyledLink to={data.metadata.route}>
-              {data.name}
+              {t(data.name)}
             </GatsbyStyledLink>
           )}
         </Typography>
@@ -67,14 +71,14 @@ const NavigationRoute = ({ data, ...rest }) => {
                   to={item.metadata.route}
                 >
                   <MenuItem>
-                    <Typography>{item.name}</Typography>
+                    <Typography>{t(item.name)}</Typography>
                   </MenuItem>
                 </GatsbyStyledLink>
               );
             } else {
               return (
                 <MenuItem key={`${item.name}-${i}`}>
-                  <Typography>{item.name}</Typography>
+                  <Typography>{t(item.name)}</Typography>
                 </MenuItem>
               );
             }

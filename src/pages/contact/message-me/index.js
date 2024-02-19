@@ -1,3 +1,5 @@
+// i18next-extract-mark-ns-start message-me
+
 import * as React from "react";
 import CommonLayout from "../../../layouts/common-layout";
 import { Box, Divider, SvgIcon, Typography } from "@mui/material";

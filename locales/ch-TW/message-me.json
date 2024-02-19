@@ -1,17 +1,4 @@
 {
   "message-me-title": "傳訊息給我",
-  "or": "或者",
-  "form-success-message": "訊息傳送成功",
-  "form-error-message": "訊息傳送失敗",
-  "form-name-label": "你的名字",
-  "form-placeholder-name": "填入你的字",
-  "form-email-label": "你的E-mail",
-  "form-placeholder-email": "填入你的 E-mail",
-  "form-message-label": "你的訊息",
-  "form-placeholder-message": "想跟我說些甚麼?",
-  "form-name-required": "必須填入名字",
-  "form-email-required": "必須填入 E-mail",
-  "form-email-invalid": "必須填入有效 E-mail",
-  "form-message-required": "必須填入你的訊息",
-  "send": "傳送"
+  "or": "或者"
 }

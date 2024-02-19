@@ -1,5 +1,5 @@
 {
   "hello": "HELLO",
-  "welcome": "WELCOME",
-  "randLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+  "randLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+  "welcome": "WELCOME"
 }

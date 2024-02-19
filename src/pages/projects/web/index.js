@@ -1,3 +1,5 @@
+// i18next-extract-mark-ns-start web
+
 import * as React from "react";
 import { graphql } from "gatsby";
 import { Typography, Box } from "@mui/material";

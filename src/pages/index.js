@@ -1,3 +1,5 @@
+// i18next-extract-mark-ns-start index
+
 import * as React from "react";
 import { Typography, Box, useMediaQuery } from "@mui/material";
 import CommonLayout from "../layouts/common-layout";

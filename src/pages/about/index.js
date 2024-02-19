@@ -1,3 +1,5 @@
+// i18next-extract-mark-ns-start about-me
+
 import * as React from "react";
 import CommonLayout from "../../layouts/common-layout";
 import { Typography, Box } from "@mui/material";
