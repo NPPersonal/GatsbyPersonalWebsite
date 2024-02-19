@@ -11,5 +11,13 @@
   "form-placeholder-message": "Enter your message",
   "form-placeholder-name": "Enter your name",
   "form-success-message": "Sent message successful",
-  "send": "Send"
+  "send": "Send",
+  "Blogs": "Blogs",
+  "Projects": "Projects",
+  "About": "About Me",
+  "Contact": "Contact Me",
+  "Web": "Web App",
+  "Mobile": "Mobile App",
+  "Mahine Learning": "Mahine Learning",
+  "Message Me": "Message Me"
 }

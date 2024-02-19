@@ -11,5 +11,13 @@
   "form-placeholder-message": "想說些甚麼?",
   "form-placeholder-name": "填入你的名字",
   "form-success-message": "訊息傳送成功",
-  "send": "傳送"
+  "send": "傳送",
+  "Blogs": "部落格",
+  "Projects": "專案",
+  "About": "關於我",
+  "Contact": "聯繫我",
+  "Web": "網頁",
+  "Mobile": "行動平台",
+  "Mahine Learning": "機器學習",
+  "Message Me": "傳訊息給我"
 }
