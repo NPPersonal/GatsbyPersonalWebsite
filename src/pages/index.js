@@ -29,10 +29,7 @@ const mdxComponents = {
       style={{ color: "inherit", textDecoration: "underline" }}
       {...props}
     >
-      <Typography
-        className="mx-1 inline font-bold text-lg bg-slate-400"
-        variant="body"
-      >
+      <Typography className="mx-1 inline font-bold bg-slate-400" variant="body">
         {props.children}
       </Typography>
     </GatsbyStyledLink>
@@ -57,7 +54,7 @@ const Home = (props) => {
         } flex-row justify-center items-start`}
       >
         <RenderInView
-          className="mx-8 shrink-[2]"
+          className="mx-10 shrink-[2]"
           options={{
             delay: 1000,
             triggerOnce: true,
@@ -95,7 +92,7 @@ const Home = (props) => {
           </ExFade>
         </RenderInView>
         <ExSlide direction="left" delay={4900} in timeout={2000}>
-          <Box className="relative my-14">
+          <Box className="relative my-16">
             <StaticImage
               className="rounded-lg"
               src="../../assets/landing.jpeg"
