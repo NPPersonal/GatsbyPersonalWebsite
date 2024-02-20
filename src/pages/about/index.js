@@ -25,16 +25,18 @@ const mdxComponents = {
   p: (props) => (
     <Typography className="font-bold text-lg" variant="body" {...props} />
   ),
+  li: (props) => (
+    <Typography className="my-1 block font-bold" variant="body">
+      👉 {props.children}
+    </Typography>
+  ),
   a: (props) => (
     <GatsbyStyledLink
       to={props.href}
       style={{ color: "inherit", textDecoration: "underline" }}
       {...props}
     >
-      <Typography
-        className="mx-1 inline font-bold text-lg bg-slate-400"
-        variant="body"
-      >
+      <Typography className="mx-1 inline font-bold bg-slate-400" variant="body">
         {props.children}
       </Typography>
     </GatsbyStyledLink>
