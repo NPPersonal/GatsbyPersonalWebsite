@@ -1,11 +1,10 @@
 ---
-name: "Tumor Detector"
-title: "Brain Tumor Detector App"
+name: "人腦腫瘤偵測"
+title: "人腦腫瘤偵測器"
 author: "Ming-Chun Hung"
 slug: "brain-tumor-detector"
 category: "machine-learning"
-description: "Detect 3 types of human brain tumor. This detector is able 
-to detect brain tumor with provided medical MRI images."
+description: "偵測3種人腦腫瘤. 這個偵測器可以掃描核磁共振影像並偵測人腦腫瘤."
 preview_img_id: "personal-web-image-assets/machine-learning/brain-tumor/upsc7kidevdwtoyhhast"
 images_id:
   [
@@ -19,93 +18,91 @@ images_id:
   ]
 ---
 
-## Introduction
+## 簡介
 
 ---
 
-This is a human brain tumor detector app that can identify 3 types of tumor.
-Given a medical MRI image, app will analyse the image and return an analysed result.
-The result indicate whether there is a tumor detected or not with probability.
+這是一個人腦腫瘤偵測器並可以偵測 3 種不同的人腦腫瘤. 將核磁共振影像檔傳給偵測器, 偵測器
+就會掃描影像檔並回報偵測結果. 結果包含是否有腫瘤, 哪種的腫瘤和機率.
 
 <br />
 <br />
 
-The purpose of the app is to take advantage of machine learning to assist
-medical professional or patient in brain tumor detection
+這個偵測器使用人工智慧的深度學習來協助醫療人員和病患偵測腫瘤.
 
 <br />
 <br />
 
-## Motivation & Purpose
+## 目的
 
 ---
 
-This tumor detector app was builded during study of computer vision in deep learning.
+這個人腦腫瘤偵測器是在學習和研究電腦視覺深度學習期間開發出來的.
 
 <br />
 <br />
 
-It usually take a period of time to waiting to see the result of MRI of brain from doctor.
-This waiting could take days to a week.
-
-The tumor detector app can shorten the waiting and be used as personal assistance.
+在核磁共振掃描後通常會要等一段時間經由醫師檢查並判斷解果, 這可能等上幾天或一個星期. 透過這個人腦腫瘤
+偵測器可將時間縮段並做預先偵測.
 
 <br />
 <br />
 
-## More
+## 更多
 
 ---
 
-The tumor detector app include a deep learning model that was trained on a set of MRI
-human brain images. And the app can detect 3 type of brain cancers
-[Glioma](https://en.wikipedia.org/wiki/Glioma),
-[Meningioma](https://en.wikipedia.org/wiki/Meningioma),
-[Pituitary](https://en.wikipedia.org/wiki/Pituitary_gland)
-In addition it also report the probability of have any of these cancer in percentage.
+這個人腦腫瘤偵測器包含了一個深度學習模型. 用了大量的人腦核磁共振影像資料來訓練該模型.
+測器可偵測 3 種不同的人腦腫瘤.
 
-The set of MRI images was used to train the deep learning model are in different angles of human head.
-Therefore new MRI image can be in any angles as below:
+- [膠質細胞瘤](https://zh.wikipedia.org/zh-tw/%E8%83%B6%E8%B4%A8%E6%AF%8D%E7%BB%86%E8%83%9E%E7%98%A4)
+- [腦膜瘤](https://www.kmuh.org.tw/www/kmcj/data/9608/12.htm)
+- [垂體瘤](https://zh.wikipedia.org/zh-tw/%E5%9E%82%E4%BD%93%E7%98%A4)
 
-- _top_
-- _left_
-- _right_
-- _front_
-- _back_
+此外該偵測器會回報可能性的機率.
 
-Detector will analyse MRI image and produce report that indicate a cancer was detected or
-normal. Furthermore it give you a probability about the result.
+用於訓練的人腦核磁共振影像資料包含多角度. 因此模型可接受以下人腦核磁共振影像較度.
+
+- _上視圖_
+- _左視圖_
+- _右視圖_
+- _前視圖_
+- _後視圖_
+
+檢測解果將告訴你是否有腫瘤, 哪種類的腫瘤和可能性的機率.
 
 <br />
 <br />
 
-The model was trained with dataset from
+訓練模型的資料
 [Kaggle](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset).
 
-Frameworks were used to build this app:
+<br />
+<br />
 
-- [Tensorflow](https://www.tensorflow.org/) : **deep learning framework for the model**
-- [Streamlit](https://streamlit.io/) : **frontend app**
+使用的框架:
+
+- [Tensorflow](https://www.tensorflow.org/) : **深度學習框架**
+- [Streamlit](https://streamlit.io/) : **前端網頁**
 
 <br />
 <br />
 
-## Note
+## 注意
 
 ---
 
-The detecotr is purpose for assistance and nothing is 100% certain
-thus don't use this detector as a personal doctor.
-Seeking for professional doctor is recommend.
+模型主要用於協助並不能 100%保證, 因此並不要將該偵測器當作個人醫生.
+建議尋求專業醫療人員.
 
 <br />
 <br />
 
-## Website
+## 網站
 
 ---
 
-#### [Click here](https://braintumordetectorapp.streamlit.app/)
+#### [人腦腫瘤偵測器](https://braintumordetectorapp.streamlit.app/)
 
 <br />
 <br />
