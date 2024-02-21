@@ -20,22 +20,9 @@ images_id:
 
 ---
 
-A wine explorer app. Help you to explore wines by your description or possible find
-the one you are looking for.
-
-<br />
-<br />
-
-You just have a taste of a wine and have no clues and no ideas about a wine.
-You eager to find out about the wine and looking for similar wines. This app
-might help you to explore more similar wines and possible find the wine your are
-lokking for. All you need is your description of your taste about the wine.
-
-<br />
-<br />
-
-This app learn from sommeliers on a large set of wines then analyse your
-description and try to find possible wines for you.
+Don't know where it was produced? Don't know where it came from? All you need
+to know is how your feel about it and your description. This app will list
+all possible wines' information. Perhaps there is one you are looking for.
 
 <br />
 <br />
@@ -50,9 +37,7 @@ bunch of reviews is a pain or sometime your have no clues where to start.
 <br />
 <br />
 
-Translating from description of wine or desire of your wine should be into
-a keywords for searching wines might be a solution regardless of taste of wine
-is vary from person to person.
+Use your sentiment about a wine for searching could shorten this process.
 
 <br />
 <br />
@@ -66,9 +51,12 @@ The machine learning model was trained with dataset from [Kaggle](https://www.ka
 <br />
 <br />
 
-Two models were produced old model and new model. The old model was trained with supervise learning while
-new model was trained with unsupervise learning. Both models find the similarity of description to predouce
-final result.
+There are 2 models, old model and new model. And they use different training method.
+
+- Old model: supervise learning
+- New model: unsupervise learning
+
+Both models find the similarity of description to predouce final result.
 
 <br />
 <br />
@@ -86,13 +74,6 @@ Frameworks were used to build this app:
 ## Note
 
 ---
-
-The models find wines base on similarity of your description and
-there are many factors could effect the result. Therefore wines you
-found might not be 100% your are looking for.
-
-<br />
-<br />
 
 Old version only provide wine's title, country, score, price and description.
 Backend server often put to sleep if no interaction for period of time. Therefore

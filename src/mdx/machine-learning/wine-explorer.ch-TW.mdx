@@ -1,10 +1,10 @@
 ---
-name: "Wine Explorer"
-title: "Wine Explorer App"
+name: "品酒探索"
+title: "品酒探索"
 author: "Ming-Chun Hung"
 slug: "wine-explorer"
 category: "machine-learning"
-description: "Explore wines by your description"
+description: "依照你的品酒敘述來探索適合你的酒"
 preview_img_id: "personal-web-image-assets/machine-learning/wine-finder/lxbxt1xezxa4iz0vjkpm"
 images_id:
   [
@@ -16,69 +16,56 @@ images_id:
   ]
 ---
 
-## Introduction
+## 簡介
 
 ---
 
-A wine explorer app. Help you to explore wines by your description or possible find
-the one you are looking for.
+不知道哪裡生產的? 出自哪個國家? 你只要知道你對酒品嘗後的感覺並敘述它.
+這個探索器將會列出相關酒的資料. 也許會讓你找到適合你的酒.
 
 <br />
 <br />
 
-You just have a taste of a wine and have no clues and no ideas about a wine.
-You eager to find out about the wine and looking for similar wines. This app
-might help you to explore more similar wines and possible find the wine your are
-lokking for. All you need is your description of your taste about the wine.
-
-<br />
-<br />
-
-This app learn from sommeliers on a large set of wines then analyse your
-description and try to find possible wines for you.
-
-<br />
-<br />
-
-## Motivation & Purpose
+## 目的
 
 ---
 
-Looking for wines you like is like picking needle from ocean. Looking through
-bunch of reviews is a pain or sometime your have no clues where to start.
+尋找新的酒或想找相關的酒就像在大海撈針. 打入關鍵字看著一片又一篇的評論. 這非常耗時又痛苦.
+有時甚至不知從何開始.
 
 <br />
 <br />
 
-Translating from description of wine or desire of your wine should be into
-a keywords for searching wines might be a solution regardless of taste of wine
-is vary from person to person.
+利用自己品酒的感覺來尋找或探索相關的酒將可進一步縮短這過程.
 
 <br />
 <br />
 
-## More
+## 更多
 
 ---
 
-The machine learning model was trained with dataset from [Kaggle](https://www.kaggle.com/datasets/zynicide/wine-reviews).
+訓練模型的資料[Kaggle](https://www.kaggle.com/datasets/zynicide/wine-reviews).
 
 <br />
 <br />
 
-Two models were produced old model and new model. The old model was trained with supervise learning while
-new model was trained with unsupervise learning. Both models find the similarity of description to predouce
-final result.
+有 2 個模型, 舊模型和新模型. 這兩個模型使用不一樣的學習方法.
+
+- 舊模型: 使用監督式學習
+- 新模型: 使用非監督式學習
+
+這 2 個模型使用敘述的相似度來尋找相關資料並產生出解果.
 
 <br />
 <br />
 
-Frameworks were used to build this app:
+所使用到的框架:
 
-- [Scikit-Learn](https://scikit-learn.org/) : **machine learning framework for model**
-- [Streamlit](https://streamlit.io/) : **backend with frontend app for new version**
-- [Nextjs](https://nextjs.org/) : **frontend app for old version**
-- [Docker](https://www.docker.com/) : **containerized backend for old version**
+- [Scikit-Learn](https://scikit-learn.org/) : **機器學習框架**
+- [Streamlit](https://streamlit.io/) : **新模型所用的前端網頁**
+- [Nextjs](https://nextjs.org/) : **舊模型用的前端網頁**
+- [Docker](https://www.docker.com/) : **舊模型用的後端**
 
 <br />
 <br />
@@ -87,21 +74,14 @@ Frameworks were used to build this app:
 
 ---
 
-The models find wines base on similarity of your description and
-there are many factors could effect the result. Therefore wines you
-found might not be 100% your are looking for.
+舊模型會提供酒的資料包含酒的名字, 國家, 分數, 價格(美金)和訓練時所用的敘述.
+舊模型用的後端伺服器如果沒有互動一段時間會進入休眠. 因此在下次要互動時需要一耶時間
+才能再次運作, 導致前端網頁會要等一些時間才能運作.
 
 <br />
 <br />
 
-Old version only provide wine's title, country, score, price and description.
-Backend server often put to sleep if no interaction for period of time. Therefore
-website(frontend) will take a while to wait for server to wake up to be able to function.
-
-<br />
-<br />
-
-New version only provide wine's location information.
+新模型只會提供酒的地點資料.
 
 <br />
 <br />
@@ -110,9 +90,9 @@ New version only provide wine's location information.
 
 ---
 
-#### [Old version](https://ask-me-wines.netlify.app/)
+#### [舊版](https://ask-me-wines.netlify.app/)
 
-#### [New version](https://wineidentifier.streamlit.app/)
+#### [新版](https://wineidentifier.streamlit.app/)
 
 <br />
 <br />

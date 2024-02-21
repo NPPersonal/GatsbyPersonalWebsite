@@ -19,6 +19,11 @@ const mdxComponents = {
   p: (props) => (
     <Typography className="font-bold text-lg" variant="body" {...props} />
   ),
+  li: (props) => (
+    <Typography className="my-1 block font-bold" variant="body">
+      ➡ {props.children}
+    </Typography>
+  ),
   a: (props) => (
     <GatsbyStyledLink
       to={props.href}
@@ -66,34 +71,33 @@ const WorkTemplate = (props) => {
           </Typography>
         </RenderInView>
       </Box>
-      <div className="mb-8">
-        <Carousel
-          animation="slide"
-          interval={5000}
-          navButtonsAlwaysInvisible
-          autoPlay
-        >
-          {data.mdx.frontmatter.images_id.map((image_id, i) => {
-            const image = getCloudinaryImage(image_id)
-              .format("auto")
-              .quality("auto");
-            return (
-              <CarouselCard
-                key={`${image_id}-${i}`}
-                cloudinaryImage={image}
-                imageHeight={400}
-              />
-            );
-          })}
-        </Carousel>
-      </div>
-      {/* <MDXProvider components={defaultMDXComponents}>{children}</MDXProvider> */}
-      <Markdown
-        components={{ ...defaultMDXComponents, ...mdxComponents }}
-        rehypePlugins={[rehypeRaw]}
+      <Carousel
+        animation="slide"
+        interval={5000}
+        navButtonsAlwaysInvisible
+        autoPlay
       >
-        {props.data.mdx.body}
-      </Markdown>
+        {data.mdx.frontmatter.images_id.map((image_id, i) => {
+          const image = getCloudinaryImage(image_id)
+            .format("auto")
+            .quality("auto");
+          return (
+            <CarouselCard
+              key={`${image_id}-${i}`}
+              cloudinaryImage={image}
+              imageHeight={400}
+            />
+          );
+        })}
+      </Carousel>
+      <Box className="my-4">
+        <Markdown
+          components={{ ...defaultMDXComponents, ...mdxComponents }}
+          rehypePlugins={[rehypeRaw]}
+        >
+          {props.data.mdx.body}
+        </Markdown>
+      </Box>
     </CommonLayout>
   );
 };
