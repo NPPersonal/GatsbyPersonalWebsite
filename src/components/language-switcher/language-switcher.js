@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Popover,
-  Typography,
-} from "@mui/material";
+import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import TranslateIcon from "@mui/icons-material/Translate";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import languageMapper from "../../../locales/language-mapper.json";
@@ -38,29 +31,24 @@ const LanguageSwitcher = () => {
         </IconButton>
         <Typography>{languageMapper[language]}</Typography>
       </Box>
-      <Popover
+      <Menu
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
+        disableScrollLock={true}
       >
-        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          {languages.map((langCode, i) => {
-            const langName = languageMapper[langCode];
-            return (
-              <MenuItem
-                key={`${langCode}-${i}`}
-                onClick={() => handleLanguageClick(langCode)}
-              >
-                <Typography>{langName}</Typography>
-              </MenuItem>
-            );
-          })}
-        </Menu>
-      </Popover>
+        {languages.map((langCode, i) => {
+          const langName = languageMapper[langCode];
+          return (
+            <MenuItem
+              key={`${langCode}-${i}`}
+              onClick={() => handleLanguageClick(langCode)}
+            >
+              <Typography>{langName}</Typography>
+            </MenuItem>
+          );
+        })}
+      </Menu>
     </Box>
   );
 };

@@ -62,6 +62,7 @@ const NavigationRoute = ({ data, ...rest }) => {
           anchorEl={anchorEl}
           onClose={handleClose}
           onClick={handleClose}
+          disableScrollLock={true}
         >
           {data.children.map((item, i) => {
             if (item.metadata.route) {
