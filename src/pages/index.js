@@ -12,16 +12,32 @@ import {
   ExFade,
   ExSlide,
 } from "../components/mui-extension/transition-extension";
-import { defaultMDXComponents } from "../mdx/mdx-components";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { graphql } from "gatsby";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import GatsbyStyledLink from "../components/gatsby-styled-link/gatsby-styled-link";
 
-const mdxComponents = {
+const defaultMDXComponents = {
+  h3: (props) => (
+    <Typography className="font-bold" variant="h3" align="center" {...props} />
+  ),
+  h4: (props) => <Typography variant="h4" align="center" {...props} />,
   p: (props) => (
-    <Typography className="font-bold text-lg" variant="body" {...props} />
+    <Typography className="font-semibold text-lg" paragraph {...props} />
+  ),
+  li: (props) => (
+    <Typography className="my-1 block font-semibold text-lg" component="li">
+      ➡ {props.children}
+    </Typography>
+  ),
+  strong: (props) => (
+    <Typography
+      className="font-bold text-xl"
+      component="strong"
+      sx={{ fontStyle: "italic" }}
+      {...props}
+    />
   ),
   a: (props) => (
     <GatsbyStyledLink
@@ -29,7 +45,10 @@ const mdxComponents = {
       style={{ color: "inherit", textDecoration: "underline" }}
       {...props}
     >
-      <Typography className="mx-1 inline font-bold bg-slate-400" variant="body">
+      <Typography
+        className="mx-1 inline font-semibold text-lg bg-slate-400"
+        component="span"
+      >
         {props.children}
       </Typography>
     </GatsbyStyledLink>
@@ -84,7 +103,7 @@ const Home = (props) => {
           </Typography>
           <ExFade in delay={4000} timeout={2000}>
             <Markdown
-              components={{ ...defaultMDXComponents, ...mdxComponents }}
+              components={defaultMDXComponents}
               rehypePlugins={[rehypeRaw]}
             >
               {props.data.mdx.body}

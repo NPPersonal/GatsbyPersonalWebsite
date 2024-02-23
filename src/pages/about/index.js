@@ -14,21 +14,32 @@ import { getCloudinaryImage } from "../../libs/cloudinary";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
 import SpinText from "../../components/spin-text/spin-text";
-import { defaultMDXComponents } from "../../mdx/mdx-components";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 import { graphql } from "gatsby";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 
-const mdxComponents = {
+const defaultMDXComponents = {
+  h3: (props) => (
+    <Typography className="font-bold" variant="h3" align="center" {...props} />
+  ),
+  h4: (props) => <Typography variant="h4" align="center" {...props} />,
   p: (props) => (
-    <Typography className="font-bold text-lg" variant="body" {...props} />
+    <Typography className="font-semibold text-lg" paragraph {...props} />
   ),
   li: (props) => (
-    <Typography className="my-1 block font-bold" variant="body">
+    <Typography className="my-1 block font-semibold text-lg" component="li">
       👉 {props.children}
     </Typography>
+  ),
+  strong: (props) => (
+    <Typography
+      className="font-bold text-xl"
+      component="strong"
+      sx={{ fontStyle: "italic" }}
+      {...props}
+    />
   ),
   a: (props) => (
     <GatsbyStyledLink
@@ -36,7 +47,10 @@ const mdxComponents = {
       style={{ color: "inherit", textDecoration: "underline" }}
       {...props}
     >
-      <Typography className="mx-1 inline font-bold bg-slate-400" variant="body">
+      <Typography
+        className="mx-1 inline font-semibold text-lg bg-slate-400"
+        component="span"
+      >
         {props.children}
       </Typography>
     </GatsbyStyledLink>
@@ -55,7 +69,11 @@ const About = (props) => {
   return (
     <CommonLayout>
       <RenderInView options={options}>
-        <Typography className="leading-loose" variant="h3" align="center">
+        <Typography
+          className="leading-loose font-bold"
+          variant="h3"
+          align="center"
+        >
           <SpinText
             text={t("about-me-title")}
             duration={200}
@@ -122,13 +140,7 @@ const About = (props) => {
           </RenderInView>
         </Box>
       </Box>
-      {/* <MDXProvider components={defaultMDXComponents}>
-        <AboutMe />
-      </MDXProvider> */}
-      <Markdown
-        components={{ ...defaultMDXComponents, ...mdxComponents }}
-        rehypePlugins={[rehypeRaw]}
-      >
+      <Markdown components={defaultMDXComponents} rehypePlugins={[rehypeRaw]}>
         {props.data.mdx.body}
       </Markdown>
     </CommonLayout>

@@ -76,7 +76,7 @@ const Blog = () => {
           trackVisibility: true,
         }}
       >
-        <Typography className="my-4" variant="h3" align="center">
+        <Typography className="my-4 font-bold" variant="h3" align="center">
           <SpinText
             text={t("blogs-title")}
             duration={250}

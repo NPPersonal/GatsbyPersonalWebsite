@@ -24,7 +24,11 @@ const Banner = ({ letterSpinColor, options, t }) => {
         height={200}
       />
       <RenderInView options={options}>
-        <Typography className="leading-loose" variant="h3" align="center">
+        <Typography
+          className="leading-loose font-bold"
+          variant="h3"
+          align="center"
+        >
           <SpinText
             text={t("mobile-title")}
             duration={100}
