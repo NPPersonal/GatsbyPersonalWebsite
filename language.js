@@ -1,7 +1,7 @@
 const { join } = require("path");
 const { readdirSync, lstatSync } = require("fs");
 
-const defaultLanguage = "en-US";
+const defaultLanguage = "en_US";
 
 // based on the directories get the language codes
 const languages = readdirSync(join(__dirname, "locales")).filter((fileName) => {

@@ -36,6 +36,8 @@ const LanguageSwitcher = () => {
         open={open}
         onClose={handleClose}
         disableScrollLock={true}
+        disableAutoFocus={true}
+        disablePortal={true}
       >
         {languages.map((langCode, i) => {
           const langName = languageMapper[langCode];

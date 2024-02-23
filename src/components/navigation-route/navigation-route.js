@@ -63,6 +63,8 @@ const NavigationRoute = ({ data, ...rest }) => {
           onClose={handleClose}
           onClick={handleClose}
           disableScrollLock={true}
+          disableAutoFocus={true}
+          disablePortal={true}
         >
           {data.children.map((item, i) => {
             if (item.metadata.route) {
