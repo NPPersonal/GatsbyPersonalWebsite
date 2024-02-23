@@ -70,7 +70,7 @@ const Home = (props) => {
       <Box
         className={`flex ${
           isWrap ? "flex-wrap" : "flex-nowrap"
-        } flex-row justify-center items-start`}
+        } flex-row justify-center items-center`}
       >
         <RenderInView
           className="mx-10 shrink-[2]"
@@ -80,35 +80,37 @@ const Home = (props) => {
             trackVisibility: true,
           }}
         >
-          <Typography
-            className="leading-[1.5] mb-4 font-bold"
-            variant="h2"
-            align="center"
-          >
-            <SpinText
-              text={t("hello")}
-              duration={250}
-              sequential
-              randLetters={t("randLetters")}
-              randLetterColor={letterSpinColor}
-            />
-            <SpinText
-              text={t("welcome")}
-              duration={200}
-              delay={1600}
-              sequential
-              randLetters={t("randLetters")}
-              randLetterColor={letterSpinColor}
-            />
-          </Typography>
-          <ExFade in delay={4000} timeout={2000}>
-            <Markdown
-              components={defaultMDXComponents}
-              rehypePlugins={[rehypeRaw]}
+          <Box className="flex flex-col justify-center items-stretch">
+            <Typography
+              className="leading-[1.5] mb-4 font-bold"
+              variant="h2"
+              align="center"
             >
-              {props.data.mdx.body}
-            </Markdown>
-          </ExFade>
+              <SpinText
+                text={t("hello")}
+                duration={250}
+                sequential
+                randLetters={t("randLetters")}
+                randLetterColor={letterSpinColor}
+              />
+              <SpinText
+                text={t("welcome")}
+                duration={200}
+                delay={1600}
+                sequential
+                randLetters={t("randLetters")}
+                randLetterColor={letterSpinColor}
+              />
+            </Typography>
+            <ExFade in delay={4000} timeout={2000}>
+              <Markdown
+                components={defaultMDXComponents}
+                rehypePlugins={[rehypeRaw]}
+              >
+                {props.data.mdx.body}
+              </Markdown>
+            </ExFade>
+          </Box>
         </RenderInView>
         <ExSlide direction="left" delay={4900} in timeout={2000}>
           <Box className="relative my-16">
