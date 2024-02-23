@@ -30,7 +30,6 @@ Style transfer app allow you to transform a real photo into a vangogh
 panting style. The result is combination of real photo with vangogh style.
 
 <br />
-<br />
 
 ### Motivation & Purpose
 
@@ -40,13 +39,9 @@ Learning a particular skill of panting style then apply it on drawing of beautif
 scene or object would be a time consuming and difficult process. Not everyone can
 do it. Hand over this task to artificial intelligent can shorten this process.
 
-<br />
-<br />
-
 This artifical intelligent learn the style of painting from vangogh and then transform
 a real photo into the style.
 
-<br />
 <br />
 
 ### More
@@ -56,28 +51,18 @@ a real photo into the style.
 The model was trained with
 dataset from [Kaggle](https://www.kaggle.com/datasets/suyashdamle/cyclegan?select=vangogh2photo).
 
-<br />
-<br />
-
 The model use [CycleGAN](https://www.tensorflow.org/tutorials/generative/cyclegan) to achieve
 style transfer for real photo.
-
-<br />
-<br />
 
 The model's size had been reduced by using
 [DepthwiseConv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/DepthwiseConv2D)
 instead of [Conv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D).
-
-<br />
-<br />
 
 Frameworks were used to build this app:
 
 - [Tensorflow](https://www.tensorflow.org/) : Deep learning framework for the model
 - [Streamlit](https://streamlit.io/) : Frontend app
 
-<br />
 <br />
 
 ### 注意
@@ -88,7 +73,6 @@ From time to time this app is not able to complete transfer style properly due t
 dataset was limited and hardware restriction during model training.
 
 <br />
-<br />
 
 ### Website
 
@@ -96,5 +80,4 @@ dataset was limited and hardware restriction during model training.
 
 #### [Style Transfer](https://vangoghstyletransformationapp.streamlit.app/)
 
-<br />
 <br />

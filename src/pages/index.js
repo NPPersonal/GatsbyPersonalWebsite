@@ -42,7 +42,10 @@ const defaultMDXComponents = {
   a: (props) => (
     <GatsbyStyledLink
       to={props.href}
-      style={{ color: "inherit", textDecoration: "underline" }}
+      style={{
+        color: "inherit",
+        textDecoration: "underline",
+      }}
       {...props}
     >
       <Typography
@@ -93,6 +96,12 @@ const Home = (props) => {
                 randLetters={t("randLetters")}
                 randLetterColor={letterSpinColor}
               />
+            </Typography>
+            <Typography
+              className="leading-[1.5] mb-4 font-bold"
+              variant="h3"
+              align="center"
+            >
               <SpinText
                 text={t("welcome")}
                 duration={200}
