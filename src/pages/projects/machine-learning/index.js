@@ -90,6 +90,7 @@ export const query = graphql`
         fields: { locale: { eq: $language } }
         frontmatter: { category: { eq: "machine-learning" } }
       }
+      sort: { frontmatter: { title: ASC } }
     ) {
       nodes {
         frontmatter {

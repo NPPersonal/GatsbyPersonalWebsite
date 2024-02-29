@@ -17,7 +17,7 @@ import SocialLinkData from "../../../static/social-links/social-links.json";
  *
  * @returns React node
  */
-const NavBarDrawer = ({ routes, onRouteClick, logoSize = 44, ...rest }) => {
+const NavBarDrawer = ({ routes, onRouteClick, ...rest }) => {
   const handleRouteClick = (element) => {
     onRouteClick(element);
   };
@@ -27,19 +27,21 @@ const NavBarDrawer = ({ routes, onRouteClick, logoSize = 44, ...rest }) => {
   // };
   return (
     <Drawer {...rest}>
-      <Container className="my-2 h-full flex flex-col justify-around">
-        <Box className="m-2 flex justify-center content-center">
-          <Avatar alt="Logo" sx={{ width: logoSize, height: logoSize }}>
+      <Container className="my-2 flex flex-col justify-around overflow-visible">
+        <Box className="my-2 flex justify-center items-center">
+          <Avatar alt="Logo" sx={{ width: 44, height: 44 }}>
             <StaticImage
               src="../../images/logo.png"
               alt="Logo image"
               placeholder="blurred"
-              layout="constrained"
+              layout="fixed"
+              width={48}
+              height={48}
             />
           </Avatar>
         </Box>
         <Divider className="my-2" orientation="horizontal" />
-        <Box className=" my-2 grow flex justify-center content-center">
+        <Box className="my-2 flex justify-center content-center">
           <NavigationTreeView
             routes={routes}
             onTreeItemClicked={handleRouteClick}

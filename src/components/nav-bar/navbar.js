@@ -1,7 +1,14 @@
 import * as React from "react";
 import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
 import PropTypes from "prop-types";
-import { Box, AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  useMediaQuery,
+} from "@mui/material";
 import NavigationRoute from "../navigation-route/navigation-route";
 import {
   Brightness7Rounded,
@@ -43,7 +50,9 @@ const renderNavigationRoutes = (navigationRoutes) => {
  *
  * @returns
  */
-const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
+const NavBar = ({ title = "", navigationRoutes = [] }) => {
+  const { theme } = React.useContext(MUIThemeContext);
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { mode, toggleColorMode } = React.useContext(MUIThemeContext);
   const [open, setOpen] = React.useState(false);
 
@@ -63,30 +72,44 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
   return (
     <Box>
       <AppBar enableColorOnDark>
-        <Toolbar>
-          <IconButton
-            className="sm:hidden"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleMenuClick}
-          >
-            <MenuRounded fontSize="large" />
-          </IconButton>
-          <Box>
+        <Toolbar
+          className="mx-2 flex flex-row justify-evenly items-center"
+          disableGutters={true}
+        >
+          <Box className="mx-1">
+            <IconButton
+              className={`${isSmallScreen ? "" : "hidden"}`}
+              aria-label="open drawer"
+              onClick={handleMenuClick}
+            >
+              <MenuRounded fontSize="large" />
+            </IconButton>
+          </Box>
+          <Box className="mx-1">
             <IconButton aria-label="Home" onClick={handleHomeClick}>
               <HomeRounded fontSize="large" />
             </IconButton>
           </Box>
           {title && (
-            <Typography className="text-4xl font-bold hidden sm:block">
+            <Typography
+              className={`text-4xl font-bold ${
+                isSmallScreen ? "hidden" : "block"
+              }`}
+            >
               {title}
             </Typography>
           )}
-          <Box className="grow">
-            {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
+          {isSmallScreen ? (
+            <Box className="grow" />
+          ) : (
+            <Box className="grow">
+              {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
+            </Box>
+          )}
+          <Box className="mx-1">
+            <LanguageSwitcher />
           </Box>
-          <LanguageSwitcher />
-          <Box className="ml-4">
+          <Box className="mx-1">
             <IconButton
               aria-label="color mode"
               onClick={() => toggleColorMode()}
@@ -104,7 +127,6 @@ const NavBar = ({ title = "", logoSize = 44, navigationRoutes = [] }) => {
         open={open}
         anchor="left"
         routes={navigationRoutes}
-        logoSize={logoSize}
         onRouteClick={handleRouteClick}
         onClose={handleMenuClose}
       />

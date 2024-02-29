@@ -88,6 +88,7 @@ export const query = graphql`
         fields: { locale: { eq: $language } }
         frontmatter: { category: { eq: "mobile" } }
       }
+      sort: { frontmatter: { title: ASC } }
     ) {
       nodes {
         frontmatter {
