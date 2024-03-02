@@ -1,0 +1,82 @@
+---
+name: "股票預測"
+title: "股票預測"
+author: "Ming-Chun Hung"
+slug: "stock-prediction"
+category: "machine-learning"
+description: "視覺化股票資料並預測明天的股票"
+preview_img_id: "personal-web-image-assets/machine-learning/stock-prediction/preview"
+images_id:
+  [
+    "personal-web-image-assets/machine-learning/stock-prediction/img1",
+    "personal-web-image-assets/machine-learning/stock-prediction/img2",
+    "personal-web-image-assets/machine-learning/stock-prediction/img3",
+    "personal-web-image-assets/machine-learning/stock-prediction/img4",
+    "personal-web-image-assets/machine-learning/stock-prediction/img5",
+    "personal-web-image-assets/machine-learning/stock-prediction/img6",
+  ]
+---
+
+### 簡介
+
+---
+
+股票預測可以讓你以圖像的方式來觀看股票資料. 除此之外它可以預測明天的股票.
+
+你可以加入你想看的股票或者移除.
+
+<br />
+
+### 目的
+
+---
+
+結合機器學習和金融股票來做預測. 這可能可以幫助股票交易員來決定是否要買
+還是賣.
+
+<br />
+
+### 更多
+
+---
+
+這個預測股票的模型是從
+[DecisionTreeRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)
+演變出來的另一種模型. 在這裡是用
+[RandomForestRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+模型來做訓練和預測.
+
+這個小專案使用了 [Docker](https://www.docker.com/)
+來提供多個服務. 這樣是為了有更好的擴展性. 同時也用了 [Streamlit](https://streamlit.io/)
+來做前端網頁.
+
+這服務可以讓使用者增加或移除股票並且它會針對使用者的設定而做及時反映. 服務自己
+本身每天會自己學習股票資料並做預測.
+
+所有股票資料都來自於 [Yahoo Finance](https://finance.yahoo.com/).
+
+開發 app 時所用到的框架:
+
+- [Scikit-Learn](https://scikit-learn.org/stable/) : 用於建立模型, 學習資料和預測
+- [Streamlit](https://streamlit.io/) : 前端網頁
+- [Docker](https://www.docker.com/) : 容器化的後端服務
+
+<br />
+
+### 注意
+
+---
+
+這個小專案目前都是在本地機器上做開發和測試, 因此沒有實際線上的服務. 因為
+沒有任何預算去租用伺服器來執行容器化的服務, 在這目前沒有打算做線上的公開.
+不過原始碼都可以在 GitHub 裡下載.
+
+<br />
+
+### 網頁
+
+---
+
+#### [GitHub](https://github.com/NPMachineLearning/StockPrediction)
+
+<br />
