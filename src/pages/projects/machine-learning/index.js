@@ -98,7 +98,6 @@ export const query = graphql`
           name
           slug
           title
-          preview
           description
           preview_img_id
         }

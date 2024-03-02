@@ -174,7 +174,6 @@ export const query = graphql`
         title
         slug
         preview_img_id
-        preview
         name
         images_id
         description
