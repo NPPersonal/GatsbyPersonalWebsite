@@ -14,9 +14,8 @@ import {
 } from "../components/mui-extension/transition-extension";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { graphql } from "gatsby";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import GatsbyStyledLink from "../components/gatsby-styled-link/gatsby-styled-link";
+import MarkdownRenderer from "../components/markdown-renderer/markdown-renderer";
 
 const defaultMDXComponents = {
   h3: (props) => (
@@ -112,12 +111,9 @@ const Home = (props) => {
               />
             </Typography>
             <ExFade in delay={4000} timeout={2000}>
-              <Markdown
-                components={defaultMDXComponents}
-                rehypePlugins={[rehypeRaw]}
-              >
+              <MarkdownRenderer components={defaultMDXComponents}>
                 {props.data.mdx.body}
-              </Markdown>
+              </MarkdownRenderer>
             </ExFade>
           </Box>
         </RenderInView>

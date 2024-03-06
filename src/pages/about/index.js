@@ -14,11 +14,10 @@ import { getCloudinaryImage } from "../../libs/cloudinary";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
 import SpinText from "../../components/spin-text/spin-text";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import { graphql } from "gatsby";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
+import MarkdownRenderer from "../../components/markdown-renderer/markdown-renderer";
 
 const defaultMDXComponents = {
   h3: (props) => (
@@ -140,9 +139,9 @@ const About = (props) => {
           </RenderInView>
         </Box>
       </Box>
-      <Markdown components={defaultMDXComponents} rehypePlugins={[rehypeRaw]}>
+      <MarkdownRenderer components={defaultMDXComponents}>
         {props.data.mdx.body}
-      </Markdown>
+      </MarkdownRenderer>
     </CommonLayout>
   );
 };

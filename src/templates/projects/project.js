@@ -10,9 +10,8 @@ import CommonLayout from "../../layouts/common-layout";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
 import SpinText from "../../components/spin-text/spin-text";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
+import MarkdownRenderer from "../../components/markdown-renderer/markdown-renderer";
 
 const defaultMDXComponents = {
   h3: (props) => (
@@ -102,9 +101,9 @@ const WorkTemplate = (props) => {
         })}
       </Carousel>
       <Box className="my-4">
-        <Markdown components={defaultMDXComponents} rehypePlugins={[rehypeRaw]}>
+        <MarkdownRenderer components={defaultMDXComponents}>
           {props.data.mdx.body}
-        </Markdown>
+        </MarkdownRenderer>
       </Box>
     </CommonLayout>
   );
