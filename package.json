@@ -13,6 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "profile": "gatsby build",
     "cbs": "gatsby clean && gatsby build && gatsby serve",
     "extract": "babel --verbose --config-file ./babel-extract.config.js -o tmp/chunk.js src/**/*.{js,jsx,ts,tsx} && rm -r tmp",
     "babelhelp": "babel --help"
@@ -67,6 +68,8 @@
     "@semantic-release/github": "^9.0.4",
     "babel-plugin-i18next-extract": "^0.10.0",
     "cz-conventional-changelog": "^3.3.0",
+    "gatsby-plugin-perf-budgets": "^0.0.18",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.32",
     "semantic-release": "^21.1.1"
   },
   "config": {

@@ -13,6 +13,8 @@ const config = {
     siteUrl,
   },
   plugins: [
+    `gatsby-plugin-perf-budgets`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-image`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-postcss`,
