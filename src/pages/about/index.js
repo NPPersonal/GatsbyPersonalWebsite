@@ -86,6 +86,7 @@ const About = (props) => {
         <AdvancedImage
           className="rounded-lg drop-shadow-2xl"
           style={{ width: 250 }}
+          alt="profile"
           cldImg={getCloudinaryImage(
             "personal-web-image-assets/web-assets/profile"
           )}

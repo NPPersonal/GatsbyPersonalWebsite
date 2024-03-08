@@ -98,6 +98,7 @@ const WorkTemplate = (props) => {
               key={`${image_id}-${i}`}
               cloudinaryImage={image}
               imageHeight={400}
+              alt={`${image_id}-${i}`}
             />
           );
         })}

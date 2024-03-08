@@ -86,6 +86,7 @@ const config = {
       options: {
         mode: "async",
         enableListener: true,
+        scope: "html",
         preconnect: [
           `https://fonts.googleapis.com`,
           `https://fonts.gstatic.com`,

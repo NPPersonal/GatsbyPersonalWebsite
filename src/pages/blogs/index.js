@@ -106,7 +106,7 @@ const Blog = () => {
                 <CardHeader
                   title={item["title"]}
                   subheader={datetimeToDate(item["pubDate"])}
-                  avatar={<Avatar src={feed["image"]} />}
+                  avatar={<Avatar src={feed["image"]} alt="profile" />}
                 />
                 <CardMedia
                   component="img"

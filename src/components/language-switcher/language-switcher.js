@@ -30,7 +30,7 @@ const LanguageSwitcher = () => {
         className="flex flex-row justify-center items-center cursor-pointer"
         onClick={handleClick}
       >
-        <IconButton>
+        <IconButton aria-label="switch-language">
           <TranslateIcon />
         </IconButton>
         <Typography>{languageMapper[language]}</Typography>

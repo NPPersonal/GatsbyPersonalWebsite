@@ -7,11 +7,12 @@ import {
   placeholder,
 } from "@cloudinary/react";
 
-const CarouselCard = ({ cloudinaryImage, imageHeight = 400 }) => {
+const CarouselCard = ({ cloudinaryImage, imageHeight = 400, alt = "" }) => {
   return (
     <Box className="flex justify-center items-center">
       <AdvancedImage
         style={{ height: imageHeight }}
+        alt={alt}
         cldImg={cloudinaryImage}
         plugins={[
           lazyload(),

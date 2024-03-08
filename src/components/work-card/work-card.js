@@ -19,6 +19,7 @@ const WorkCard = ({ onClick = null, cloudinaryImage, name, description }) => {
       <Box className="flex justify-center items-center">
         <AdvancedImage
           style={{ width: "-webkit-fill-available" }}
+          alt={name}
           cldImg={cloudinaryImage}
           plugins={[
             lazyload(),
