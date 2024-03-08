@@ -121,7 +121,7 @@ const Home = (props) => {
           <Box className="relative my-16">
             <StaticImage
               className="rounded-lg"
-              src="../../assets/landing.jpeg"
+              src="../images/landing.jpeg"
               placeholder="blurred"
               alt="landing"
               layout="constrained"
@@ -129,14 +129,14 @@ const Home = (props) => {
             />
             <StaticImage
               className="absolute left-[-30px] bottom-[-55px] bg-transparent"
-              src="../../assets/tap.png"
+              src="../images/tap.png"
               placeholder="blurred"
               alt="tap-left-bottom"
               width={100}
             />
             <StaticImage
               className="absolute right-[-35px] top-[-60px] rotate-180 bg-transparent"
-              src="../../assets/tap.png"
+              src="../images/tap.png"
               placeholder="blurred"
               alt="tap-top-right"
               width={100}

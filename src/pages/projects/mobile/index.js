@@ -17,7 +17,7 @@ const Banner = ({ letterSpinColor, options, t }) => {
     <Box className="my-4 flex flex-col justify-center items-center">
       <StaticImage
         className="rounded-lg"
-        src="../../../../assets/mobile-dev.png"
+        src="../../../images/mobile-dev.png"
         alt="mobile-dev"
         placeholder="blurred"
         layout="constrained"

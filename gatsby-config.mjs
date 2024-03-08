@@ -22,8 +22,8 @@ const config = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Gatsby",
-        short_name: "Gatsby",
+        name: "Personal Web",
+        short_name: "Personal Web",
         start_url: "/",
         background_color: "#6b37bf",
         theme_color: "#6b37bf",
@@ -31,6 +31,7 @@ const config = {
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: "standalone",
         icon: "src/images/icon.png", // This path is relative to the root of the site.
+        crossOrigin: `use-credentials`,
       },
     },
     {
