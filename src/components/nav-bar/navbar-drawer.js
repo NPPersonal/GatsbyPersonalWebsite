@@ -1,8 +1,12 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import NavigationRoute from "../navigation-route/navigation-route";
-import { Box, Container, Avatar, Divider, Drawer } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
 import NavigationTreeView from "../navigation-tree-view/navigation-tree-view";
 import SocialLinks from "../social-links/social-links";
 import SocialLinkData from "../../../static/social-links/social-links.json";

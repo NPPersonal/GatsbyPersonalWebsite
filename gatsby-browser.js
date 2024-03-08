@@ -1,5 +1,5 @@
 import "./src/styles/global.css";
-import * as React from "react";
+import React from "react";
 import MUIThemeProvider from "./src/components/mui-theme/mui-theme-provider";
 import MainLayout from "./src/layouts/main-layout";
 

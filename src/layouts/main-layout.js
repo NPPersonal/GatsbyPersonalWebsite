@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Box } from "@mui/material";
+import React from "react";
+import Box from "@mui/material/Box";
 import { MUIThemeContext } from "../components/mui-theme/mui-theme-provider";
 
 /**

@@ -1,8 +1,11 @@
 // i18next-extract-mark-ns-start message-me
 
-import * as React from "react";
+import React from "react";
 import CommonLayout from "../../../layouts/common-layout";
-import { Box, Divider, SvgIcon, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import SvgIcon from "@mui/material/SvgIcon";
+import Typography from "@mui/material/Typography";
 import EmailIcon from "@mui/icons-material/Email";
 import NetlifyForm from "../../../components/netlify-form/netlify-form";
 import Seo from "../../../components/seo/seo";

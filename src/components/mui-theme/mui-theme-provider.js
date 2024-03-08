@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { generateMUITheme } from "./themes/theme-generator";
-import {
-  CssBaseline,
-  StyledEngineProvider,
-  ThemeProvider,
-} from "@mui/material";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import CssBaseline from "@mui/material/CssBaseline";
+import StyledEngineProvider from "@mui/material/StyledEngineProvider";
 
 export const defaultMode = "light";
 export const defaultTheme = generateMUITheme(defaultMode);

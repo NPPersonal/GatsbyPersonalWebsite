@@ -1,9 +1,11 @@
-import * as React from "react";
+import React from "react";
 import TreeView, { flattenTree } from "react-accessible-treeview";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ShortcutIcon from "@mui/icons-material/Shortcut";
-import { Stack, Typography, Box } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import PropTypes from "prop-types";
 import { useI18next } from "gatsby-plugin-react-i18next";

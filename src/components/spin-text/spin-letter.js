@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 /**
  * Spin a set of random letters as animation effect then reach

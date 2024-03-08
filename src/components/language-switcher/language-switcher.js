@@ -1,5 +1,9 @@
-import * as React from "react";
-import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import React from "react";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
 import TranslateIcon from "@mui/icons-material/Translate";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import languageMapper from "../../../locales/language-mapper.json";

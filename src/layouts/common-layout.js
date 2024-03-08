@@ -1,5 +1,9 @@
-import * as React from "react";
-import { Avatar, Box, Container, Divider, Toolbar } from "@mui/material";
+import React from "react";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import Toolbar from "@mui/material/Toolbar";
 import ParticleBG from "../components/particle-bg/particle-bg";
 import { config as floatingSnowConfig } from "../components/particle-bg/floating-snow-config";
 import { ExSlide } from "../components/mui-extension/transition-extension";

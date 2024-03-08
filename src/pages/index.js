@@ -1,7 +1,9 @@
 // i18next-extract-mark-ns-start index
 
-import * as React from "react";
-import { Typography, Box, useMediaQuery } from "@mui/material";
+import React from "react";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import CommonLayout from "../layouts/common-layout";
 import Seo from "../components/seo/seo";
 import SpinText from "../components/spin-text/spin-text";

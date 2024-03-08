@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useInView } from "react-intersection-observer";
 
 const RenderInView = ({ options = undefined, children, ...props }) => {

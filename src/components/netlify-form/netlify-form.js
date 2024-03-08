@@ -1,14 +1,12 @@
-import * as React from "react";
+import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import {
-  Alert,
-  AlertTitle,
-  Box,
-  Button,
-  Snackbar,
-  TextField,
-} from "@mui/material";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import TextField from "@mui/material/TextField";
 import { useI18next } from "gatsby-plugin-react-i18next";
 
 const validationSchema = (t) =>

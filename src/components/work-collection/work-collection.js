@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Masonry } from "@mui/lab";
 import WorkCard from "../work-card/work-card";
 import { getCloudinaryImage } from "../../libs/cloudinary";

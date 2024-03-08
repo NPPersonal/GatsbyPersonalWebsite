@@ -1,8 +1,9 @@
 // i18next-extract-mark-ns-start machine-learning
 
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
-import { Typography, Box } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import WorkCollection from "../../../components/work-collection/work-collection";
 import Seo from "../../../components/seo/seo";
 import CommonLayout from "../../../layouts/common-layout";

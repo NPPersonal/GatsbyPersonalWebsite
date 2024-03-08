@@ -1,19 +1,17 @@
 // i18next-extract-mark-ns-start blogs
 
-import * as React from "react";
+import React from "react";
 import { useMediumRSS } from "../../hooks/use-medium-rss";
 import ReactLoading from "react-loading";
-import {
-  Grid,
-  Card,
-  CardHeader,
-  CardMedia,
-  Chip,
-  Box,
-  Avatar,
-  Typography,
-  Button,
-} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import Chip from "@mui/material/Chip";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import CommonLayout from "../../layouts/common-layout";
 import Seo from "../../components/seo/seo";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";

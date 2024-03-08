@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 const rss2jsonUrl = "https://api.rss2json.com/v1/api.json?rss_url=";
 const mediumFeedUrl = "https://medium.com/feed/@";

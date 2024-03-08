@@ -1,6 +1,9 @@
-import { GitHub, LinkedIn, QuestionMarkRounded } from "@mui/icons-material";
-import { Box, IconButton } from "@mui/material";
-import * as React from "react";
+import GitHub from "@mui/icons-material/GitHub";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import QuestionMarkRounded from "@mui/icons-material/QuestionMarkRounded";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import React from "react";
 
 const support_icons = {
   LinkIn: <LinkedIn />,

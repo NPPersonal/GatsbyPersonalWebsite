@@ -1,21 +1,17 @@
-import * as React from "react";
+import React from "react";
 import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
 import PropTypes from "prop-types";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  useMediaQuery,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import NavigationRoute from "../navigation-route/navigation-route";
-import {
-  Brightness7Rounded,
-  Brightness4Rounded,
-  MenuRounded,
-  HomeRounded,
-} from "@mui/icons-material";
+import Brightness7Rounded from "@mui/icons-material/Brightness7Rounded";
+import Brightness4Rounded from "@mui/icons-material/Brightness4Rounded";
+import MenuRounded from "@mui/icons-material/MenuRounded";
+import HomeRounded from "@mui/icons-material/HomeRounded";
 import NavBarDrawer from "./navbar-drawer";
 import { navigate } from "gatsby";
 import LanguageSwitcher from "../language-switcher/language-switcher";

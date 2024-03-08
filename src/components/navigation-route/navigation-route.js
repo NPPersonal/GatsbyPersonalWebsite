@@ -1,8 +1,11 @@
 // i18next-extract-mark-ns-start navigation-route
 
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Box, Menu, MenuItem, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useI18next } from "gatsby-plugin-react-i18next";

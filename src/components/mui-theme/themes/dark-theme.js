@@ -1,4 +1,5 @@
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import createTheme from "@mui/material/styles/createTheme";
+import responsiveFontSizes from "@mui/material/styles/responsiveFontSizes";
 import { MUITailwindCSSPortalConfig } from "./mui-tailwindcss";
 
 const theme = createTheme({});

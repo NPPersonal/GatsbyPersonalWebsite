@@ -1,8 +1,9 @@
 // i18next-extract-mark-ns-start about-me
 
-import * as React from "react";
+import React from "react";
 import CommonLayout from "../../layouts/common-layout";
-import { Typography, Box } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import Seo from "../../components/seo/seo";
 import {
   AdvancedImage,

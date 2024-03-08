@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
-import * as React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import React from "react";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import { useI18next } from "gatsby-plugin-react-i18next";
 

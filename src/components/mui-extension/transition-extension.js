@@ -1,5 +1,8 @@
-import { Box, Fade, Grow, Slide } from "@mui/material";
-import * as React from "react";
+import React from "react";
+import Box from "@mui/material/Box";
+import Fade from "@mui/material/Fade";
+import Grow from "@mui/material/Grow";
+import Slide from "@mui/material/Slide";
 
 export const ExSlide = ({ delay = 0, children, ...props }) => {
   const [started, setStarted] = React.useState(false);

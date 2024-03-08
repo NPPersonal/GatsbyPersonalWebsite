@@ -1,6 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { graphql, navigate } from "gatsby";
-import { Box, Typography, IconButton } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 import Carousel from "react-material-ui-carousel";
 import CarouselCard from "../../components/carousel-card/carousel-card";
 import { getCloudinaryImage } from "../../libs/cloudinary";
