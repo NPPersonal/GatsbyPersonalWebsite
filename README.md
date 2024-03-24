@@ -1,10 +1,13 @@
 ## Note
 
-Some image asset is hosted on [Cloudinary](https://cloudinary.com/) therefore an
-environment variable required to be set in order to fetch image asset.
-Create 2 env file `.env.development` and `.env.production` then add following
+Some image asset is hosted on [Cloudinary](https://cloudinary.com/) and use
+gooogle [reCaptcha](https://www.npmjs.com/package/react-recaptcha) for anti
+spam. Therefore an environment variable required to be set in order to fetch
+image asset. Create 2 env file `.env.development` and `.env.production` then
+add following.
 
 - `GATSBY_CLOUDINARY_CLOUD_NAME=dgquji7zg`
+- `GATSBY_RECAPTCHA_KEY=[Find key [here](https://www.google.com/recaptcha/admin/site/698531820)]`
 
 where **GATSBY_CLOUDINARY_CLOUD_NAME** is key and **dgquji7zg** is value.
 

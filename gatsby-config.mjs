@@ -20,6 +20,7 @@ const config = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
+    `gatsby-plugin-recaptcha`,
     `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,

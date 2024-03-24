@@ -16,7 +16,7 @@ import { useI18next } from "gatsby-plugin-react-i18next";
 import { graphql } from "gatsby";
 
 const MessageMe = () => {
-  const { t } = useI18next();
+  const { t, language } = useI18next();
   const { theme } = React.useContext(MUIThemeContext);
   const letterSpinColor = theme.palette.spinLetter.main;
   const divierSX = {
@@ -48,7 +48,7 @@ const MessageMe = () => {
         </Typography>
       </RenderInView>
       <Box className="p-8 shadow-xl rounded-lg">
-        <NetlifyForm />
+        <NetlifyForm lang={language} />
       </Box>
       <Box className="my-8">
         <Divider sx={divierSX} variant="middle" textAlign="center">

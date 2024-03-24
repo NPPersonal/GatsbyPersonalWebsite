@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import TextField from "@mui/material/TextField";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import Recaptcha from "react-recaptcha";
+import Typography from "@mui/material/Typography";
 
 const validationSchema = (t) =>
   yup.object({
@@ -19,13 +21,15 @@ const validationSchema = (t) =>
     message: yup
       .string("Enter your message")
       .required(t("form-message-required")),
+    recaptcha: yup.string().required(t("no-robot")),
   });
 
-const NetlifyForm = ({ feedbackDuration = 6000 }) => {
+const NetlifyForm = ({ feedbackDuration = 6000, lang = "en-GB" }) => {
   const { t } = useI18next();
   const [error, setError] = React.useState(null);
   const [submitSuccess, setSubmitSuccess] = React.useState(false);
   const [sending, setSending] = React.useState(false);
+  const recaptchaRef = React.useRef(null);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -36,7 +40,12 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
     onSubmit: async (values) => {
       // according to netlify
       // https://docs.netlify.com/forms/setup/#submit-javascript-rendered-forms-with-ajax
-      values = { "form-name": "contact", ...values };
+      values = {
+        "form-name": "contact",
+        name: values.name,
+        email: values.email,
+        message: values.message,
+      };
       const urlEncoded = new URLSearchParams(values).toString();
       try {
         setSending(true);
@@ -51,14 +60,23 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
           throw Error("Unable to send message");
         }
         formik.resetForm();
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
         setSending(false);
         setSubmitSuccess(true);
       } catch (error) {
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
         setSending(false);
         setError(error.message);
       }
     },
   });
+  const onVerifyCallback = (response) => {
+    formik.setFieldValue("recaptcha", response);
+  };
   return (
     <div>
       <Snackbar
@@ -130,7 +148,23 @@ const NetlifyForm = ({ feedbackDuration = 6000 }) => {
           error={formik.touched.message && Boolean(formik.errors.message)}
           helperText={formik.touched.message && formik.errors.message}
         />
-        <Box className="flex justify-center">
+        <Box className="flex flex-col flex-wrap justify-center items-center">
+          <Box className="my-4">
+            <Recaptcha
+              ref={recaptchaRef}
+              id="recaptcha"
+              name="recaptcha"
+              render="explicit"
+              hl={lang}
+              sitekey={process.env.GATSBY_RECAPTCHA_KEY}
+              verifyCallback={onVerifyCallback}
+            />
+            {formik.errors.recaptcha && (
+              <Typography className="text-red-600" component="p" align="center">
+                {formik.errors.recaptcha}
+              </Typography>
+            )}
+          </Box>
           <Button type="submit" variant="contained" disabled={sending}>
             {t("send")}
           </Button>
