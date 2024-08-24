@@ -5,10 +5,10 @@ import { MUITailwindCSSPortalConfig } from "./mui-tailwindcss";
 const theme = createTheme({});
 
 const colorProps = {
-  main: "#667e80",
-  light: "#9cafb0",
-  dark: "#394647",
-  contrastText: theme.palette.getContrastText("#394647"),
+  main: "#024950",
+  light: "#7ac1c8",
+  dark: "#003135",
+  contrastText: theme.palette.getContrastText("#024950"),
 };
 
 const createDarkTheme = () =>
@@ -38,7 +38,7 @@ const createDarkTheme = () =>
         background: {
           footer: colorProps.main,
           gradient:
-            "linear-gradient(90deg, rgba(77,90,91,1) 0%, rgba(69,82,83,1) 15%, rgba(57,70,71,1) 50%, rgba(69,82,83,1) 85%, rgba(77,90,91,1) 100%);",
+            "linear-gradient(180deg, rgba(2,73,80,1) 0%, rgba(42,113,120,1) 100%);",
         },
         spinLetter: {
           main: colorProps.light,
