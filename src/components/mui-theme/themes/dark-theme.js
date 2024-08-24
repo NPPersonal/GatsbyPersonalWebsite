@@ -9,6 +9,7 @@ const colorProps = {
   light: "#7ac1c8",
   dark: "#003135",
   contrastText: theme.palette.getContrastText("#024950"),
+  form: "#026570",
 };
 
 const createDarkTheme = () =>
@@ -42,6 +43,9 @@ const createDarkTheme = () =>
         },
         spinLetter: {
           main: colorProps.light,
+        },
+        form: {
+          main: colorProps.form,
         },
       },
       components: {

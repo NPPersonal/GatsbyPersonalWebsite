@@ -47,7 +47,7 @@ const MessageMe = () => {
           />
         </Typography>
       </RenderInView>
-      <Box className="p-8 shadow-xl rounded-lg">
+      <Box className="p-8 shadow-xl rounded-lg" sx={{ bgcolor: "form.main" }}>
         <NetlifyForm lang={language} />
       </Box>
       <Box className="my-8">
