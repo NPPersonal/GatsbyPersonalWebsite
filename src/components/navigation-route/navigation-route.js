@@ -2,7 +2,6 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
@@ -10,6 +9,7 @@ import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
+import { Slide, Zoom } from "@mui/material";
 
 /**
  * Display a navigation route or a set of sub routes in a menu
@@ -82,27 +82,33 @@ const NavigationRoute = ({ data, ...rest }) => {
           disableScrollLock={true}
           disableAutoFocus={true}
           disablePortal={true}
+          TransitionComponent={Zoom}
         >
-          {data.children.map((item, i) => {
-            if (item.metadata.route) {
-              return (
-                <GatsbyStyledLink
-                  key={`${item.name}-${i}`}
-                  to={item.metadata.route}
-                >
-                  <MenuItem>
-                    <Typography>{t(item.name)}</Typography>
-                  </MenuItem>
-                </GatsbyStyledLink>
-              );
-            } else {
-              return (
-                <MenuItem key={`${item.name}-${i}`}>
-                  <Typography>{t(item.name)}</Typography>
+          {data.children.map((item, i) =>
+            item.metadata.route ? (
+              <GatsbyStyledLink
+                key={`${item.name}-${i}`}
+                to={item.metadata.route}
+              >
+                <MenuItem className="relative group">
+                  <div
+                    className="absolute z-[0] rounded-full
+                    transition-all duration-700 ease-out
+                    h-full w-[125%] top-0 -left-[125%]
+                    group-hover:-left-[10%]"
+                    style={{
+                      backgroundColor: `${theme.palette.primary.light}`,
+                    }}
+                  />
+                  <Typography zIndex={1}>{t(item.name)}</Typography>
                 </MenuItem>
-              );
-            }
-          })}
+              </GatsbyStyledLink>
+            ) : (
+              <MenuItem key={`${item.name}-${i}`}>
+                <Typography>{t(item.name)}</Typography>
+              </MenuItem>
+            )
+          )}
         </Menu>
       )}
     </React.Fragment>
