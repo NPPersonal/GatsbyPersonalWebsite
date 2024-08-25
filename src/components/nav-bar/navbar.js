@@ -22,19 +22,9 @@ import LanguageSwitcher from "../language-switcher/language-switcher";
  * @returns React node
  */
 const renderNavigationRoutes = (navigationRoutes) => {
-  return (
-    <Box className="hidden sm:flex justify-center">
-      {navigationRoutes.map((data, i) => {
-        return (
-          <NavigationRoute
-            key={`${data.title}-${i}`}
-            className="mx-4"
-            data={data}
-          />
-        );
-      })}
-    </Box>
-  );
+  return navigationRoutes.map((data, i) => {
+    return <NavigationRoute key={`${data.title}-${i}`} data={data} />;
+  });
 };
 
 /**
@@ -98,10 +88,11 @@ const NavBar = ({ title = "", navigationRoutes = [] }) => {
           {isSmallScreen ? (
             <Box className="grow" />
           ) : (
-            <Box className="grow">
+            <Box className="grow text-center">
               {navigationRoutes && renderNavigationRoutes(navigationRoutes)}
             </Box>
           )}
+
           <Box className="mx-1">
             <LanguageSwitcher />
           </Box>

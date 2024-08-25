@@ -36,28 +36,30 @@ const NavigationRoute = ({ data, ...rest }) => {
   };
 
   return (
-    <Box {...rest}>
-      <Box
-        className="m-2 flex items-center hover:text-red-500 hover:scale-125 transition duration-150 ease-in-out"
-        onClick={handleClick}
-      >
-        <Typography className="text-2xl cursor-pointer">
-          {data.children ? (
-            t(data.name)
-          ) : (
-            <GatsbyStyledLink to={data.metadata.route}>
-              {t(data.name)}
-            </GatsbyStyledLink>
+    <React.Fragment>
+      <div className="inline-block mx-4 my-2">
+        <div
+          className="flex items-center hover:text-red-500 hover:scale-125 transition duration-150 ease-in-out"
+          onClick={handleClick}
+        >
+          <Typography className="text-2xl cursor-pointer">
+            {data.children ? (
+              t(data.name)
+            ) : (
+              <GatsbyStyledLink to={data.metadata.route}>
+                {t(data.name)}
+              </GatsbyStyledLink>
+            )}
+          </Typography>
+          {data.children && (
+            <KeyboardArrowUpIcon
+              className={`transition-all ease-in-out ${
+                open ? "rotate-180" : "-rotate-"
+              } duration-500`}
+            />
           )}
-        </Typography>
-        {data.children && (
-          <KeyboardArrowUpIcon
-            className={`transition-all ease-in-out ${
-              open ? "rotate-180" : "-rotate-"
-            } duration-500`}
-          />
-        )}
-      </Box>
+        </div>
+      </div>
       {data.children && (
         <Menu
           id={`${data.name}-menu`}
@@ -91,7 +93,7 @@ const NavigationRoute = ({ data, ...rest }) => {
           })}
         </Menu>
       )}
-    </Box>
+    </React.Fragment>
   );
 };
 
