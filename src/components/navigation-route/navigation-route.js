@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
 
 /**
  * Display a navigation route or a set of sub routes in a menu
@@ -23,6 +24,7 @@ import { useI18next } from "gatsby-plugin-react-i18next";
  * @returns
  */
 const NavigationRoute = ({ data, ...rest }) => {
+  const { theme } = React.useContext(MUIThemeContext);
   const { t } = useI18next();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
@@ -37,11 +39,21 @@ const NavigationRoute = ({ data, ...rest }) => {
 
   return (
     <React.Fragment>
-      <div className="inline-block mx-4 my-2">
+      <div
+        className="relative overflow-hidden inline-block 
+      px-4 py-2 rounded-full"
+      >
         <div
-          className="flex items-center hover:text-red-500 hover:scale-125 transition duration-150 ease-in-out"
+          className="flex items-center group cursor-pointer"
           onClick={handleClick}
         >
+          <div
+            className={`absolute z-[-1] rounded-full
+          transition-all duration-1000 ease-out
+          h-[50px] w-[50px] -bottom-[100%] -left-[20%] 
+          group-hover:scale-[7] group-hover:-left-3`}
+            style={{ backgroundColor: theme.palette.primary.light }}
+          />
           <Typography className="text-2xl cursor-pointer">
             {data.children ? (
               t(data.name)

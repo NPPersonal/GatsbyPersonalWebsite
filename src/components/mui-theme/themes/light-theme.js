@@ -6,7 +6,7 @@ const theme = createTheme({});
 
 const colorProps = {
   main: "#12b9c6",
-  light: "#AFDDE5",
+  light: "#afdde5",
   dark: "#024950",
   contrastText: theme.palette.getContrastText("#AFDDE5"),
   form: "#13cedd",
