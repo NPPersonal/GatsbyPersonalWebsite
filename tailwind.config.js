@@ -1,3 +1,5 @@
+const { opacity } = require("@cloudinary/url-gen/actions/adjust");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   corePlugins: {
@@ -10,7 +12,17 @@ module.exports = {
     `./src/layouts/**/*.{js,jsx,ts,tsx}`,
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "flash-caret": "flash-quick 0.7s linear infinite",
+      },
+      keyframes: {
+        "flash-quick": {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0 },
+        },
+      },
+    },
   },
   plugins: [],
 };

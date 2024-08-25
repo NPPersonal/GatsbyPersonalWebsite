@@ -18,6 +18,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { graphql } from "gatsby";
 import GatsbyStyledLink from "../components/gatsby-styled-link/gatsby-styled-link";
 import MarkdownRenderer from "../components/markdown-renderer/markdown-renderer";
+import TypeWriter from "../components/type-writer/type-writer";
 
 const defaultMDXComponents = {
   h3: (props) => (
@@ -90,12 +91,10 @@ const Home = (props) => {
               variant="h2"
               align="center"
             >
-              <SpinText
+              <TypeWriter
                 text={t("hello")}
-                duration={250}
-                sequential
-                randLetters={t("randLetters")}
-                randLetterColor={letterSpinColor}
+                letterInterval={200}
+                delayStartMS={200}
               />
             </Typography>
             <Typography
@@ -103,13 +102,10 @@ const Home = (props) => {
               variant="h3"
               align="center"
             >
-              <SpinText
+              <TypeWriter
                 text={t("welcome")}
-                duration={200}
-                delay={1600}
-                sequential
-                randLetters={t("randLetters")}
-                randLetterColor={letterSpinColor}
+                letterInterval={100}
+                delayStartMS={1600}
               />
             </Typography>
             <ExFade in delay={4000} timeout={2000}>
