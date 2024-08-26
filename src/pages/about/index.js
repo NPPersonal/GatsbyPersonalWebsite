@@ -12,13 +12,12 @@ import {
   placeholder,
 } from "@cloudinary/react";
 import { getCloudinaryImage } from "../../libs/cloudinary";
-import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
-import SpinText from "../../components/spin-text/spin-text";
 import { graphql } from "gatsby";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 import MarkdownRenderer from "../../components/markdown-renderer/markdown-renderer";
+import TypeWriter from "../../components/type-writer/type-writer";
 
 const defaultMDXComponents = {
   h3: (props) => (
@@ -59,8 +58,6 @@ const defaultMDXComponents = {
 
 const About = (props) => {
   const { t } = useI18next();
-  const { theme } = React.useContext(MUIThemeContext);
-  const letterSpinColor = theme.palette.spinLetter.main;
   const options = {
     delay: 1000,
     triggerOnce: true,
@@ -74,12 +71,7 @@ const About = (props) => {
           variant="h3"
           align="center"
         >
-          <SpinText
-            text={t("about-me-title")}
-            duration={200}
-            sequential
-            randLetterColor={letterSpinColor}
-          />
+          <TypeWriter text={t("about-me-title")} durationMS={200} />
         </Typography>
       </RenderInView>
       <Box className="flex flex-col items-center my-4">
@@ -103,11 +95,10 @@ const About = (props) => {
               variant="caption"
               align="center"
             >
-              <SpinText
+              <TypeWriter
                 text={t("full-name")}
-                duration={100}
-                delay={2000}
-                randLetterColor={letterSpinColor}
+                durationMS={1000}
+                delayStartMS={2000}
               />
             </Typography>
           </RenderInView>
@@ -117,11 +108,10 @@ const About = (props) => {
               variant="caption"
               align="center"
             >
-              <SpinText
+              <TypeWriter
                 text={t("location")}
-                duration={100}
-                delay={4000}
-                randLetterColor={letterSpinColor}
+                durationMS={1000}
+                delayStartMS={4000}
               />
             </Typography>
           </RenderInView>
@@ -131,11 +121,10 @@ const About = (props) => {
               variant="caption"
               align="center"
             >
-              <SpinText
+              <TypeWriter
                 text={t("speak-language")}
-                duration={100}
-                delay={6000}
-                randLetterColor={letterSpinColor}
+                durationMS={1000}
+                delayStartMS={6000}
               />
             </Typography>
           </RenderInView>

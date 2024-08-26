@@ -1,50 +1,54 @@
-import { Typography } from "@mui/material";
 import React from "react";
-
-const DelayLetter = ({ letter, delayMS = 0, onShow }) => {
-  const [show, setShow] = React.useState(false);
-  React.useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setShow(true);
-      if (onShow) {
-        onShow();
-      }
-    }, delayMS);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
-  return <span className="inline">{show && letter}</span>;
-};
 
 export default function TypeWriter({
   text = "",
   separator = "",
-  letterInterval = 1000,
+  prefix = undefined,
+  suffix = undefined,
+  durationMS = 1000,
   delayStartMS = 0,
 }) {
-  const letters = text.split(separator);
-  // number of letters had been shown
-  const [count, setCount] = React.useState(0);
-  const handleLetterShow = () => {
-    setCount((count) => count + 1);
+  const letterIntervalMS = text.length ? durationMS / text.length : 0;
+  const [remainChars, setRemainChars] = React.useState(text.split(separator));
+  const [currentText, setCurrentText] = React.useState("");
+  const [isInDelay, setIsInDelay] = React.useState(true);
+  const handleLetter = () => {
+    setIsInDelay(false);
+    setRemainChars((remainChars) => {
+      const char = remainChars.shift();
+      if (char) {
+        setCurrentText((currentText) => currentText + char);
+      }
+      return remainChars;
+    });
   };
+
+  React.useEffect(() => {
+    let timerId = undefined;
+
+    if (delayStartMS && currentText === "") {
+      timerId = setTimeout(handleLetter, delayStartMS);
+    } else {
+      if (remainChars.length) {
+        timerId = setTimeout(handleLetter, letterIntervalMS);
+      }
+    }
+
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
+  }, [currentText]);
+
   return (
-    <React.Fragment>
-      {letters.map((letter, i) => {
-        return (
-          <DelayLetter
-            key={`${letter}-${i}`}
-            letter={letter}
-            delayMS={i * letterInterval + delayStartMS}
-            onShow={handleLetterShow}
-          />
-        );
-      })}
-      {count < letters.length ? (
-        <span className="inline leading-7 animate-flash-caret">_</span>
-      ) : null}
-    </React.Fragment>
+    <div>
+      {prefix && <span>{prefix}</span>}
+      <span>{currentText}</span>
+      {remainChars.length > 0 && !isInDelay && (
+        <span className="animate-flash-caret">_</span>
+      )}
+      {suffix && <span>{suffix}</span>}
+    </div>
   );
 }

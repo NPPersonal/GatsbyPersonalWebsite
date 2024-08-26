@@ -9,16 +9,15 @@ import Typography from "@mui/material/Typography";
 import EmailIcon from "@mui/icons-material/Email";
 import NetlifyForm from "../../../components/netlify-form/netlify-form";
 import Seo from "../../../components/seo/seo";
-import SpinText from "../../../components/spin-text/spin-text";
 import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../../components/render-in-view/render-in-view";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import { graphql } from "gatsby";
+import TypeWriter from "../../../components/type-writer/type-writer";
 
 const MessageMe = () => {
   const { t, language } = useI18next();
   const { theme } = React.useContext(MUIThemeContext);
-  const letterSpinColor = theme.palette.spinLetter.main;
   const divierSX = {
     "&::before, &::after": {
       borderTop: `thick solid ${
@@ -39,12 +38,7 @@ const MessageMe = () => {
         }}
       >
         <Typography className="my-4 font-bold" variant="h3" align="center">
-          <SpinText
-            text={t("message-me-title")}
-            duration={150}
-            sequential
-            randLetterColor={letterSpinColor}
-          />
+          <TypeWriter text={t("message-me-title")} durationMS={1000} />
         </Typography>
       </RenderInView>
       <Box className="p-8 shadow-xl rounded-lg" sx={{ bgcolor: "form.main" }}>

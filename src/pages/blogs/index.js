@@ -15,10 +15,10 @@ import Button from "@mui/material/Button";
 import CommonLayout from "../../layouts/common-layout";
 import Seo from "../../components/seo/seo";
 import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
-import SpinText from "../../components/spin-text/spin-text";
 import RenderInView from "../../components/render-in-view/render-in-view";
 import { graphql } from "gatsby";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import TypeWriter from "../../components/type-writer/type-writer";
 
 const blogLink = "https://medium.com/software-dev-explore";
 
@@ -36,7 +36,6 @@ const Blog = () => {
 
   const { theme } = React.useContext(MUIThemeContext);
   const loadingColor = theme.palette.loading.main;
-  const letterSpinColor = theme.palette.spinLetter.main;
 
   const datetimeToDate = (datetime) => {
     const newDateTime = new Date(datetime);
@@ -75,12 +74,7 @@ const Blog = () => {
         }}
       >
         <Typography className="my-4 font-bold" variant="h3" align="center">
-          <SpinText
-            text={t("blogs-title")}
-            duration={250}
-            sequential
-            randLetterColor={letterSpinColor}
-          />
+          <TypeWriter text={t("blogs-title")} durationMS={1000} />
         </Typography>
       </RenderInView>
       <Grid container>

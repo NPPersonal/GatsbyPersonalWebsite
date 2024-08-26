@@ -9,11 +9,10 @@ import { getCloudinaryImage } from "../../libs/cloudinary";
 import Seo from "../../components/seo/seo";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CommonLayout from "../../layouts/common-layout";
-import { MUIThemeContext } from "../../components/mui-theme/mui-theme-provider";
 import RenderInView from "../../components/render-in-view/render-in-view";
-import SpinText from "../../components/spin-text/spin-text";
 import GatsbyStyledLink from "../../components/gatsby-styled-link/gatsby-styled-link";
 import MarkdownRenderer from "../../components/markdown-renderer/markdown-renderer";
+import TypeWriter from "../../components/type-writer/type-writer";
 
 const defaultMDXComponents = {
   h3: (props) => (
@@ -54,8 +53,6 @@ const defaultMDXComponents = {
 
 const WorkTemplate = (props) => {
   const { data } = props;
-  const { theme } = React.useContext(MUIThemeContext);
-  const letterSpinColor = theme.palette.spinLetter.main;
   const options = {
     delay: 1000,
     triggerOnce: true,
@@ -74,12 +71,7 @@ const WorkTemplate = (props) => {
       <Box className="mb-8 flex flex-col justify-center items-center">
         <RenderInView options={options}>
           <Typography className="my-4 font-bold" variant="h3">
-            <SpinText
-              text={data.mdx.frontmatter.name}
-              duration={150}
-              sequential
-              randLetterColor={letterSpinColor}
-            />
+            <TypeWriter text={data.mdx.frontmatter.name} durationMS={1000} />
           </Typography>
         </RenderInView>
       </Box>

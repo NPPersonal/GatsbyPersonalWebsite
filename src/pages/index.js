@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CommonLayout from "../layouts/common-layout";
 import Seo from "../components/seo/seo";
-import SpinText from "../components/spin-text/spin-text";
 import { MUIThemeContext } from "../components/mui-theme/mui-theme-provider";
 import RenderInView from "../components/render-in-view/render-in-view";
 import { StaticImage } from "gatsby-plugin-image";
@@ -63,7 +62,6 @@ const defaultMDXComponents = {
 const Home = (props) => {
   const { t } = useTranslation();
   const { theme } = React.useContext(MUIThemeContext);
-  const letterSpinColor = theme.palette.spinLetter.main;
   const isWrap = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <CommonLayout
@@ -93,7 +91,7 @@ const Home = (props) => {
             >
               <TypeWriter
                 text={t("hello")}
-                letterInterval={200}
+                durationMS={700}
                 delayStartMS={200}
               />
             </Typography>
@@ -104,7 +102,7 @@ const Home = (props) => {
             >
               <TypeWriter
                 text={t("welcome")}
-                letterInterval={100}
+                durationMS={700}
                 delayStartMS={1600}
               />
             </Typography>

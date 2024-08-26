@@ -7,13 +7,12 @@ import Box from "@mui/material/Box";
 import WorkCollection from "../../../components/work-collection/work-collection";
 import Seo from "../../../components/seo/seo";
 import CommonLayout from "../../../layouts/common-layout";
-import { MUIThemeContext } from "../../../components/mui-theme/mui-theme-provider";
-import SpinText from "../../../components/spin-text/spin-text";
 import RenderInView from "../../../components/render-in-view/render-in-view";
 import { StaticImage } from "gatsby-plugin-image";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import TypeWriter from "../../../components/type-writer/type-writer";
 
-const Banner = ({ letterSpinColor, options, t }) => {
+const Banner = ({ options, t }) => {
   return (
     <Box className="my-4 flex flex-col justify-center items-center">
       <StaticImage
@@ -30,12 +29,10 @@ const Banner = ({ letterSpinColor, options, t }) => {
           variant="h3"
           align="center"
         >
-          <SpinText
+          <TypeWriter
             text={t("mobile-title")}
-            duration={100}
-            sequential
-            randLetterColor={letterSpinColor}
-            delay={500}
+            durationMS={1000}
+            delayStartMS={500}
           />
         </Typography>
       </RenderInView>
@@ -45,8 +42,6 @@ const Banner = ({ letterSpinColor, options, t }) => {
 
 const Mobile = ({ data }) => {
   const { t } = useI18next();
-  const { theme } = React.useContext(MUIThemeContext);
-  const letterSpinColor = theme.palette.spinLetter.main;
   const options = {
     delay: 1000,
     triggerOnce: true,
@@ -56,7 +51,7 @@ const Mobile = ({ data }) => {
   if (data.allMdx.nodes.length === 0) {
     return (
       <CommonLayout>
-        <Banner letterSpinColor={letterSpinColor} options={options} t={t} />
+        <Banner options={options} t={t} />
         <Typography className="my-4" variant="h4" align="center">
           {t("empty")}
         </Typography>
@@ -65,7 +60,7 @@ const Mobile = ({ data }) => {
   }
   return (
     <CommonLayout>
-      <Banner letterSpinColor={letterSpinColor} options={options} t={t} />
+      <Banner options={options} t={t} />
       <WorkCollection mdxDataNodes={data.allMdx.nodes} />
     </CommonLayout>
   );
