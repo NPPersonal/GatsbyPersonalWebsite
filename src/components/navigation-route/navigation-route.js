@@ -9,7 +9,7 @@ import GatsbyStyledLink from "../gatsby-styled-link/gatsby-styled-link";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import { MUIThemeContext } from "../mui-theme/mui-theme-provider";
-import { Slide, Zoom } from "@mui/material";
+import { Zoom } from "@mui/material";
 
 /**
  * Display a navigation route or a set of sub routes in a menu
@@ -46,6 +46,7 @@ const NavigationRoute = ({ data, ...rest }) => {
         <div
           className="flex items-center group cursor-pointer"
           onClick={handleClick}
+          onKeyDown={handleClick}
         >
           <div
             className={`absolute z-[-1] rounded-full

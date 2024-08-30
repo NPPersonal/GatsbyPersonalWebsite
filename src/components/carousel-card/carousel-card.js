@@ -14,11 +14,7 @@ const CarouselCard = ({ cloudinaryImage, imageHeight = 400, alt = "" }) => {
         style={{ height: imageHeight }}
         alt={alt}
         cldImg={cloudinaryImage}
-        plugins={[
-          lazyload(),
-          responsive({ steps: 100 }),
-          placeholder({ mode: "blur" }),
-        ]}
+        plugins={[responsive({ steps: 100 }), placeholder({ mode: "blur" })]}
       />
     </Box>
   );

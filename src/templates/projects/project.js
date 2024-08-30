@@ -82,9 +82,7 @@ const WorkTemplate = (props) => {
         autoPlay
       >
         {data.mdx.frontmatter.images_id.map((image_id, i) => {
-          const image = getCloudinaryImage(image_id)
-            .format("auto")
-            .quality("auto");
+          const image = getCloudinaryImage(image_id);
           return (
             <CarouselCard
               key={`${image_id}-${i}`}
