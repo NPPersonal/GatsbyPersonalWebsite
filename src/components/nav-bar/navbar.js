@@ -8,13 +8,12 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import NavigationRoute from "../navigation-route/navigation-route";
-import Brightness7Rounded from "@mui/icons-material/Brightness7Rounded";
-import Brightness4Rounded from "@mui/icons-material/Brightness4Rounded";
 import MenuRounded from "@mui/icons-material/MenuRounded";
 import HomeRounded from "@mui/icons-material/HomeRounded";
 import NavBarDrawer from "./navbar-drawer";
 import { navigate } from "gatsby";
 import LanguageSwitcher from "../language-switcher/language-switcher";
+import LightDarkSwitcher from "../light-dark-switcher/light-dakr-switcher";
 
 /**
  * Render navigation routes
@@ -101,11 +100,7 @@ const NavBar = ({ title = "", navigationRoutes = [] }) => {
               aria-label="color mode"
               onClick={() => toggleColorMode()}
             >
-              {mode === "light" ? (
-                <Brightness7Rounded fontSize="large" />
-              ) : (
-                <Brightness4Rounded fontSize="large" />
-              )}
+              <LightDarkSwitcher mode={mode} />
             </IconButton>
           </Box>
         </Toolbar>

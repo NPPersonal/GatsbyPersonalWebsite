@@ -1,11 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import {
-  AdvancedImage,
-  lazyload,
-  responsive,
-  placeholder,
-} from "@cloudinary/react";
+import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
 const CarouselCard = ({ cloudinaryImage, imageHeight = 400, alt = "" }) => {
   return (
